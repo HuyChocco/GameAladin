@@ -1,0 +1,12 @@
+﻿  TiledMap.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(74): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(38): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(220): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(223): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(230): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(231): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(249): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(250): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Aladin.vcxproj -> D:\game\Aladin\Aladin\Debug\Aladin.exe
