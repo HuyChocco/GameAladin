@@ -3,9 +3,9 @@
     "",
     "\\Aladin",
     "\\Aladin\\Debug",
-    "\\Aladin\\GameObjects",
+    "\\Aladin\\Scenes",
     "\\Debug"
   ],
-  "SelectedNode": "\\Aladin\\Aladin.vcxproj",
+  "SelectedNode": "\\Aladin\\Scenes\\MainScene.cpp",
   "PreviewInSolutionExplorer": false
 }

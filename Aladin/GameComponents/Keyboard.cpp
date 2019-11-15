@@ -190,6 +190,7 @@ void Keyboard::OnKeyUp(int KeyCode)
 		//aladin->Idle();
 		
 		break;
+	case DIK_SPACE:
 	case DIK_UP:
 		aladin->SetState(aladin->GetIdleState());
 		break;

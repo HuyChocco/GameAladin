@@ -4,6 +4,8 @@
 #include "Keyboard.h"
 #include "TiledMap.h"
 #include "Grid.h"
+#include "Scene.h"
+//#include "../Scenes/MainScene.h"
 #include "../GameObjects/Aladin.h"
 
 #include <chrono>
@@ -12,6 +14,7 @@ class Graphics;
 class Keyboard;
 class Grid;
 class Aladin;
+class Scene;
 class Game
 {
 	bool initialized = false;
@@ -19,7 +22,7 @@ class Game
 	static Game *__instance;
 	static HINSTANCE hInstance;
 	HWND hWnd;									
-
+	Scene* scene;
 	Keyboard *keyboard;
 	Graphics *graphics;
 

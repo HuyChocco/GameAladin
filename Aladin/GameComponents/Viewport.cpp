@@ -9,7 +9,7 @@ Viewport::Viewport()
 	width = SCREEN_WIDTH;
 	height = SCREEN_HEIGHT;
 	x = 0;
-	y = 235;
+	y = 400;
 }
 
 
@@ -37,7 +37,7 @@ Viewport *Viewport::GetInstance()
 }
 void Viewport::Reset()
 {
-	width = SCREEN_WIDTH;
+	width = 0;
 	height = SCREEN_HEIGHT;
 	x = 0;
 	y = 235;
@@ -46,7 +46,7 @@ void Viewport::Reset()
 void Viewport::Update(DWORD dt)
 {
 	Aladin * aladin = Aladin::GetInstance();
-	int right = (int)(Game::GetInstance()->GetTiledMap()->GetWidth() - SCREEN_WIDTH / 2);
+	/*int right = (int)(Game::GetInstance()->GetTiledMap()->GetWidth() - SCREEN_WIDTH / 2);
 	int left = (int)SCREEN_WIDTH / 2;
 	int bottom = (int)(Game::GetInstance()->GetTiledMap()->GetHeight() - SCREEN_HEIGHT / 2 - 1);
 	int top = (int)SCREEN_HEIGHT / 2;
@@ -57,8 +57,15 @@ void Viewport::Update(DWORD dt)
 	if (aladin->GetPositionY() > top && aladin->GetPositionY() < bottom)
 	{
 		this->y = aladin->GetPositionY() + top;
+	}*/
+	if (aladin->GetPositionX() > SCREEN_WIDTH / 2 && aladin->GetPositionX() <2270- SCREEN_WIDTH / 2)
+	{
+		this->x = aladin->GetPositionX() - SCREEN_WIDTH / 2;
 	}
-	
+	if (aladin->GetPositionY() > (int)SCREEN_HEIGHT / 2 && aladin->GetPositionY() < 1135- SCREEN_HEIGHT / 2)
+	{
+		this->y = aladin->GetPositionY() +  SCREEN_HEIGHT / 2;
+	}
 }
 //Hàm kiểm tra xem gameobject có trong viewport không
 bool Viewport::IsObjectInCamera(GameObject *gameobject)

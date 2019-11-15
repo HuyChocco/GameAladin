@@ -25,31 +25,71 @@ Row TiledMap::GetMatrixRow(int lineNum, string line, string delimiter)
 	Row result = Row();
 	int rowNum = 0;
 	Stage stage = Game::GetInstance()->GetStage();
-	while ((pos = line.find(delimiter)) != string::npos)
-	{
+	//while ((pos = line.find(delimiter)) != string::npos)
+	//{
+		pos = line.find(delimiter);
 		token = line.substr(0, pos);
-
+		
 		Tile curTile;
-		curTile.x = rowNum * TILES_WIDTH_PER_TILE;
-		curTile.y = this->mapHeight - lineNum * TILES_HEIGHT_PER_TILE;
-
-		curTile.colider = new Collider();
-		curTile.colider->x = rowNum * TILES_WIDTH_PER_TILE;
-		curTile.colider->y = this->mapHeight - lineNum * TILES_HEIGHT_PER_TILE;
-		curTile.colider->width = TILES_WIDTH_PER_TILE;
-		curTile.colider->height = TILES_HEIGHT_PER_TILE;
-
+		curTile.tilesLocation = token;
+		line.erase(0, pos + delimiter.length());
+		pos = line.find(delimiter);
+		token = line.substr(0, pos);
 		curTile.tileId = stoi(token);
 		if (Stage::STAGE_1 == stage)
 		{
-			if (find(_BrickStage_1.begin(), _BrickStage_1.end(), curTile.tileId) != _BrickStage_1.end())
+			if (find(_BrickStage_0.begin(), _BrickStage_0.end(), curTile.tileId) != _BrickStage_0.end())
+				curTile.type = ObjectType::GROUND;
+			else if (curTile.tileId == 6)
+				curTile.type = ObjectType::APPLE;
+		}
+		line.erase(0, pos + delimiter.length());
+		pos = line.find(delimiter);
+		token = line.substr(0, pos);
+		curTile.name = token;
+		
+		/*else if (Stage::STAGE_BOSS_1 == stage)
+		{
+			if (find(_BrickStage_BOSS_1.begin(), _BrickStage_BOSS_1.end(), curTile.tileId) != _BrickStage_BOSS_1.end())
 				curTile.type = ObjectType::BRICK;
-			else if (curTile.tileId == 101)
-				curTile.type = ObjectType::RIVER;
+			else if (curTile.tileId == 6)
+				curTile.type = ObjectType::ON_BUTTON;
 			else
 				curTile.type = ObjectType::DEFAULT;
-		}
-		else if (Stage::STAGE_2 == stage)
+		}*/
+		line.erase(0, pos + delimiter.length());
+		pos = line.find(delimiter);
+		token = line.substr(0, pos);
+		curTile.x = stoi(token);
+		line.erase(0, pos + delimiter.length());
+		pos = line.find(delimiter);
+		token = line.substr(0, pos);
+		curTile.y = this->mapHeight-stoi(token);
+		line.erase(0, pos + delimiter.length());
+		pos = line.find(delimiter);
+		token = line.substr(0, pos);
+		curTile.width = stoi(token);
+		line.erase(0, pos + delimiter.length());
+		pos = line.find(delimiter);
+		token = line.substr(0, pos);
+		curTile.height = stoi(token);
+		/*curTile.x = rowNum * TILES_WIDTH_PER_TILE;
+		curTile.y = this->mapHeight - lineNum * TILES_HEIGHT_PER_TILE;*/
+		//curTile.x = rowNum * TILES_WIDTH_PER_TILE;
+		//curTile.y = this->mapHeight - lineNum * TILES_HEIGHT_PER_TILE;
+		curTile.colider = new Collider();
+		curTile.colider->x = curTile.x;
+		curTile.colider->y = curTile.y;
+		curTile.colider->width = curTile.width;
+		curTile.colider->height = curTile.height;
+		/*curTile.colider->x = rowNum * TILES_WIDTH_PER_TILE;
+		curTile.colider->y = this->mapHeight - lineNum * TILES_HEIGHT_PER_TILE;
+		curTile.colider->width = TILES_WIDTH_PER_TILE;
+		curTile.colider->height = TILES_HEIGHT_PER_TILE;*/
+
+		//curTile.tileId = stoi(token);
+		
+		/*else if (Stage::STAGE_2 == stage)
 		{
 			if (find(_BrickStage_2.begin(), _BrickStage_2.end(), curTile.tileId) != _BrickStage_2.end())
 				curTile.type = ObjectType::BRICK;
@@ -59,27 +99,19 @@ Row TiledMap::GetMatrixRow(int lineNum, string line, string delimiter)
 				curTile.type = ObjectType::SWING;
 			else
 				curTile.type = ObjectType::DEFAULT;
-		}
-		else if (Stage::STAGE_BOSS_1 == stage)
-		{
-			if (find(_BrickStage_BOSS_1.begin(), _BrickStage_BOSS_1.end(), curTile.tileId) != _BrickStage_BOSS_1.end())
-				curTile.type = ObjectType::BRICK;
-			else if (curTile.tileId == 6)
-				curTile.type = ObjectType::ON_BUTTON;
-			else
-				curTile.type = ObjectType::DEFAULT;
-		}
-		else if (Stage::STAGE_BOSS_2 == stage)
+		}*/
+		
+		/*else if (Stage::STAGE_BOSS_2 == stage)
 		{
 			if (find(_BrickStage_BOSS_2.begin(), _BrickStage_BOSS_2.end(), curTile.tileId) != _BrickStage_BOSS_2.end())
 				curTile.type = ObjectType::BRICK;
 			else
 				curTile.type = ObjectType::DEFAULT;
-		}
+		}*/
 		result.push_back(curTile);
-		line.erase(0, pos + delimiter.length());//Xóa 2 kí tự đầu của hàng line trong file txt
-		rowNum++;//Tăng biến rowNum
-	}
+		//line.erase(0, pos + delimiter.length());//Xóa 2 kí tự đầu của hàng line trong file txt
+		//rowNum++;//Tăng biến rowNum
+	//}
 
 	return result;// Trả về row của matrix
 }
@@ -97,23 +129,42 @@ std::wstring s2ws(const string& s)
 //Hàm load Map
 void TiledMap::LoadMap(LPCWSTR filePath)
 {
-	string tilesLocation = LoadMatrix(filePath);//Nạp matrix của TiledMap và lấy file path tiledset
+	
+	//Sprite* sprite;
+	/*RECT sourceRect;
 
-	std::wstring stemp = s2ws(tilesLocation);// chuyển đổi kiểu dữ liệu của file path
-	LPCWSTR wstrTilesLocation = stemp.c_str();// chuyển đổi kiểu dữ liệu của file path
+	sourceRect.left = 0;
+	sourceRect.right = 2271;
+	sourceRect.top = 0;
+	sourceRect.bottom = 1135;
+	SpriteData spriteData;
+	spriteData.width = 2271;
+	spriteData.height = 1135;
+	spriteData.x = 0;
+	spriteData.y = 1135;
+	spriteData.scale = 1;
+	spriteData.angle = 0;
+	spriteData.isLeft = true;
+	sprite = new Sprite(filePath, sourceRect,NULL);
+	sprite->SetData(spriteData);*/
+	//string tilesLocation = LoadMatrix(filePath);//Nạp matrix của TiledMap và lấy file path tiledset
+	LoadMatrix(filePath);
+	//std::wstring stemp = s2ws(tilesLocation);// chuyển đổi kiểu dữ liệu của file path
+	//LPCWSTR wstrTilesLocation = stemp.c_str();// chuyển đổi kiểu dữ liệu của file path
 
-	LoadTileSet(wstrTilesLocation);//Gọi hàm LoadTiledSet
+	//LoadTileSet(wstrTilesLocation);//Gọi hàm LoadTiledSet
+
 }
-string TiledMap::LoadMatrix(LPCWSTR filePath)
+void TiledMap::LoadMatrix(LPCWSTR filePath)
 {
-	string tilesLocation; //Đường dẫn đến file img tiledset 
+	//string tilesLocation; //Đường dẫn đến file img tiledset 
 
 	ifstream tilesInfo;
 	DebugOut(L"filepath: %s\n", filePath);
 	tilesInfo.open(filePath); //mở file
 	if (tilesInfo.is_open())
 	{
-		getline(tilesInfo, tilesLocation);
+		//getline(tilesInfo, tilesLocation);
 
 		string tmp;
 		getline(tilesInfo, tmp);
@@ -134,7 +185,7 @@ string TiledMap::LoadMatrix(LPCWSTR filePath)
 		}
 		tilesInfo.close();//đóng luồng
 	}
-	return tilesLocation;//Trả về đường dẫn
+	//return tilesLocation;//Trả về đường dẫn
 
 }
 void TiledMap::LoadTileSet(LPCWSTR tilesLocation)
@@ -173,19 +224,19 @@ void TiledMap::LoadTileSet(LPCWSTR tilesLocation)
 		//Lưu thông tin chiều rộng tấm ảnh background cho biến mapWidth
 	//this->mapHeight = info.Height;//Lưu thông tin chiều dài tấm ảnh background cho biến mapHeight
 	
-	tiles[0] = NULL;
-	for (int i = 0; i < this->tileSetWidth; i++)
-	{
-		RECT rect;
-		rect.left = (i % this->tileSetWidth) * TILES_WIDTH_PER_TILE;
+	//tiles[0] = NULL;
+	//for (int i = 0; i < this->tileSetWidth; i++)
+	//{
+		//RECT rect;
+		/*rect.left = (i % this->tileSetWidth) * TILES_WIDTH_PER_TILE;
 		rect.right = rect.left + TILES_WIDTH_PER_TILE;
 		rect.top = (i / this->tileSetWidth) * TILES_HEIGHT_PER_TILE;
-		rect.bottom = rect.top + TILES_HEIGHT_PER_TILE;
+		rect.bottom = rect.top + TILES_HEIGHT_PER_TILE;*/
 
-		Sprite *tile = new Sprite(tilesLocation, rect, TILES_TRANSCOLOR);//khởi tạo sprite
+		//Sprite *tile = new Sprite(tilesLocation, rect, TILES_TRANSCOLOR);//khởi tạo sprite
 
-		tiles[i + 1] = tile;//gán các sprite của các ô tiled ứng các ô trong hình tiledset vào map các sprite
-	}
+		//tiles[i + 1] = tile;//gán các sprite của các ô tiled ứng các ô trong hình tiledset vào map các sprite
+	//}
 }
 
 void TiledMap::AddObjects(Stage stage)
@@ -217,6 +268,7 @@ int TiledMap::GetTileHeight()
 //Hàm render tiledMap
 void TiledMap::Render()
 {
+	//Graphics::GetInstance()->Draw(sprite);
 	for (int i = 0; i < matrix.size(); i++)
 	{
 		Row curRow = matrix[i];
@@ -243,18 +295,28 @@ void TiledMap::Render()
 //Hàm render 1 ô tiled
 void TiledMap::RenderTile(Tile *curTile)
 {
+	RECT rect;
+	rect.left = 0;
+	rect.right = curTile->width;
+	rect.top =0;
+	rect.bottom = curTile->height;
+	
+	std::wstring stemp = s2ws(curTile->tilesLocation);// chuyển đổi kiểu dữ liệu của file path
+	LPCWSTR path = stemp.c_str();
+	Sprite *sprite = new Sprite(path, rect, TILES_TRANSCOLOR);//khởi tạo sprite
 	SpriteData spriteData;
-	spriteData.width = TILES_WIDTH_PER_TILE;
-	spriteData.height = TILES_HEIGHT_PER_TILE;
+	spriteData.width = curTile->width;
+	spriteData.height = curTile->width;
 	spriteData.x = curTile->x;
 	spriteData.y = curTile->y;
 	spriteData.scale = 1;
 	spriteData.angle = 0;
 	spriteData.isLeft = true;
-
-	tiles.at(curTile->tileId)->SetData(spriteData);//Thiết lập lại dữ liệu cho sprite tương ứng với ô tiled 
+	sprite->SetData(spriteData);
+	Graphics::GetInstance()->Draw(sprite);
+	//tiles.at(curTile->tileId)->SetData(spriteData);//Thiết lập lại dữ liệu cho sprite tương ứng với ô tiled 
 				
 
-	Graphics::GetInstance()->Draw(tiles.at(curTile->tileId));//Gọi hàm vẽ
+	//Graphics::GetInstance()->Draw(tiles.at(curTile->tileId));//Gọi hàm vẽ
 
 }

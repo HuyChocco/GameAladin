@@ -6,8 +6,8 @@
 #define MAIN_WINDOW_TITLE L"Aladin"
 //Màu background, kích cỡ màn hình
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
-#define SCREEN_WIDTH 400
-#define SCREEN_HEIGHT 300
+#define SCREEN_WIDTH 600
+#define SCREEN_HEIGHT 400
 
 //Framerate tối đa
 #define MAX_FRAME_RATE 90
@@ -22,8 +22,8 @@ enum Stage {
 enum ObjectType
 {
 	DEFAULT,
-	BRICK,
-	BRICK_NOCOLLISION_BOTTOM,
+	GROUND,
+	APPLE,
 	ON_BUTTON,
 	RIVER,
 	SWING
@@ -32,13 +32,12 @@ enum ObjectType
 //
 // MAP
 //#define BACKGROUND_1 L"Resources\\TiledMap\\Map-Charleston.png"
-#define BACKGROUND_1 L"Resources\\TiledMap\\2.png"
-#define BACKGROUND_2 L"Resources\\TiledMap\\Map-Pittsburgh.png"
+#define BACKGROUND_1 L"Resources\\TiledMap\\SultansDungeonBackGround1.png"
+#define BACKGROUND_2 L"Resources\\TiledMap\\SultansDungeonBackGround2.png"
 #define BACKGROUND_BOSS_1 L"Resources\\TiledMap\\Map-Boss1.png"
 #define BACKGROUND_BOSS_2 L"Resources\\TiledMap\\Map-Boss2.png"
 // TILE
-//#define TILES_MATRIX_STAGE_1 L"Resources\\TiledMap\\Map-Charleston-Matrix.txt"
-#define TILES_MATRIX_STAGE_1 L"Resources\\TiledMap\\map-test.txt"
+#define TILES_MATRIX_STAGE_1 L"Resources\\TiledMap\\map-copy.txt"
 #define TILES_MATRIX_STAGE_2 L"Resources\\TiledMap\\Map-Pittsburgh-Matrix.txt"
 #define TILES_MATRIX_STAGE_BOSS_1 L"Resources\\TiledMap\\Map-Boss1-Matrix.txt"
 #define TILES_MATRIX_STAGE_BOSS_2 L"Resources\\TiledMap\\Map-Boss2-Matrix.txt"
@@ -54,7 +53,7 @@ enum ObjectType
 
 //Giá trị tốc độ đi, tốc độ nhảy, trọng lực
 #define ALADIN_WALK_SPEED		0.25f
-#define ALADIN_JUMP_SPEED_Y	0.6f
+#define ALADIN_JUMP_SPEED_Y		0.4f
 #define ALADIN_GRAVITY			0.025f
 
 //Animation của aladin

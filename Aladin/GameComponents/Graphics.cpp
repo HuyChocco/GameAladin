@@ -105,7 +105,7 @@ void Graphics::Draw(Sprite *sprite, D3DCOLOR color)
 	D3DXVECTOR2 translate = sprite->GetTranslate();
 	D3DXVECTOR2 scaling = sprite->GetScaling();
 
-	viewport->SetRenderData(center, translate, scaling);
+	viewport->SetRenderData(center, translate, scaling);//convert
 
 	D3DXMATRIX matrix;
 	D3DXMatrixTransformation2D(

@@ -27,7 +27,7 @@ Grid::Grid()
 	//Luu viewport
 	this->viewport = Viewport::GetInstance();
 
-	//Lưu captain
+	//Lưu aladin
 	this->aladin = Aladin::GetInstance();
 
 
@@ -46,10 +46,10 @@ void Grid::LoadCells()
 			Tile *dummyPtr = &tiledMapMatrix[i][j];
 			cells[cellY][cellX]->AddTile(dummyPtr);//Thêm tiled từ ma trận của tilemap vào ma trận của GridCell
 
-			if (tiledMapMatrix[i][j].type == ObjectType::BRICK)//nếu ô tiled trong ma trận của TileMap là kiểu BRICK
-			{
-				CollisionTiles.push_back(dummyPtr);//thì thêm vào vector collisiontile
-			}
+			//if (tiledMapMatrix[i][j].type == ObjectType::BRICK)//nếu ô tiled trong ma trận của TileMap là kiểu BRICK
+			//{
+			//	CollisionTiles.push_back(dummyPtr);//thì thêm vào vector collisiontile
+			//}
 		}
 	}
 }

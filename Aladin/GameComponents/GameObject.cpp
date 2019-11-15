@@ -69,20 +69,35 @@ void GameObject::CalcPotentialMapCollisions(
 	vector<Tile *> &tiles,
 	vector<LPCOLLISIONEVENT> &coEvents)
 {
-	LPGAMEOBJECT solidTileDummy = new GameObject(0, 0, 16, 16);
+	LPGAMEOBJECT solidTileDummy; 
 	for (int i = 0; i < tiles.size(); i++)
 	{
 		Tile *curTile = tiles[i];//Lấy tile
+		solidTileDummy = new GameObject(0, 0, curTile->width, curTile->height);
 		solidTileDummy->SetPositionX(curTile->x);//set position x cho object theo curTile
 		solidTileDummy->SetPositionY(curTile->y);//set position y cho object theo curTile
 		solidTileDummy->UpdateTileCollider();// cập nhật collider cho gameobject mới này
 
-		if (curTile->type == ObjectType::BRICK || curTile->type == ObjectType::BRICK_NOCOLLISION_BOTTOM)
+		if (curTile->type == ObjectType::GROUND )
 		{	
 			LPCOLLISIONEVENT e = SweptAABBEx(solidTileDummy);//kiểm tra va chạm giữa gameobject mới và gameobject hiện tại
 			e->collisionID = 1;
 
 			if (e->t >= 0 && e->t < 1.0f && (e->ny == 1|| e->nx == 1))
+			{
+				coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+			}
+			else
+			{
+				delete e;
+			}
+		}
+		if (curTile->type == ObjectType::APPLE)
+		{
+			LPCOLLISIONEVENT e = SweptAABBEx(solidTileDummy);//kiểm tra va chạm giữa gameobject mới và gameobject hiện tại
+			e->collisionID = 2;
+
+			if (e->t >= 0 && e->t < 1.0f && (e->ny == 1 || e->nx == 1))
 			{
 				coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
 			}
@@ -208,11 +223,11 @@ void GameObject::UpdateObjectCollider()
 void GameObject::UpdateTileCollider()
 {
 	collider.x = x;
-	collider.y = y - 8;//???
+	collider.y = y - 8;
 	collider.vx = vx;
 	collider.vy = vy;
 	collider.dt = dt;
-	collider.height = 8;//???
+	collider.height = 8;
 }
 RECT GameObject::GetRect()
 {

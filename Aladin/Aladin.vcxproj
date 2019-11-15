@@ -126,6 +126,7 @@
     <ClInclude Include="GameObjects\Aladin.h" />
     <ClInclude Include="GameObjects\AladinState.h" />
     <ClInclude Include="GameComponents\Animation.h" />
+    <ClInclude Include="GameComponents\Scene.h" />
     <ClInclude Include="GameComponents\Constants.h" />
     <ClInclude Include="GameComponents\Debug.h" />
     <ClInclude Include="GameComponents\Game.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="GameComponents\Viewport.h" />
     <ClInclude Include="GameObjects\GameItem.h" />
     <ClInclude Include="GameObjects\State.h" />
+    <ClInclude Include="Scenes\MainScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameComponents\Animation.cpp" />
@@ -148,6 +150,7 @@
     <ClCompile Include="GameComponents\GameObject.cpp" />
     <ClCompile Include="GameComponents\Graphics.cpp" />
     <ClCompile Include="GameComponents\Grid.cpp" />
+    <ClCompile Include="GameComponents\Scene.cpp" />
     <ClCompile Include="GameComponents\GridCell.cpp" />
     <ClCompile Include="GameComponents\Keyboard.cpp" />
     <ClCompile Include="GameComponents\LoadTXT.cpp" />
@@ -158,6 +161,7 @@
     <ClCompile Include="GameObjects\State.cpp" />
     <ClCompile Include="GameObjects\Aladin.cpp" />
     <ClCompile Include="GameObjects\AladinState.cpp" />
+    <ClCompile Include="Scenes\MainScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

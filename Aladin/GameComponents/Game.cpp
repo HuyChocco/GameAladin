@@ -7,7 +7,7 @@ HINSTANCE Game::hInstance = NULL;
 void Game::Init()
 {
 	hInstance = GetModuleHandle(NULL);
-
+	//this->scene = new MainScene();
 	this->hWnd = CreateGameWindow(hInstance, SCREEN_WIDTH, SCREEN_HEIGHT);
 	//Khởi tạo đối tượng Graphics
 	graphics = Graphics::GetInstance();
@@ -18,7 +18,7 @@ void Game::Init()
 
 	keyboard->InitKeyboard(hWnd);
 	//Thiết lập màn chơi ban đầu
-	this->stage = STAGE_2;
+	this->stage = STAGE_1;
 	//Nạp các tài nguyên trong game
 	LoadResources();
 	OutputDebugString(L"[INFO] InitGame done;\n");
@@ -77,13 +77,52 @@ HWND Game::CreateGameWindow(HINSTANCE hInstance, int ScreenWidth, int ScreenHeig
 
 	return hWnd;
 }
+Sprite *background_sprite_1;
+Sprite *background_sprite_2;
 void Game::LoadResources()
 {
+	//Tạo sprite background 1 cho game
+	RECT backgroundRect1;
+
+	backgroundRect1.left = 0;
+	backgroundRect1.right = 2270;
+	backgroundRect1.top = 0;
+	backgroundRect1.bottom = 1135;
+
+	SpriteData background_sprite_data_1;
+
+	background_sprite_data_1.width = 2270;
+	background_sprite_data_1.height = 1135;
+	background_sprite_data_1.x = 0;
+	background_sprite_data_1.y = 1135;
+	background_sprite_data_1.scale = 1;
+	background_sprite_data_1.angle = 0;
+	background_sprite_data_1.isLeft = true;
+	background_sprite_1 = new Sprite(BACKGROUND_1, backgroundRect1, NULL);
+	background_sprite_1->SetData(background_sprite_data_1);
+	//Tạo sprite background 2 cho game
+	RECT backgroundRect2;
+
+	backgroundRect2.left = 0;
+	backgroundRect2.right = 2270;
+	backgroundRect2.top = 0;
+	backgroundRect2.bottom = 1135;
+
+	SpriteData background_sprite_data_2;
+
+	background_sprite_data_2.width = 2270;
+	background_sprite_data_2.height = 1135;
+	background_sprite_data_2.x = 0;
+	background_sprite_data_2.y = 1135;
+	background_sprite_data_2.scale = 1;
+	background_sprite_data_2.angle = 0;
+	background_sprite_data_2.isLeft = true;
+	background_sprite_2 = new Sprite(BACKGROUND_2, backgroundRect1, D3DCOLOR_XRGB(255, 0, 255));
+	background_sprite_2->SetData(background_sprite_data_2);
 	if (NULL == aladin)
-		aladin = Aladin::GetInstance();// khởi tạo captain
-	
+		aladin = Aladin::GetInstance();// khởi tạo aladin
 	if (NULL == tiledMap)
-		tiledMap = TiledMap::GetInstance(TILES_MATRIX_STAGE_2);//Load map
+		tiledMap = TiledMap::GetInstance(TILES_MATRIX_STAGE_1);
 	if (viewport == NULL)
 		viewport = Viewport::GetInstance();//xây dựng camera
 	if (grid == NULL)
@@ -250,8 +289,10 @@ float Game::SweptAABB(Collider c1, Collider c2, float &normalx, float &normaly)
 void Game::Update(DWORD dt)
 {
 	keyboard->Update(dt);
+	//scene->Update(dt);
 	grid->Update(dt);
 	viewport->Update(dt);
+	
 }
 void Game::Render()
 {
@@ -264,9 +305,13 @@ void Game::Render()
 		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+		//scene->Draw();
+	
+		Graphics::GetInstance()->Draw(background_sprite_1);//Vẽ background 1 cho game
 
 		grid->Render();
-
+		Graphics::GetInstance()->Draw(background_sprite_2);//Vẽ background 2 cho game
+		
 		spriteHandler->End();
 
 		d3ddv->EndScene();

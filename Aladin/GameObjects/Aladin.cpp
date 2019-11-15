@@ -26,8 +26,10 @@ Aladin::Aladin()
 
 	state = idleState;//trạng thái ban đầu cho aladin
 
-	this->x = 50;
-	this->y = 200;
+	this->x = 60;
+	this->y =300;
+	//this->x = 0;
+	//this->y = 0;
 	this->width = ALADIN_SPRITE_WIDTH;
 	this->height = ALADIN_SPRITE_HEIGHT;
 
@@ -393,14 +395,14 @@ void Aladin::Reset()
 void Aladin::Update(DWORD dt)
 {
 
-	if (this->GetSpeedX() < 0 && this->GetPositionX() < 0)
+	/*if (this->GetSpeedX() < 0 && this->GetPositionX() < 0)
 	{
 		this->SetPositionX(0);
 	}
 	if (this->GetPositionX() >= Game::GetInstance()->GetTiledMap()->GetInstance()->GetWidth() - 50)
 	{
 		this->SetPositionX(Game::GetInstance()->GetTiledMap()->GetInstance()->GetWidth() - 50);
-	}
+	}*/
 	if (this->GetPositionY() <= 0)
 	{
 		//this->SetPositionX(0);
