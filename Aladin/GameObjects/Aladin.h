@@ -15,21 +15,23 @@ class Aladin : public GameObject
 	State *idleState;//đứng yên
 	State *walkState;//đi bộ
 	State *jumpState;//nhảy
-	State *crouchState;//cúi
-	State *throwShieldState;//ném khiêng
-	State *rollState;//trượt
-	State *kickState;//đá
-	State *standHitState;//đứng đánh
-	State *crouchHitState;//ngồi đánh
-	State *sitOnShieldState;//ngồi trên khiêng
-	State *swingState;//đung đưa
-	State *wadeState;//lội
-	State *shieldUpState;//đưa khiêng lên 
-	State *getHurtState;//bị thương
-	State *deadState;//chết
 	State *stopState;
+	State *attackState;
 	State *state;
-
+	State *fallingState;
+	//State *crouchState;//cúi
+	//State *throwShieldState;//ném khiêng
+	//State *rollState;//trượt
+	//State *kickState;//đá
+	//State *standHitState;//đứng đánh
+	//State *crouchHitState;//ngồi đánh
+	//State *sitOnShieldState;//ngồi trên khiêng
+	//State *swingState;//đung đưa
+	//State *wadeState;//lội
+	//State *shieldUpState;//đưa khiêng lên 
+	//State *getHurtState;//bị thương
+	//State *deadState;//chết
+	
 
 
 	int stateNumber;
@@ -66,7 +68,10 @@ public:
 	State *GetIdleState();
 	State *GetWalkState();
 	State *GetJumpState();
-	State *GetCrouchState();
+	State *GetStopState();
+	State *GetAttackState();
+	State *GetFallingState();
+	/*State *GetCrouchState();
 	State *GetThrowShieldState();
 	State *GetRollState();
 	State *GetKickState();
@@ -78,7 +83,7 @@ public:
 	State *GetShieldUpState();
 	State *GetGetHurtState();
 	State *GetDeadState();
-	State *GetStopState();
+	State *GetStopState();*/
 	//Các hàm kiểm tra trạng thái nhân vật
 	bool IsGrounded() { return isGrounded; }
 	bool IsCrouching() { return isCrouching; }
@@ -93,8 +98,9 @@ public:
 	void Walk();
 	void Stop();
 	void Jump();
-	void Crouch();
-	void ThrowShield();
+	void Attack();
+	void Falling();
+	/*void ThrowShield();
 	void Roll();
 	void Kick();
 	void StandHit();
@@ -104,7 +110,7 @@ public:
 	void Wade();
 	void ShieldUp();
 	void GetHurt();
-	void Dead();
+	void Dead();*/
 	//set width,height cho collider object captain
 	void SetColliderDemension(float width, float height)
 	{

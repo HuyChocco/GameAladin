@@ -13,7 +13,9 @@ public:
 	virtual void Walk();
 	virtual void Stop();
 	virtual void Jump();
-	virtual void Crouch();
+	virtual void Attack();
+	virtual void Falling();
+	/*virtual void Crouch();
 	virtual void ThrowShield();
 	virtual void Roll();
 	virtual void Kick();
@@ -24,7 +26,7 @@ public:
 	virtual void Wade();
 	virtual void ShieldUp();
 	virtual void GetHurt();
-	virtual void Dead();
+	virtual void Dead();*/
 	virtual void Update(DWORD dt);
 	virtual void Render();
 };

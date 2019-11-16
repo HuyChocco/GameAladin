@@ -59,20 +59,12 @@ enum ObjectType
 //Animation của aladin
 #define ALADIN_ANI_IDLE				0
 #define ALADIN_ANI_WALK				1
-#define ALADIN_ANI_STOP					2
-#define ALADIN_ANI_JUMP				3
-#define ALADIN_ANI_CROUCH 				4
-#define ALADIN_ANI_THROW_SHIELD 		5
-#define ALADIN_ANI_ROLL				6
-#define ALADIN_ANI_KICK				7
-#define ALADIN_ANI_STAND_HIT			8
-#define ALADIN_ANI_CROUCH_HIT			9
-#define ALADIN_ANI_SIT_ON_SHIELD		10
-#define ALADIN_ANI_SWING				11
-#define ALADIN_ANI_WADE				12
-#define ALADIN_ANI_SHIELD_UP			13
-#define ALADIN_ANI_GET_HURT			14
-#define ALADIN_ANI_DEAD				15
+#define ALADIN_ANI_STOP				2
+#define ALADIN_ANI_JUMP_NO_KEY		3
+#define ALADIN_ANI_JUMP_WITH_KEY 	4
+#define ALADIN_ANI_FALLING_DOWN 	5
+#define ALADIN_ANI_ATTACK			6
+
 
 
 #define ALADIN_TEXTURE_LOCATION L"Resources\\Aladin\\aladin.png"

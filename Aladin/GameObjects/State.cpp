@@ -29,61 +29,70 @@ void State::Jump()
 {
 
 }
-void State::Crouch()
+void State::Attack()
 {
-}
 
-void State::ThrowShield()
-{
 }
-
-void State::Roll()
+void State::Falling()
 {
 
 }
 
-void State::Kick()
-{
-
-}
-
-void State::StandHit()
-{
-
-}
-
-void State::CrouchHit()
-{
-
-}
-
-void State::SitOnShield()
-{
-
-}
-
-void State::Swing()
-{
-
-}
-
-void State::Wade()
-{
-
-}
-
-void State::ShieldUp()
-{
-
-}
-
-void State::GetHurt()
-{
-
-}
-
-void State::Dead()
-{
-
-}
+//void State::Crouch()
+//{
+//}
+//
+//void State::ThrowShield()
+//{
+//}
+//
+//void State::Roll()
+//{
+//
+//}
+//
+//void State::Kick()
+//{
+//
+//}
+//
+//void State::StandHit()
+//{
+//
+//}
+//
+//void State::CrouchHit()
+//{
+//
+//}
+//
+//void State::SitOnShield()
+//{
+//
+//}
+//
+//void State::Swing()
+//{
+//
+//}
+//
+//void State::Wade()
+//{
+//
+//}
+//
+//void State::ShieldUp()
+//{
+//
+//}
+//
+//void State::GetHurt()
+//{
+//
+//}
+//
+//void State::Dead()
+//{
+//
+//}
 

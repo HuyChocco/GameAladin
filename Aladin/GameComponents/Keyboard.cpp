@@ -105,51 +105,19 @@ void Keyboard::UpdateKeyStates(DWORD dt)
 
 	if (IsKeyDown(DIK_RIGHT))
 	{
-		//if (!IsKeyDown(DIK_LEFT) && aladin->IsGrounded())//nếu nhân vật đang trên mặt đất
-		//{
 			aladin->TurnRight();
-			//if (!IsKeyDown(DIK_DOWN))
-			//{
 			aladin->Walk();
-			//}
-			//else
-			//	aladin->Crouch();
-		//}
-		//else if (!IsKeyDown(DIK_DOWN))
-			//aladin->Idle();
 	}
 	else if (IsKeyDown(DIK_LEFT))
 	{
-		//if (!IsKeyDown(DIK_RIGHT) && aladin->IsGrounded())
-		//{
 		aladin->TurnLeft();
-			//if (IsKeyDown(DIK_DOWN))
-			//{
-				//aladin->Crouch();
-
-			//}
-			//else
 		aladin->Walk();
-		//}
-		//else if (!IsKeyDown(DIK_DOWN))
-			//aladin->Idle();
 	}
-	/*else if (IsKeyDown(DIK_DOWN))
+	else if (IsKeyDown(DIK_X))
 	{
-		aladin->Crouch();
+		aladin->Falling();
 	}
-	else if (IsKeyDown(DIK_UP))
-	{
-		aladin->ShieldUp();
-	}
-	else if (IsKeyDown(DIK_SPACE))
-	{
-		aladin->Jump();
-	}*/
-	/*else
-	{
-		aladin->Idle();
-	}*/
+	
 }
 void Keyboard::OnKeyDown(int KeyCode)
 {
@@ -157,9 +125,10 @@ void Keyboard::OnKeyDown(int KeyCode)
 	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 	switch (KeyCode)
 	{
-		case DIK_SPACE:
+		case DIK_C:
 			aladin->Jump();
 			break;
+		
 	}
 }
 void Keyboard::OnKeyUp(int KeyCode)
@@ -172,26 +141,16 @@ void Keyboard::OnKeyUp(int KeyCode)
 		aladin->SetIsCrouching(false);
 	case DIK_LEFT:
 	case DIK_RIGHT:
-		/*if (true == aladin->IsGrounded())
-		{
-			if (false == aladin->IsCrouching())
-			{
-				
-				aladin->SetState(aladin->GetIdleState());
-			}
-		}	*/
 		if (ALADIN_ANI_WALK == aladin->GetStateNumber())
 		{ 
 			aladin->Stop();
-			
-			
 		}
-		//aladin->Stop();
-		//aladin->Idle();
-		
 		break;
-	case DIK_SPACE:
+	//case DIK_SPACE:
 	case DIK_UP:
+		aladin->SetState(aladin->GetIdleState());
+		break;
+	case DIK_X:
 		aladin->SetState(aladin->GetIdleState());
 		break;
 	}

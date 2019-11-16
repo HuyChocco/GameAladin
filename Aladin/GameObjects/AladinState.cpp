@@ -18,8 +18,8 @@ void AladinState::Jump()
 
 	switch (state)
 	{
-	case ALADIN_ANI_CROUCH:
-	case ALADIN_ANI_JUMP:
+	
+	case ALADIN_ANI_JUMP_NO_KEY:
 		break;
 	case ALADIN_ANI_IDLE:
 	case ALADIN_ANI_WALK:
@@ -44,12 +44,7 @@ void AladinState::Idle()
 	{
 	case ALADIN_ANI_IDLE:
 		break;
-	case ALADIN_ANI_CROUCH:
-	{
-		aladin->SetIsCrouching(false);//Thay đổi cờ iscrounching
-		aladin->SetState(aladin->GetIdleState());//Thay đổi state cho nhân vật
-	}
-	break;
+	
 	case ALADIN_ANI_STOP:
 	{
 		aladin->SetSpeedX(0);//cho nhân vật dừng lại
@@ -70,8 +65,8 @@ void AladinState::Walk()
 	int state = this->states;
 	switch (state)
 	{
-	case ALADIN_ANI_CROUCH:
-	case ALADIN_ANI_JUMP:
+	case ALADIN_ANI_JUMP_NO_KEY:
+	
 		break;
 	case ALADIN_ANI_IDLE:
 	{
@@ -101,105 +96,87 @@ void AladinState::Stop()
 	break;
 	}
 }
-void AladinState::Crouch()
+
+void AladinState::Attack()
 {
 	int state = this->states;
-
 	switch (state)
 	{
-	case ALADIN_ANI_CROUCH:
-	case ALADIN_ANI_JUMP:
-		break;
 	case ALADIN_ANI_IDLE:
-	{
-		aladin->SetIsCrouching(true);
-		aladin->SetState(aladin->GetCrouchState());
-	}
-	break;
 	case ALADIN_ANI_WALK:
 	{
-		aladin->SetSpeedX(0);
-		aladin->SetIsCrouching(true);
-		aladin->SetState(aladin->GetCrouchState());
+		aladin->SetState(aladin->GetAttackState());
+		
 	}
 	break;
 	}
 }
-
-void AladinState::ThrowShield()
+void AladinState::Falling()
 {
 	int state = this->states;
-}
-
-void AladinState::Roll()
-{
-	int state = this->states;
-}
-
-void AladinState::Kick()
-{
-	int state = this->states;
-}
-
-void AladinState::StandHit()
-{
-	int state = this->states;
-}
-
-void AladinState::CrouchHit()
-{
-	int state = this->states;
-}
-
-void AladinState::SitOnShield()
-{
-	int state = this->states;
-}
-
-void AladinState::Swing()
-{
-	int state = this->states;
-}
-
-void AladinState::Wade()
-{
-	int state = this->states;
-}
-
-void AladinState::ShieldUp()
-{
-	int state = this->states;
-
+	
 	switch (state)
 	{
-	case ALADIN_ANI_SHIELD_UP:
-	case ALADIN_ANI_JUMP:
-		break;
 	case ALADIN_ANI_IDLE:
-	{
-		aladin->SetIsShieldUp(true);
-		aladin->SetState(aladin->GetShieldUpState());
-	}
-	break;
 	case ALADIN_ANI_WALK:
 	{
-		aladin->SetSpeedX(0);
-		aladin->SetIsShieldUp(true);
-		aladin->SetState(aladin->GetShieldUpState());
+		aladin->SetState(aladin->GetFallingState());
+
 	}
 	break;
 	}
 }
-
-void AladinState::GetHurt()
-{
-	int state = this->states;
-}
-
-void AladinState::Dead()
-{
-	int state = this->states;
-}
+//void AladinState::ThrowShield()
+//{
+//	int state = this->states;
+//}
+//
+//void AladinState::Roll()
+//{
+//	int state = this->states;
+//}
+//
+//void AladinState::Kick()
+//{
+//	int state = this->states;
+//}
+//
+//void AladinState::StandHit()
+//{
+//	int state = this->states;
+//}
+//
+//void AladinState::CrouchHit()
+//{
+//	int state = this->states;
+//}
+//
+//void AladinState::SitOnShield()
+//{
+//	int state = this->states;
+//}
+//
+//void AladinState::Swing()
+//{
+//	int state = this->states;
+//}
+//
+//void AladinState::Wade()
+//{
+//	int state = this->states;
+//}
+//
+//
+//
+//void AladinState::GetHurt()
+//{
+//	int state = this->states;
+//}
+//
+//void AladinState::Dead()
+//{
+//	int state = this->states;
+//}
 
 void AladinState::Update(DWORD dt)
 {
@@ -207,7 +184,7 @@ void AladinState::Update(DWORD dt)
 	int state = this->states;//Lấy ra trạng thái nhân vật hiện tại
 	switch (state)
 	{
-	case ALADIN_ANI_JUMP://Nhân vật nhảy
+	case ALADIN_ANI_JUMP_NO_KEY://Nhân vật nhảy
 	{
 		if (aladin->IsGrounded())//Nếu nhân vật trên mặt đất
 		{
@@ -316,73 +293,26 @@ void AladinState::Render()
 
 	}
 	break;
-	/*case ALADIN_ANI_CROUCH:
+	case ALADIN_ANI_JUMP_NO_KEY:
 	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_CROUCH]->Render(spriteData);
+		aladin->GetAnimationsList()[ALADIN_ANI_JUMP_NO_KEY]->Render(spriteData);
 	}
 	break;
-
-	case ALADIN_ANI_JUMP:
+	case ALADIN_ANI_JUMP_WITH_KEY:
 	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_JUMP]->Render(spriteData);
+		aladin->GetAnimationsList()[ALADIN_ANI_JUMP_WITH_KEY]->Render(spriteData);
 	}
 	break;
-
-	case ALADIN_ANI_THROW_SHIELD:
+	case ALADIN_ANI_FALLING_DOWN:
 	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_THROW_SHIELD]->Render(spriteData);
+		aladin->GetAnimationsList()[ALADIN_ANI_FALLING_DOWN]->Render(spriteData);
 	}
 	break;
-	case ALADIN_ANI_ROLL:
+	case ALADIN_ANI_ATTACK:
 	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_ROLL]->Render(spriteData);
+		aladin->GetAnimationsList()[ALADIN_ANI_ATTACK]->Render(spriteData);
 	}
 	break;
-	case ALADIN_ANI_KICK:
-	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_KICK]->Render(spriteData);
-	}
-	break;
-	case ALADIN_ANI_STAND_HIT:
-	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_STAND_HIT]->Render(spriteData);
-	}
-	break;
-	case ALADIN_ANI_CROUCH_HIT:
-	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_CROUCH_HIT]->Render(spriteData);
-	}
-	break;
-	case ALADIN_ANI_SIT_ON_SHIELD:
-	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_SIT_ON_SHIELD]->Render(spriteData);
-	}
-	break;
-	case ALADIN_ANI_SWING:
-	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_SWING]->Render(spriteData);
-	}
-	break;
-	case ALADIN_ANI_WADE:
-	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_WADE]->Render(spriteData);
-	}
-	break;
-	case ALADIN_ANI_SHIELD_UP:
-	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_SHIELD_UP]->Render(spriteData);
-	}
-	break;
-	case ALADIN_ANI_GET_HURT:
-	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_GET_HURT]->Render(spriteData);
-	}
-	break;
-	case ALADIN_ANI_DEAD:
-	{
-		ALADIN->GetAnimationsList()[ALADIN_ANI_DEAD]->Render(spriteData);
-	}
-	break;*/
 	}
 }
 

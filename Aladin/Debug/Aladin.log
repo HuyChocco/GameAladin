@@ -1,4 +1,5 @@
-﻿  Aladin.cpp
+﻿  Keyboard.cpp
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(74): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\keyboard.cpp(11): warning C4804: '>': unsafe use of type 'bool' in operation
   Aladin.vcxproj -> D:\game\Aladin\Aladin\Debug\Aladin.exe
