@@ -16,7 +16,9 @@ public:
 	void Idle() override;
 	void Walk() override;
 	void Stop() override;
-	void Crouch() override;
+	void Attack() override;
+	void Falling() override;
+	/*void Crouch() override;
 	void ThrowShield() override;
 	void Roll() override;
 	void Kick() override;
@@ -27,7 +29,7 @@ public:
 	void Wade() override;
 	void ShieldUp() override;
 	void GetHurt() override;
-	void Dead() override;
+	void Dead() override;*/
 
 	void Update(DWORD dt) override;
 	void Render() override;
