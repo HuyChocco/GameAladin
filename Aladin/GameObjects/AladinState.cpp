@@ -102,6 +102,8 @@ void AladinState::Attack()
 	int state = this->states;
 	switch (state)
 	{
+	case ALADIN_ANI_ATTACK:
+		break;
 	case ALADIN_ANI_IDLE:
 	case ALADIN_ANI_WALK:
 	{

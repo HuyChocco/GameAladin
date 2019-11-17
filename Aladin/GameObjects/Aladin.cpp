@@ -101,7 +101,7 @@ void Aladin::LoadResources()
 	animations.push_back(anim);
 
 	//// ALADIN_ANI_FALLING_DOWN
-	anim = new Animation(300);
+	anim = new Animation(100);
 	for (int i = 40; i < 58; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
@@ -110,7 +110,7 @@ void Aladin::LoadResources()
 	animations.push_back(anim);
 
 	//// ALADIN_ANI_ATTACK
-	anim = new Animation(300);
+	anim = new Animation(100);
 	for (int i = 58; i < 63; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
