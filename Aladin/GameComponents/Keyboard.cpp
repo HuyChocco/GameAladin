@@ -113,10 +113,10 @@ void Keyboard::UpdateKeyStates(DWORD dt)
 		aladin->TurnLeft();
 		aladin->Walk();
 	}
-	else if (IsKeyDown(DIK_X))
-	{
-		aladin->Falling();
-	}
+	//else if (IsKeyDown(DIK_X))
+	//{
+		//aladin->Attack();
+	//}
 	
 }
 void Keyboard::OnKeyDown(int KeyCode)
@@ -127,6 +127,9 @@ void Keyboard::OnKeyDown(int KeyCode)
 	{
 		case DIK_C:
 			aladin->Jump();
+			break;
+		case DIK_X:
+			aladin->Attack();
 			break;
 		
 	}
