@@ -44,7 +44,7 @@ void AladinState::Idle()
 	{
 	case ALADIN_ANI_IDLE:
 		break;
-	
+	case ALADIN_ANI_JUMP_NO_KEY:
 	case ALADIN_ANI_STOP:
 	{
 		aladin->SetSpeedX(0);//cho nhân vật dừng lại
@@ -191,6 +191,7 @@ void AladinState::Update(DWORD dt)
 		if (aladin->IsGrounded())//Nếu nhân vật trên mặt đất
 		{
 			aladin->SetState(aladin->GetIdleState());
+			aladin->SetSpeedX(0);
 		}
 		if (aladin->GetPositionY() >= TiledMap::GetInstance()->GetHeight() + 20)
 		{
