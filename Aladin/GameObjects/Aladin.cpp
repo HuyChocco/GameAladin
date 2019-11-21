@@ -82,7 +82,7 @@ void Aladin::LoadResources()
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
-	//// ALADIN_ANI_JUMP_NO_KEY
+	////// ALADIN_ANI_JUMP_NO_KEY
 	anim = new Animation(100);
 	for (int i = 22; i < 33; i++)
 	{

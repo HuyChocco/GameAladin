@@ -53,7 +53,7 @@ enum ObjectType
 
 //Giá trị tốc độ đi, tốc độ nhảy, trọng lực
 #define ALADIN_WALK_SPEED		0.25f
-#define ALADIN_JUMP_SPEED_Y		0.6f
+#define ALADIN_JUMP_SPEED_Y		0.8f
 #define ALADIN_GRAVITY			0.025f
 
 //Animation của aladin

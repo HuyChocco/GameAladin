@@ -87,7 +87,7 @@ void Game::LoadResources()
 	backgroundRect1.left = 0;
 	backgroundRect1.right = 2270;
 	backgroundRect1.top = 0;
-	backgroundRect1.bottom = 1135;
+	backgroundRect1.bottom = 1127;
 
 	SpriteData background_sprite_data_1;
 
@@ -106,7 +106,7 @@ void Game::LoadResources()
 	backgroundRect2.left = 0;
 	backgroundRect2.right = 2270;
 	backgroundRect2.top = 0;
-	backgroundRect2.bottom = 1135;
+	backgroundRect2.bottom = 1127;
 
 	SpriteData background_sprite_data_2;
 
