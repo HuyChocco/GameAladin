@@ -2,6 +2,6 @@
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(74): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 d:\game\aladin\aladin\aladin\gameobjects\aladinstate.cpp(216): warning C4244: 'argument': conversion from 'DWORD' to 'float', possible loss of data
-d:\game\aladin\aladin\aladin\gameobjects\aladinstate.cpp(232): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\game\aladin\aladin\aladin\gameobjects\aladinstate.cpp(233): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\aladinstate.cpp(224): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\aladinstate.cpp(225): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Aladin.vcxproj -> D:\game\Aladin\Aladin\Debug\Aladin.exe

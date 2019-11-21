@@ -58,11 +58,11 @@ void Viewport::Update(DWORD dt)
 	{
 		this->y = aladin->GetPositionY() + top;
 	}*/
-	if (aladin->GetPositionX() > SCREEN_WIDTH / 2 && aladin->GetPositionX() <2270- SCREEN_WIDTH / 2)
+	if (aladin->GetPositionX() > SCREEN_WIDTH / 2 && aladin->GetPositionX() < Game::GetInstance()->GetTiledMap()->GetWidth() - SCREEN_WIDTH / 2)
 	{
 		this->x = aladin->GetPositionX() - SCREEN_WIDTH / 2;
 	}
-	if (aladin->GetPositionY() > (int)SCREEN_HEIGHT / 2 && aladin->GetPositionY() < 1135- SCREEN_HEIGHT / 2)
+	if (aladin->GetPositionY() > (int)SCREEN_HEIGHT / 2 && aladin->GetPositionY() < Game::GetInstance()->GetTiledMap()->GetHeight() - SCREEN_HEIGHT / 2)
 	{
 		this->y = aladin->GetPositionY() +  SCREEN_HEIGHT / 2;
 	}

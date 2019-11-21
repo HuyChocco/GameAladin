@@ -92,20 +92,20 @@ void GameObject::CalcPotentialMapCollisions(
 				delete e;
 			}
 		}
-		if (curTile->type == ObjectType::APPLE)
-		{
-			LPCOLLISIONEVENT e = SweptAABBEx(solidTileDummy);//kiểm tra va chạm giữa gameobject mới và gameobject hiện tại
-			e->collisionID = 2;
+		//if (curTile->type == ObjectType::APPLE)
+		//{
+		//	LPCOLLISIONEVENT e = SweptAABBEx(solidTileDummy);//kiểm tra va chạm giữa gameobject mới và gameobject hiện tại
+		//	e->collisionID = 2;
 
-			if (e->t >= 0 && e->t < 1.0f && (e->ny == 1 || e->nx == 1))
-			{
-				coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
-			}
-			else
-			{
-				delete e;
-			}
-		}
+		//	if (e->t >= 0 && e->t < 1.0f && (e->ny == 1 || e->nx == 1))
+		//	{
+		//		coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+		//	}
+		//	else
+		//	{
+		//		delete e;
+		//	}
+		//}
 		else 
 		{
 			
@@ -223,11 +223,11 @@ void GameObject::UpdateObjectCollider()
 void GameObject::UpdateTileCollider()
 {
 	collider.x = x;
-	collider.y = y - 8;
+	collider.y = y;
 	collider.vx = vx;
 	collider.vy = vy;
 	collider.dt = dt;
-	collider.height = 8;
+	//collider.height = 8;
 }
 RECT GameObject::GetRect()
 {

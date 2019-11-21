@@ -182,6 +182,7 @@ void AladinState::Falling()
 
 void AladinState::Update(DWORD dt)
 {
+	
 	setDelta(dt);
 	int state = this->states;//Lấy ra trạng thái nhân vật hiện tại
 	switch (state)
@@ -193,68 +194,61 @@ void AladinState::Update(DWORD dt)
 			aladin->SetState(aladin->GetIdleState());
 			aladin->SetSpeedX(0);
 		}
-		if (aladin->GetPositionY() >= TiledMap::GetInstance()->GetHeight() + 20)
-		{
-			aladin->SetSpeedY(aladin->GetSpeedY() - ALADIN_GRAVITY);
-		}
+		
 	}
 	break;
 	default:
 		break;
 	}
 
-	vector<LPCOLLISIONEVENT> coEvents;
-	vector<LPCOLLISIONEVENT> coEventsResult;
+	
 
 #pragma region	Collide with brick
+	vector<LPCOLLISIONEVENT> coEvents;
+	vector<LPCOLLISIONEVENT> coEventsResult;
 	vector<Tile *> tiles = Grid::GetInstance()->GetCurTiles();//Lấy ra danh sách các tiles hiện tại
 
 	//vy của nhân vật luôn bị trừ 0.025f
-	
 	aladin->SetSpeedY(aladin->GetSpeedY() - ALADIN_GRAVITY);
 	coEvents.clear();
+	if (dt >= 40)
+		dt = 40;
 	aladin->SetDt(dt);
 	aladin->CalcPotentialCollisions(tiles, coEvents);//Tính toán khả năng đụng độ giữa tiles hiện tại và aladin object
-
-	if (coEvents.size() == 0)//trường hợp không xảy ra đụng độ
-	{
-		float moveX = trunc(aladin->GetSpeedX()* dt);
-		float moveY = trunc(aladin->GetSpeedY()* dt);
-		aladin->SetPositionX(aladin->GetPositionX() + moveX);//cộng một lượng vx*dt vào position x của aladin
-		aladin->SetPositionY(aladin->GetPositionY() + moveY);//cộng một lượng vx*dt vào position y của aladin
-	}
-	else //xảy ra đụng độ
+	
+	if(coEvents.size()>0) //xảy ra đụng độ
 	{
 		float min_tx, min_ty, nx = 0, ny;
 
 		aladin->FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-		
 		float moveX = min_tx * aladin->GetSpeedX() * dt + nx * 0.4;
 		float moveY = min_ty * aladin->GetSpeedY() * dt + ny * 0.4;
 
 		aladin->SetPositionX(aladin->GetPositionX() + moveX);
 		aladin->SetPositionY(aladin->GetPositionY() + moveY);
-
-
-		
+		//if (nx != 0) aladin->SetSpeedX(0);
+		//if (ny != 0) aladin->SetSpeedY(0);
 		if (coEventsResult[0]->collisionID == 1)
 		{
 			if (ny == 1)
 			{
-				if (nx != 0) aladin->SetSpeedX(0);
-				if (ny != 0) aladin->SetSpeedY(0);
-
+				aladin->SetSpeedY(0);
 				aladin->SetIsGrounded(true);//Cho aladin dứng trên mặt đất
 			}
 		}
-		else
-		{
-			float moveX = trunc(aladin->GetSpeedX()* dt);
-			float moveY = trunc(aladin->GetSpeedY()* dt);
-			aladin->SetPositionX(aladin->GetPositionX() + moveX);//cộng một lượng vx*dt vào position x của aladin
-			aladin->SetPositionY(aladin->GetPositionY() + moveY);//cộng một lượng vx*dt vào position y của aladin
-		}
+		//if (coEventsResult[0]->collisionID == 2)
+		//{
+			//aladin->SetPositionX(aladin->GetPositionX() + 0.75);
+		//}
 		
+	}
+	else //trường hợp không xảy ra đụng độ
+	{
+		
+		float moveX = trunc(aladin->GetSpeedX()* dt);
+		float moveY = trunc(aladin->GetSpeedY()* dt);
+		aladin->SetPositionX(aladin->GetPositionX() + moveX);//cộng một lượng vx*dt vào position x của aladin
+		aladin->SetPositionY(aladin->GetPositionY() + moveY);//cộng một lượng vx*dt vào position y của aladin
 	}
 	for (UINT i = 0; i < coEvents.size(); i++)
 		delete coEvents[i];
