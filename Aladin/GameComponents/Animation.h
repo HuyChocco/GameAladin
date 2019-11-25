@@ -18,6 +18,8 @@ class Animation
 	int curFrame;
 	bool done = false;
 	bool isStop = false;
+	bool isAnimObject = false;
+	bool isReverse = false;
 public:
 	Animation(DWORD defaultDelayTime) { this->defaultDelayTime = defaultDelayTime; };
 
@@ -26,7 +28,11 @@ public:
 	int GetCurFrame() { return curFrame; }
 	bool IsDone() { return done; }
 	void setIsStop(bool isStop) { this->isStop = isStop; }
+	void setIsReverse(bool isReverse) { this->isReverse = isReverse; }
+	bool IsReverse() { return this->isReverse; }
 	bool IsStop() { return this->isStop; }
+	void setIsAnimObject(bool isAnimObject) { this->isAnimObject = isAnimObject; }
+	bool IsAnimObject() { return this->isAnimObject; }
 	void Reset() { curFrame = -1; }
 
 	void AddFrame(Sprite *sprite, DWORD time = 0);

@@ -265,7 +265,7 @@ int TiledMap::GetTileHeight()
 {
 	return this->tileSetHeight;
 }
-//Hàm render tiledMap
+//Hàm render tiledMap-hiện không dùng tới
 void TiledMap::Render()
 {
 	//Graphics::GetInstance()->Draw(sprite);

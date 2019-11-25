@@ -119,6 +119,7 @@ void Game::LoadResources()
 	background_sprite_data_2.isLeft = true;
 	background_sprite_2 = new Sprite(BACKGROUND_2, backgroundRect1, D3DCOLOR_XRGB(255, 0, 255));
 	background_sprite_2->SetData(background_sprite_data_2);
+	
 	if (NULL == aladin)
 		aladin = Aladin::GetInstance();// khởi tạo aladin
 	if (NULL == tiledMap)
@@ -127,6 +128,8 @@ void Game::LoadResources()
 		viewport = Viewport::GetInstance();//xây dựng camera
 	if (grid == NULL)
 		grid = Grid::GetInstance();//Xây dựng bản đồ game
+	animbrick = new AnimBrick();
+	animball = new AnimBall();
 }
 //Xử lí
 
@@ -308,8 +311,8 @@ void Game::Render()
 		//scene->Draw();
 	
 		Graphics::GetInstance()->Draw(background_sprite_1);//Vẽ background 1 cho game
-
-		grid->Render();
+		animbrick->Render(); animball->Render();
+		grid->Render(); 
 		Graphics::GetInstance()->Draw(background_sprite_2);//Vẽ background 2 cho game
 		
 		spriteHandler->End();

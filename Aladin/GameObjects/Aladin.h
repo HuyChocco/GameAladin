@@ -19,6 +19,7 @@ class Aladin : public GameObject
 	State *attackState;
 	State *state;
 	State *fallingState;
+	State *actionWhenStandState;
 	//State *crouchState;//cúi
 	//State *throwShieldState;//ném khiêng
 	//State *rollState;//trượt
@@ -71,6 +72,7 @@ public:
 	State *GetStopState();
 	State *GetAttackState();
 	State *GetFallingState();
+	State *GetActionWhenStandState();
 	/*State *GetCrouchState();
 	State *GetThrowShieldState();
 	State *GetRollState();

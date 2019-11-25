@@ -18,6 +18,7 @@ public:
 	void Stop() override;
 	void Attack() override;
 	void Falling() override;
+	void ActionWhenStand() override;
 	/*void Crouch() override;
 	void ThrowShield() override;
 	void Roll() override;

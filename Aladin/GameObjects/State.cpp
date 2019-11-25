@@ -37,7 +37,10 @@ void State::Falling()
 {
 
 }
+void State::ActionWhenStand()
+{
 
+}
 //void State::Crouch()
 //{
 //}

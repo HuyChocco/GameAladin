@@ -128,6 +128,20 @@ void AladinState::Falling()
 	break;
 	}
 }
+void AladinState::ActionWhenStand()
+{
+	int state = this->states;
+
+	switch (state)
+	{
+	case ALADIN_ANI_IDLE:
+	{
+		aladin->SetState(aladin->GetActionWhenStandState());
+
+	}
+	break;
+	}
+}
 //void AladinState::ThrowShield()
 //{
 //	int state = this->states;
@@ -195,6 +209,15 @@ void AladinState::Update(DWORD dt)
 			aladin->SetSpeedX(0);
 		}
 		
+	}
+	break;
+	case ALADIN_ANI_IDLE:
+	{
+		if (aladin->IsGrounded())//Nếu nhân vật trên mặt đất
+		{
+			//aladin->SetState(aladin->GetActionWhenStandState());
+			//aladin->SetSpeedX(0);
+		}
 	}
 	break;
 	default:
@@ -310,6 +333,13 @@ void AladinState::Render()
 		aladin->GetAnimationsList()[ALADIN_ANI_ATTACK]->Render(spriteData);
 	}
 	break;
+	case ALADIN_ANI_ACTION_WHEN_STAND:
+	{
+		aladin->GetAnimationsList()[ALADIN_ANI_ACTION_WHEN_STAND]->Render(spriteData);
 	}
+	break;
+	}
+	
+
 }
 

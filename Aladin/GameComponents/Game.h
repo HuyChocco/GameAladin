@@ -5,6 +5,8 @@
 #include "TiledMap.h"
 #include "Grid.h"
 #include "Scene.h"
+#include "../GameObjects/AnimBrick.h"
+#include "../GameObjects/AnimBall.h"
 //#include "../Scenes/MainScene.h"
 #include "../GameObjects/Aladin.h"
 
@@ -15,6 +17,8 @@ class Keyboard;
 class Grid;
 class Aladin;
 class Scene;
+class AnimBrick;
+class AnimBall;
 class Game
 {
 	bool initialized = false;
@@ -27,7 +31,8 @@ class Game
 	Graphics *graphics;
 
 	Aladin *aladin;
-	
+	AnimBrick* animbrick;
+	AnimBall* animball;
 	TiledMap *tiledMap;
 	Viewport *viewport;
 
