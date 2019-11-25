@@ -10,6 +10,7 @@ void Animation::AddFrame(Sprite *sprite, DWORD time)
 	//Thêm frame mới vào vector frames
 	frames.push_back(frame);
 }
+bool isReverse = false;
 void Animation::Render(SpriteData spriteData)
 {
 	//Lấy giá trị thời gian hiện tại
@@ -21,7 +22,8 @@ void Animation::Render(SpriteData spriteData)
 		lastFrameTime = now;
 		done = false;
 	}
-
+	spriteData.width = frames[curFrame].first->GetRect().right - frames[curFrame].first->GetRect().left;
+	spriteData.height = frames[curFrame].first->GetRect().bottom - frames[curFrame].first->GetRect().top;
 	frames[curFrame].first->SetData(spriteData);
 	//Vẽ frame hiện tại
 	Graphics::GetInstance()->Draw(frames[curFrame].first);
@@ -33,8 +35,21 @@ void Animation::Render(SpriteData spriteData)
 	//Nếu thời gian giữa hiện tại và frame hiện tại lớn hơn thời gian tồn tại của frame đó thì
 	if (now - lastFrameTime > t)
 	{
-		//Tăng lên frame tiếp theo
-		curFrame++;
+		
+		if (IsReverse() == true)
+		{
+			curFrame--;
+			if (curFrame == 0)
+			{
+				setIsReverse(false);
+			}
+				
+		}
+			
+		else
+			//Tăng lên frame tiếp theo
+			curFrame++;
+		
 		//Thời gian frame mới sẽ đặt bằng thời gian hiện tại
 		lastFrameTime = now;
 		//Nếu là frame cuối thì quay lại frame đầu
@@ -47,6 +62,12 @@ void Animation::Render(SpriteData spriteData)
 				done = true;
 				setIsStop(false);
 				curFrame = 0;
+			}
+			if (IsAnimObject() == true)
+			{
+				setIsReverse(true);
+				curFrame = frames.size()-1;
+				done = true;
 			}
 			else
 			{

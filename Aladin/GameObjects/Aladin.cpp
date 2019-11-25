@@ -13,6 +13,7 @@ Aladin::Aladin()
 	jumpState = new AladinState(this, ALADIN_ANI_JUMP_NO_KEY);
 	attackState = new AladinState(this, ALADIN_ANI_ATTACK);
 	fallingState = new AladinState(this, ALADIN_ANI_FALLING_DOWN);
+	actionWhenStandState = new AladinState(this, ALADIN_ANI_ACTION_WHEN_STAND);
 	/*crouchState = new AladinState(this, ALADIN_ANI_CROUCH);
 	throwShieldState = new AladinState(this, ALADIN_ANI_THROW_SHIELD);
 	rollState = new AladinState(this, ALADIN_ANI_ROLL);
@@ -118,86 +119,86 @@ void Aladin::LoadResources()
 	}
 	animations.push_back(anim);
 
-	//// ALADIN_ANI_KICK
-	//anim = new Animation(300);
-	//for (int i = 10; i < 11; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	//// ALADIN_ANI_JUMP_WITH_KEY
+	anim = new Animation(100);
+	for (int i = 63; i < 70; i++)
+	{
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 
-	//// ALADIN_ANI_STAND_HIT
-	//anim = new Animation(300);
-	//for (int i = 13; i < 15; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	//// ALADIN_ANI_CLIMB_LADDER
+	anim = new Animation(100);
+	for (int i = 70; i < 80; i++)
+	{
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 
-	//// ALADIN_ANI_CROUCH_HIT
-	//anim = new Animation(300);
-	//for (int i = 15; i < 17; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	//// ALADIN_ANI_CLIMB_ROPE
+	anim = new Animation(100);
+	for (int i = 80; i < 90; i++)
+	{
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 
-	//// ALADIN_ANI_SIT_ON_SHIELD
-	//anim = new Animation(300);
-	//for (int i = 19; i < 20; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	//// ALADIN_ANI_ACTION_ON_THE_ROPE_WHEN_STOP
+	anim = new Animation(100);
+	for (int i = 90; i < 95; i++)
+	{
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 
-	//// ALADIN_ANI_SWING
-	//anim = new Animation(300);
-	//for (int i = 27; i < 30; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	//// ALADIN_ANI_THROW_CHERRY_ON_THE_ROPE
+	anim = new Animation(100);
+	for (int i = 95; i < 100; i++)
+	{
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 
-	//// ALADIN_ANI_WADE
-	//anim = new Animation(300);
-	//for (int i = 44; i < 46; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	//// ALADIN_ANI_ATTACK_ON_THE_ROPE
+	anim = new Animation(100);
+	for (int i = 100; i < 107; i++)
+	{
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 
-	//// ALADIN_ANI_SHIELD_UP
-	//anim = new Animation(300);
-	//for (int i = 5; i < 6; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	//// ALADIN_ANI_JUMP_OUT_FROM_THE_ROPE
+	anim = new Animation(100);
+	for (int i = 107; i < 116; i++)
+	{
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 
-	//// ALADIN_ANI_GET_HURT
-	//anim = new Animation(300);
-	//for (int i = 33; i < 34; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	//// ALADIN_ANI_PUSH
+	anim = new Animation(100);
+	for (int i = 116; i < 125; i++)
+	{
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 
-	//// ALADIN_ANI_DEAD
-	//anim = new Animation(300);
-	//for (int i = 34; i < 36; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	//// ALADIN_ANI_ACTION_WHEN_STAND
+	anim = new Animation(100);
+	for (int i = 125; i < 132; i++)
+	{
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 }
 
 void Aladin::SetState(State * state)
@@ -231,6 +232,11 @@ State * Aladin::GetFallingState()
 {
 	this->SetStateNumber(ALADIN_ANI_FALLING_DOWN);
 	return fallingState;
+}
+State * Aladin::GetActionWhenStandState()
+{
+	this->SetStateNumber(ALADIN_ANI_ACTION_WHEN_STAND);
+	return actionWhenStandState;
 }
 //State * Aladin::GetCrouchState()
 //{

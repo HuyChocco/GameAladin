@@ -139,6 +139,8 @@
     <ClInclude Include="GameComponents\Sprite.h" />
     <ClInclude Include="GameComponents\TiledMap.h" />
     <ClInclude Include="GameComponents\Viewport.h" />
+    <ClInclude Include="GameObjects\AnimBall.h" />
+    <ClInclude Include="GameObjects\AnimBrick.h" />
     <ClInclude Include="GameObjects\GameItem.h" />
     <ClInclude Include="GameObjects\State.h" />
     <ClInclude Include="Scenes\MainScene.h" />
@@ -158,6 +160,8 @@
     <ClCompile Include="GameComponents\Sprite.cpp" />
     <ClCompile Include="GameComponents\TiledMap.cpp" />
     <ClCompile Include="GameComponents\Viewport.cpp" />
+    <ClCompile Include="GameObjects\AnimBall.cpp" />
+    <ClCompile Include="GameObjects\AnimBrick.cpp" />
     <ClCompile Include="GameObjects\State.cpp" />
     <ClCompile Include="GameObjects\Aladin.cpp" />
     <ClCompile Include="GameObjects\AladinState.cpp" />

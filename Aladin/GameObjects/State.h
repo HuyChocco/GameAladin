@@ -15,6 +15,7 @@ public:
 	virtual void Jump();
 	virtual void Attack();
 	virtual void Falling();
+	virtual void ActionWhenStand();
 	/*virtual void Crouch();
 	virtual void ThrowShield();
 	virtual void Roll();
