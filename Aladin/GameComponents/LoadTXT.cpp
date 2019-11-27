@@ -53,8 +53,8 @@ RECT* LoadTXT::LoadRect(char * path)
 		RECT rect;
 		rect.left = r->left;
 		rect.right = r->right;
-		rect.top = r->top;
-		rect.bottom = r->bottom;
+		rect.top = r->bottom;
+		rect.bottom = r->top;
 
 		//listRect.push_back(r);
 		arrayRect[i] = rect;

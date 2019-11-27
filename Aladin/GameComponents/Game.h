@@ -4,10 +4,10 @@
 #include "Keyboard.h"
 #include "TiledMap.h"
 #include "Grid.h"
-#include "Scene.h"
+#include "../Scenes/Scene.h"
 #include "../GameObjects/AnimBrick.h"
 #include "../GameObjects/AnimBall.h"
-//#include "../Scenes/MainScene.h"
+
 #include "../GameObjects/Aladin.h"
 
 #include <chrono>
@@ -26,7 +26,7 @@ class Game
 	static Game *__instance;
 	static HINSTANCE hInstance;
 	HWND hWnd;									
-	Scene* scene;
+	
 	Keyboard *keyboard;
 	Graphics *graphics;
 
@@ -39,6 +39,7 @@ class Game
 	Grid *grid;
 
 	Stage stage;
+	Scene* scene;
 public:
 	Stage GetStage() { return this->stage; }
 	void SetStage(int stage) { this->stage = (Stage)stage; }

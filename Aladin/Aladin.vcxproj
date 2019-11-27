@@ -79,9 +79,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <CallingConvention>StdCall</CallingConvention>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;zlib.lib;gdi32.lib;d3d9.lib;d3dx9.lib;dxguid.lib;dinput8.lib;dsound.lib;winmm.lib;dxerr.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>
       </EntryPointSymbol>
     </Link>
@@ -126,7 +128,6 @@
     <ClInclude Include="GameObjects\Aladin.h" />
     <ClInclude Include="GameObjects\AladinState.h" />
     <ClInclude Include="GameComponents\Animation.h" />
-    <ClInclude Include="GameComponents\Scene.h" />
     <ClInclude Include="GameComponents\Constants.h" />
     <ClInclude Include="GameComponents\Debug.h" />
     <ClInclude Include="GameComponents\Game.h" />
@@ -142,8 +143,38 @@
     <ClInclude Include="GameObjects\AnimBall.h" />
     <ClInclude Include="GameObjects\AnimBrick.h" />
     <ClInclude Include="GameObjects\GameItem.h" />
+    <ClInclude Include="GameObjects\Ground.h" />
+    <ClInclude Include="GameObjects\Land.h" />
     <ClInclude Include="GameObjects\State.h" />
-    <ClInclude Include="Scenes\MainScene.h" />
+    <ClInclude Include="GameObjects\Wall.h" />
+    <ClInclude Include="GameObjects\Wood.h" />
+    <ClInclude Include="lib\base64.h" />
+    <ClInclude Include="lib\tinyxml2.h" />
+    <ClInclude Include="lib\TmxEllipse.h" />
+    <ClInclude Include="lib\TmxImage.h" />
+    <ClInclude Include="lib\TmxImageLayer.h" />
+    <ClInclude Include="lib\TmxLayer.h" />
+    <ClInclude Include="lib\TmxMap.h" />
+    <ClInclude Include="lib\TmxMapTile.h" />
+    <ClInclude Include="lib\TmxObject.h" />
+    <ClInclude Include="lib\TmxObjectGroup.h" />
+    <ClInclude Include="lib\TmxPoint.h" />
+    <ClInclude Include="lib\TmxPolygon.h" />
+    <ClInclude Include="lib\TmxPolyline.h" />
+    <ClInclude Include="lib\TmxPropertySet.h" />
+    <ClInclude Include="lib\TmxTerrain.h" />
+    <ClInclude Include="lib\TmxTerrainArray.h" />
+    <ClInclude Include="lib\TmxTile.h" />
+    <ClInclude Include="lib\TmxTileLayer.h" />
+    <ClInclude Include="lib\TmxTileOffset.h" />
+    <ClInclude Include="lib\TmxTileset.h" />
+    <ClInclude Include="lib\TmxUtil.h" />
+    <ClInclude Include="lib\zconf.h" />
+    <ClInclude Include="lib\zlib.h" />
+    <ClInclude Include="lib\zlib128-dll\include\zconf.h" />
+    <ClInclude Include="lib\zlib128-dll\include\zlib.h" />
+    <ClInclude Include="Scenes\Scene.h" />
+    <ClInclude Include="Scenes\SceneLV1.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameComponents\Animation.cpp" />
@@ -152,7 +183,6 @@
     <ClCompile Include="GameComponents\GameObject.cpp" />
     <ClCompile Include="GameComponents\Graphics.cpp" />
     <ClCompile Include="GameComponents\Grid.cpp" />
-    <ClCompile Include="GameComponents\Scene.cpp" />
     <ClCompile Include="GameComponents\GridCell.cpp" />
     <ClCompile Include="GameComponents\Keyboard.cpp" />
     <ClCompile Include="GameComponents\LoadTXT.cpp" />
@@ -162,10 +192,43 @@
     <ClCompile Include="GameComponents\Viewport.cpp" />
     <ClCompile Include="GameObjects\AnimBall.cpp" />
     <ClCompile Include="GameObjects\AnimBrick.cpp" />
+    <ClCompile Include="GameObjects\Ground.cpp" />
+    <ClCompile Include="GameObjects\Land.cpp" />
     <ClCompile Include="GameObjects\State.cpp" />
     <ClCompile Include="GameObjects\Aladin.cpp" />
     <ClCompile Include="GameObjects\AladinState.cpp" />
-    <ClCompile Include="Scenes\MainScene.cpp" />
+    <ClCompile Include="GameObjects\Wall.cpp" />
+    <ClCompile Include="GameObjects\Wood.cpp" />
+    <ClCompile Include="lib\base64.cpp" />
+    <ClCompile Include="lib\miniz.c" />
+    <ClCompile Include="lib\tinyxml2.cpp" />
+    <ClCompile Include="lib\TmxEllipse.cpp" />
+    <ClCompile Include="lib\TmxImage.cpp" />
+    <ClCompile Include="lib\TmxImageLayer.cpp" />
+    <ClCompile Include="lib\TmxLayer.cpp" />
+    <ClCompile Include="lib\TmxMap.cpp" />
+    <ClCompile Include="lib\TmxObject.cpp" />
+    <ClCompile Include="lib\TmxObjectGroup.cpp" />
+    <ClCompile Include="lib\TmxPolygon.cpp" />
+    <ClCompile Include="lib\TmxPolyline.cpp" />
+    <ClCompile Include="lib\TmxPropertySet.cpp" />
+    <ClCompile Include="lib\TmxTerrain.cpp" />
+    <ClCompile Include="lib\TmxTerrainArray.cpp" />
+    <ClCompile Include="lib\TmxTile.cpp" />
+    <ClCompile Include="lib\TmxTileLayer.cpp" />
+    <ClCompile Include="lib\TmxTileOffset.cpp" />
+    <ClCompile Include="lib\TmxTileset.cpp" />
+    <ClCompile Include="lib\TmxUtil.cpp" />
+    <ClCompile Include="Scenes\Scene.cpp" />
+    <ClCompile Include="Scenes\SceneLV1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\Tmx.h.in" />
+    <None Include="zlibwapi.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\zlib128-dll\lib\zlib.lib" />
+    <Library Include="zlib.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

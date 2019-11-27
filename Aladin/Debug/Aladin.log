@@ -1,7 +1,5 @@
-﻿  AnimBall.cpp
+﻿  Game.cpp
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(74): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(31): warning C4018: '<': signed/unsigned mismatch
-d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(97): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(98): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\game.cpp(299): warning C4244: 'argument': conversion from 'DWORD' to 'float', possible loss of data
   Aladin.vcxproj -> D:\game\Aladin\Aladin\Debug\Aladin.exe

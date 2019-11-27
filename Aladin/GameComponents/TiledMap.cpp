@@ -130,29 +130,9 @@ std::wstring s2ws(const string& s)
 void TiledMap::LoadMap(LPCWSTR filePath)
 {
 	
-	//Sprite* sprite;
-	/*RECT sourceRect;
-
-	sourceRect.left = 0;
-	sourceRect.right = 2271;
-	sourceRect.top = 0;
-	sourceRect.bottom = 1135;
-	SpriteData spriteData;
-	spriteData.width = 2271;
-	spriteData.height = 1135;
-	spriteData.x = 0;
-	spriteData.y = 1135;
-	spriteData.scale = 1;
-	spriteData.angle = 0;
-	spriteData.isLeft = true;
-	sprite = new Sprite(filePath, sourceRect,NULL);
-	sprite->SetData(spriteData);*/
-	//string tilesLocation = LoadMatrix(filePath);//Nạp matrix của TiledMap và lấy file path tiledset
+	
 	LoadMatrix(filePath);
-	//std::wstring stemp = s2ws(tilesLocation);// chuyển đổi kiểu dữ liệu của file path
-	//LPCWSTR wstrTilesLocation = stemp.c_str();// chuyển đổi kiểu dữ liệu của file path
-
-	//LoadTileSet(wstrTilesLocation);//Gọi hàm LoadTiledSet
+	
 
 }
 void TiledMap::LoadMatrix(LPCWSTR filePath)

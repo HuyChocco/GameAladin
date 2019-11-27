@@ -288,7 +288,7 @@ void AladinState::Render()
 		spriteData.width = ALADIN_SPRITE_WIDTH;
 		spriteData.height = ALADIN_SPRITE_HEIGHT;
 		spriteData.x = aladin->GetPositionX();
-		spriteData.y = aladin->GetPositionY();
+		spriteData.y = aladin->GetPositionY()- ALADIN_SPRITE_HEIGHT;
 		spriteData.scale = 1;
 		spriteData.angle = 0;
 		spriteData.isLeft = aladin->IsLeft();
