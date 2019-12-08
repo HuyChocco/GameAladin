@@ -1,13 +1,401 @@
-﻿  SceneLV2.cpp
-d:\game\aladin\aladin\aladin\gamecomponents\constants.h(143): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
-  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(133): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+﻿  Animation.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(107): warning C4018: '<': signed/unsigned mismatch
-d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(116): warning C4018: '<': signed/unsigned mismatch
-d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(126): warning C4018: '<': signed/unsigned mismatch
-d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(137): warning C4018: '<': signed/unsigned mismatch
-d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(147): warning C4018: '<': signed/unsigned mismatch
-d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(158): warning C4018: '<': signed/unsigned mismatch
-d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(184): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  Game.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\game.cpp(254): warning C4244: 'argument': conversion from 'DWORD' to 'float', possible loss of data
+  GameObject.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(67): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(96): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(99): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(100): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(101): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(192): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(193): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(194): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(195): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(260): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(261): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(262): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.cpp(263): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Graphics.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+  Grid.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\grid.cpp(96): warning C4101: 'aladinLCell': unreferenced local variable
+d:\game\aladin\aladin\aladin\gamecomponents\grid.cpp(96): warning C4101: 'aladinRCell': unreferenced local variable
+d:\game\aladin\aladin\aladin\gamecomponents\grid.cpp(96): warning C4101: 'aladinBCell': unreferenced local variable
+d:\game\aladin\aladin\aladin\gamecomponents\grid.cpp(96): warning C4101: 'aladinTCell': unreferenced local variable
+  GridCell.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gridcell.cpp(13): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\gamecomponents\gridcell.cpp(15): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\gamecomponents\gridcell.cpp(36): warning C4018: '<': signed/unsigned mismatch
+  Keyboard.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\keyboard.cpp(11): warning C4804: '>': unsafe use of type 'bool' in operation
+  Main.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Sprite.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+  TiledMap.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(86): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(87): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(88): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(89): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(257): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(260): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(267): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(268): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(295): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\tiledmap.cpp(296): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Viewport.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\viewport.cpp(63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\viewport.cpp(67): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\viewport.cpp(87): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\viewport.cpp(88): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Aladin.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  AladinState.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\aladinstate.cpp(240): warning C4244: 'argument': conversion from 'DWORD' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\aladinstate.cpp(248): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\aladinstate.cpp(249): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  AnimBall.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animball.cpp(63): warning C4018: '<': signed/unsigned mismatch
+  AnimBrick.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animbrick.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animbrick.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animbrick.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animbrick.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animbrick.cpp(29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animbrick.cpp(30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animbrick.cpp(62): warning C4018: '<': signed/unsigned mismatch
+  AnimNail.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animnail.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animnail.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animnail.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animnail.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animnail.cpp(29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animnail.cpp(30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\animnail.cpp(62): warning C4018: '<': signed/unsigned mismatch
+  Apple.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\apple.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\apple.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\apple.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\apple.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\apple.cpp(52): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\apple.cpp(53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Boss1.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss1.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss1.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss1.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss1.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss1.cpp(58): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss1.cpp(59): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Boss2.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss2.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss2.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss2.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss2.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss2.cpp(58): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\boss2.cpp(59): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Bowl.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\bowl.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\bowl.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\bowl.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\bowl.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\bowl.cpp(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\bowl.cpp(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  Chain.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\chain.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\chain.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\chain.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\chain.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\chain.cpp(28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\chain.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\chain.cpp(33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\chain.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Egg.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\egg.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\egg.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\egg.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\egg.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\egg.cpp(52): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\egg.cpp(53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Enemy1.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy1.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy1.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy1.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy1.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy1.cpp(73): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy1.cpp(74): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Enemy2.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy2.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy2.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy2.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy2.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy2.cpp(104): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy2.cpp(105): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Enemy3.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy3.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy3.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy3.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy3.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy3.cpp(73): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\enemy3.cpp(74): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Ground.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\ground.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\ground.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\ground.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\ground.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\ground.cpp(28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\ground.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\ground.cpp(33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\ground.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Land.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\land.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\land.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\land.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\land.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\land.cpp(28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\land.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\land.cpp(33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\land.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Pole.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\pole.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\pole.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\pole.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\pole.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\pole.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\pole.cpp(30): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\pole.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\pole.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Roof.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\roof.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\roof.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\roof.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\roof.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\roof.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\roof.cpp(30): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\roof.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\roof.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  ScoreObject1.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject1.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject1.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject1.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject1.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject1.cpp(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject1.cpp(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  ScoreObject2.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject2.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject2.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject2.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject2.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject2.cpp(29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject2.cpp(30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\scoreobject2.cpp(62): warning C4018: '<': signed/unsigned mismatch
+  Stair.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\stair.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\stair.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\stair.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\stair.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\stair.cpp(28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\stair.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\stair.cpp(33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\stair.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Wall.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wall.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wall.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wall.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wall.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wall.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wall.cpp(30): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wall.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wall.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Wood.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wood.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wood.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wood.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wood.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wood.cpp(28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wood.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wood.cpp(33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\wood.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Scene.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\scenes\scene.cpp(59): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+d:\game\aladin\aladin\aladin\scenes\scene.cpp(60): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  SceneLV1.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(107): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(116): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(126): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(136): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(146): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(156): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(166): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(176): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(186): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(196): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(206): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(217): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(227): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(237): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(247): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(257): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(267): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(277): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(287): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(297): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv1.cpp(321): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  SceneLV2.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(154): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(144): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(109): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(118): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(128): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(139): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(149): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(160): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(170): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(195): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  Generating Code...
   Aladin.vcxproj -> D:\game\Aladin\Aladin\Debug\Aladin.exe

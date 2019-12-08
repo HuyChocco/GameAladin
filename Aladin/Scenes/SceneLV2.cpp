@@ -17,6 +17,8 @@
 #include "../GameObjects/AnimNail.h"
 #include "../GameObjects/Pole.h"
 #include "../GameObjects/Enemy3.h"
+#include "../GameObjects/Boss1.h"
+#include "../GameObjects/Boss2.h"
 //#include "../GameComponents/Sound.h"
 Scene *SceneLV2::__instance = NULL;
 SceneLV2::SceneLV2() :Scene(0x9090b0, Scene::SceneName::Market)
@@ -163,7 +165,16 @@ void SceneLV2::LoadContent(char* filePath)
 			}
 
 		}
+		else if (groupObject->GetName() == "boss")
+		{
+			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
+			{
+				auto outObj = groupObjectList[iObject];
+				obj = new Boss1(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "apple");
+				_listEnemyObject.push_back(obj);
+			}
 
+		}
 		
 	}
 	aladin = Aladin::GetInstance();
