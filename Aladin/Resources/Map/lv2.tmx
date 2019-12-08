@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="1" height="1" tilewidth="750" tileheight="400" infinite="0" nextlayerid="9" nextobjectid="36">
+ <tileset firstgid="1" source="final.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="1" height="1">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBgAAAACAAC
+  </data>
+ </layer>
+ <objectgroup id="4" name="wall">
+  <object id="2" x="4" y="2.66667" width="24" height="38.6667"/>
+  <object id="3" x="4" y="40" width="24" height="38.6667"/>
+  <object id="4" x="4" y="77.3333" width="24" height="38.6667"/>
+  <object id="5" x="4" y="114.667" width="24" height="38.6667"/>
+  <object id="6" x="4.66667" y="152" width="24" height="38.6667"/>
+  <object id="7" x="6" y="190.667" width="24" height="38.6667"/>
+  <object id="8" x="5.66667" y="229.333" width="24" height="38.6667"/>
+  <object id="9" x="6" y="269.333" width="24" height="38.6667"/>
+  <object id="10" x="6" y="308" width="24" height="38.6667"/>
+  <object id="11" x="6" y="346.667" width="24" height="38.6667"/>
+  <object id="12" x="723.333" y="345.333" width="24" height="38.6667"/>
+  <object id="13" x="723.333" y="306.667" width="24" height="38.6667"/>
+  <object id="14" x="723.333" y="268" width="24" height="38.6667"/>
+  <object id="15" x="723" y="228" width="24" height="38.6667"/>
+  <object id="16" x="723.333" y="189.333" width="24" height="38.6667"/>
+  <object id="17" x="722" y="150.667" width="24" height="38.6667"/>
+  <object id="18" x="721.333" y="113.333" width="24" height="38.6667"/>
+  <object id="19" x="721.333" y="76" width="24" height="38.6667"/>
+  <object id="20" x="721.333" y="38.6667" width="24" height="38.6667"/>
+  <object id="21" x="721.333" y="1.33333" width="24" height="38.6667"/>
+ </objectgroup>
+ <objectgroup id="7" name="land">
+  <object id="30" x="32" y="336" width="686.667" height="42.6667"/>
+ </objectgroup>
+ <objectgroup id="8" name="roof">
+  <object id="31" x="33.3333" y="1.33333" width="688" height="32"/>
+ </objectgroup>
+ <objectgroup id="5" name="boss">
+  <object id="22" x="352" y="222.667" width="48" height="73.3333"/>
+ </objectgroup>
+ <objectgroup id="6" name="ground">
+  <object id="25" x="40" y="266.667" width="93.3333" height="17.3333"/>
+  <object id="33" x="233.333" y="269.333" width="93.3333" height="17.3333"/>
+  <object id="34" x="424" y="268" width="93.3333" height="17.3333"/>
+  <object id="35" x="613.333" y="268" width="93.3333" height="17.3333"/>
+ </objectgroup>
+</map>

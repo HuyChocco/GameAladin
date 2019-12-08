@@ -17,6 +17,7 @@ protected:
 	//Item itemtype;
 public:
 	AnimBall();
+	AnimBall(int x,int y,int width,int height,string type);
 	~AnimBall();
 	RECT* LoadRect(char * path);
 	bool IsActive() { return this->Active; }

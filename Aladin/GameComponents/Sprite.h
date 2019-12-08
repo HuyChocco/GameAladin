@@ -29,7 +29,7 @@ class Sprite
 	LPDIRECT3DTEXTURE9 texture;
 public:
 	Sprite(LPCWSTR filePath, RECT rect, D3DCOLOR transColor);
-
+	~Sprite() {};
 	void SetTexture(LPCWSTR filePath, D3DCOLOR transColor);
 	void SetRect(RECT rect);
 	void SetData(SpriteData spriteData);

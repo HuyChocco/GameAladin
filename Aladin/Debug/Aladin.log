@@ -1,5 +1,13 @@
-﻿  Game.cpp
-d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(74): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+﻿  SceneLV2.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(143): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(133): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(75): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game\aladin\aladin\aladin\gamecomponents\game.cpp(299): warning C4244: 'argument': conversion from 'DWORD' to 'float', possible loss of data
+d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(76): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(107): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(116): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(126): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(137): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(147): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(158): warning C4018: '<': signed/unsigned mismatch
+d:\game\aladin\aladin\aladin\scenes\scenelv2.cpp(184): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
   Aladin.vcxproj -> D:\game\Aladin\Aladin\Debug\Aladin.exe

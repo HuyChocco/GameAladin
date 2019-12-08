@@ -41,16 +41,23 @@ public:
 	virtual void Update(float deltaTime);
 	virtual void Draw();
 	virtual void LoadContent() {};
-
+	int GetMapWidth() { return mapWidth; }
+	int GetMapHeight() { return mapHeight; }
+	void SetMapWidth(int width) { mapWidth = width; }
+	void SetMapHeight(int height) { mapHeight = height; }
 	Scene::SceneName GetSceneName();
 	//static Scene *GetInstance();
 protected:
 	D3DCOLOR _backgroundColor;
 	Grid* grid;
-
+	int mapWidth;
+	int mapHeight;
 	Viewport* viewport;
 	TiledMap* tiledmap;
-	
+	vector<GameObject*>_listStaticObject;
+	vector<GameObject*> _listEnemyObject;
+	vector<GameObject*> _listScoreObject;
+	vector<GameObject*> _listItemObject;
 	/*
 	list gameObject phát sinh trong game. Vd: AppleWeapon
 	thêm vào list đê gọi hàm Update

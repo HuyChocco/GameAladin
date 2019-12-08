@@ -9,7 +9,10 @@
 class Aladin : public GameObject
 {
 	Aladin();//constructor của Captain
-
+	~Aladin() { 
+		delete __instance;
+		__instance = NULL; 
+	};
 	static Aladin *__instance;//thành viên tĩnh captain
 
 	State *idleState;//đứng yên
@@ -44,7 +47,7 @@ class Aladin : public GameObject
 
 	static vector<Animation *> animations;
 	DWORD lastFrameTime;
-
+	//vector<Animation *> animations;
 public:
 	//Nạp các tài nguyên cho nhân vật
 	void LoadResources();

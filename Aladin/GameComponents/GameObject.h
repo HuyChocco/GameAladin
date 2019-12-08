@@ -59,6 +59,7 @@ protected:
 	bool isFlipped;
 
 	Collider collider;
+	string type;
 public:
 	void SetPositionX(float x) { this->x = x; }
 	void SetPositionY(float y) { this->y = y; }
@@ -73,7 +74,8 @@ public:
 	
 	int GetWidth() { return this->width; }
 	int GetHeight() { return this->height; }
-
+	string GetType() { return this->type; }
+	void SetType(string type) {  this->type=type; }
 	void GetSpeed(float &vx, float &vy) { vx = this->vx; vy = this->vy; }
 
 	RECT GetRect();

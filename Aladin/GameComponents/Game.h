@@ -62,6 +62,8 @@ public:
 	Aladin *GetAladin();
 	//Hàm lấy tiledmap
 	TiledMap *GetTiledMap() { return tiledMap; }
+	//Hàm lấy scene
+	Scene *GetScene() { return scene; }
 
 	void SetTileMap(TiledMap *tiledMap) {
 		this->tiledMap = tiledMap;

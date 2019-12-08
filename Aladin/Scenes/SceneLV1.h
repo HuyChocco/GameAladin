@@ -14,12 +14,12 @@ class SceneLV1 : public Scene
 private:
 	std::vector<Sprite*> _backgroundTextures;
 	Aladin *aladin;
-	vector<GameObject*>_listStaticObject;
-	vector<GameObject*> _listObject;
+	static Scene *__instance;
 public:
 	SceneLV1();
 	~SceneLV1();
 	void LoadContent(char* filePath);
 	void Update(float dt);
 	void Draw();
+	static Scene* GetInstance();
 };

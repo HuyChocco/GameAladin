@@ -17,6 +17,7 @@ protected:
 	//Item itemtype;
 public:
 	Wood();
+	Wood(int x,int y,int width,int height,string type);
 	~Wood();
 	RECT* LoadRect(char * path);
 	bool IsActive() { return this->Active; }

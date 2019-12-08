@@ -142,9 +142,22 @@
     <ClInclude Include="GameComponents\Viewport.h" />
     <ClInclude Include="GameObjects\AnimBall.h" />
     <ClInclude Include="GameObjects\AnimBrick.h" />
+    <ClInclude Include="GameObjects\AnimNail.h" />
+    <ClInclude Include="GameObjects\Apple.h" />
+    <ClInclude Include="GameObjects\Bowl.h" />
+    <ClInclude Include="GameObjects\Chain.h" />
+    <ClInclude Include="GameObjects\Egg.h" />
+    <ClInclude Include="GameObjects\Enemy1.h" />
+    <ClInclude Include="GameObjects\Enemy2.h" />
+    <ClInclude Include="GameObjects\Enemy3.h" />
     <ClInclude Include="GameObjects\GameItem.h" />
     <ClInclude Include="GameObjects\Ground.h" />
     <ClInclude Include="GameObjects\Land.h" />
+    <ClInclude Include="GameObjects\Pole.h" />
+    <ClInclude Include="GameObjects\Roof.h" />
+    <ClInclude Include="GameObjects\ScoreObject1.h" />
+    <ClInclude Include="GameObjects\ScoreObject2.h" />
+    <ClInclude Include="GameObjects\Stair.h" />
     <ClInclude Include="GameObjects\State.h" />
     <ClInclude Include="GameObjects\Wall.h" />
     <ClInclude Include="GameObjects\Wood.h" />
@@ -175,6 +188,7 @@
     <ClInclude Include="lib\zlib128-dll\include\zlib.h" />
     <ClInclude Include="Scenes\Scene.h" />
     <ClInclude Include="Scenes\SceneLV1.h" />
+    <ClInclude Include="Scenes\SceneLV2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameComponents\Animation.cpp" />
@@ -192,8 +206,21 @@
     <ClCompile Include="GameComponents\Viewport.cpp" />
     <ClCompile Include="GameObjects\AnimBall.cpp" />
     <ClCompile Include="GameObjects\AnimBrick.cpp" />
+    <ClCompile Include="GameObjects\AnimNail.cpp" />
+    <ClCompile Include="GameObjects\Apple.cpp" />
+    <ClCompile Include="GameObjects\Bowl.cpp" />
+    <ClCompile Include="GameObjects\Chain.cpp" />
+    <ClCompile Include="GameObjects\Egg.cpp" />
+    <ClCompile Include="GameObjects\Enemy1.cpp" />
+    <ClCompile Include="GameObjects\Enemy2.cpp" />
+    <ClCompile Include="GameObjects\Enemy3.cpp" />
     <ClCompile Include="GameObjects\Ground.cpp" />
     <ClCompile Include="GameObjects\Land.cpp" />
+    <ClCompile Include="GameObjects\Pole.cpp" />
+    <ClCompile Include="GameObjects\Roof.cpp" />
+    <ClCompile Include="GameObjects\ScoreObject1.cpp" />
+    <ClCompile Include="GameObjects\ScoreObject2.cpp" />
+    <ClCompile Include="GameObjects\Stair.cpp" />
     <ClCompile Include="GameObjects\State.cpp" />
     <ClCompile Include="GameObjects\Aladin.cpp" />
     <ClCompile Include="GameObjects\AladinState.cpp" />
@@ -221,6 +248,7 @@
     <ClCompile Include="lib\TmxUtil.cpp" />
     <ClCompile Include="Scenes\Scene.cpp" />
     <ClCompile Include="Scenes\SceneLV1.cpp" />
+    <ClCompile Include="Scenes\SceneLV2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\Tmx.h.in" />

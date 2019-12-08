@@ -69,6 +69,6 @@ public:
 	}
 	void RenderTile(Tile *curTile);
 	void Render();
-
+	void RenderObject(GameObject *object);
 	~TiledMap();
 };

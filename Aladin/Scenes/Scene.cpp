@@ -74,7 +74,11 @@ void Scene::Draw()
 {
 
 	grid->Render();
-
+	for (auto object : _listStaticObject)
+	{
+		
+		//object->Render();
+	}
 }
 
 Scene::SceneName Scene::GetSceneName()

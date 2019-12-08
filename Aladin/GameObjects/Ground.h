@@ -17,6 +17,7 @@ protected:
 	//Item itemtype;
 public:
 	Ground();
+	Ground(int x,int y,int width,int height,string type);
 	~Ground();
 	RECT* LoadRect(char * path);
 	bool IsActive() { return this->Active; }

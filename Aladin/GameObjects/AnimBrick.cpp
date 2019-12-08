@@ -4,8 +4,39 @@ AnimBrick::AnimBrick()
 {
 	
 	
+	
+}
+AnimBrick::AnimBrick(int x,int y,int width,int height,string type)
+{
+	this->x = x;
+	this->y = TiledMap::GetInstance()->GetHeight() - y;
+	this->width = width;
+	this->height = height;
+	this->type = type;
+	vx = vy = 0;
+
+	collider.x = this->x;
+	collider.y = this->y;
+	collider.vx = this->vx;
+	collider.vy = this->vy;
+	collider.width = this->width;
+	collider.height = this->height;
+
+	
+
+	SpriteData spriteData;
+
+	spriteData.width = this->width;
+	spriteData.height = this->height;
+	spriteData.x = this->x;
+	spriteData.y = this->y;
+	spriteData.scale = 1;
+	spriteData.angle = 0;
+	spriteData.isLeft = false;
+	spriteData.isFlipped = false;
+	spritedatalist.push_back(spriteData);
 	RECT* listSprite = LoadRect((char*)"Resources\\GameItem\\animbrick.txt");
-	Animation * anim = new Animation(200);
+	Animation * anim = new Animation(100);
 	for (int i = 0; i < 5; i++)
 	{
 		Sprite * sprite = new Sprite(ANIMBRICK_TEXTURE_LOCATION, listSprite[i], ANIMBRICK_TEXTURE_TRANS_COLOR);
@@ -75,36 +106,9 @@ RECT * AnimBrick::LoadRect(char * path)
 		
 		arrayRect[i] = rect;
 	}
-	stream_data.clear();
-	getline(f, data);
-	int number_of_position;
-	stream_data << data;
-	stream_data >> number_of_position;
-	for (int i = 0; i < number_of_position; i++)
-	{
-		data = "";
-		stream_data.clear();
-
-		getline(f, data);
-		stream_data << data;
-		int l, t;
-		stream_data >> l;
-		stream_data >> t;
-		SpriteData spriteData;
-
-		spriteData.width = ANIMBRICK_SPRITE_WIDTH;
-		spriteData.height = ANIMBRICK_SPRITE_HEIGHT;
-		spriteData.x = l;
-		spriteData.y = Game::GetInstance()->GetTiledMap()->GetHeight()-t;
-		spriteData.scale = 1;
-		spriteData.angle = 0;
-		spriteData.isLeft = false;
-		spriteData.isFlipped = false;
-
-		spritedatalist.push_back(spriteData);
+	
 		
-		
-	}
+	
 	
 	f.close();
 	return arrayRect;

@@ -17,6 +17,7 @@ protected:
 	//Item itemtype;
 public:
 	Wall();
+	Wall(int x,int y,int width,int height,string type);
 	~Wall();
 	RECT* LoadRect(char * path);
 	bool IsActive() { return this->Active; }

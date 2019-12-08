@@ -7,7 +7,36 @@ Grid::Grid()
 {
 	curTiles.clear();
 
+	//Luu viewport
+	this->viewport = Viewport::GetInstance();
 
+	//Lưu aladin
+	this->aladin = Aladin::GetInstance();
+
+
+}
+void Grid::AddStaticObjectsToGrid(vector<GameObject*> &staticObjects)
+{
+	listStaticObject.assign( staticObjects.begin(), staticObjects.end());
+	LoadCells();
+}
+void Grid::AddEnemyObjectsToGrid(vector<GameObject*> &objects)
+{
+	listEnemyObject.assign(objects.begin(), objects.end());
+	
+}
+void Grid::AddScoreObjectsToGrid(vector<GameObject*> &objects)
+{
+	listScoreObject.assign(objects.begin(), objects.end());
+	
+}
+void Grid::AddItemObjectsToGrid(vector<GameObject*> &objects)
+{
+	listItemObject.assign(objects.begin(), objects.end());
+
+}
+void Grid::LoadCells()
+{
 	this->width = (int)(Game::GetInstance()->GetTiledMap()->GetWidth() / 64) + 2;//Chiều rộng của Grid
 	this->height = (int)(Game::GetInstance()->GetTiledMap()->GetHeight() / 64) + 2;//Chiều dài của Grid
 
@@ -21,37 +50,16 @@ Grid::Grid()
 		}
 		cells.push_back(curRow);//Thêm hàng trên vào ma trận Grid
 	}
-
-	LoadCells();//Load tilemap vào 
-
-	//Luu viewport
-	this->viewport = Viewport::GetInstance();
-
-	//Lưu aladin
-	this->aladin = Aladin::GetInstance();
-
-
-}
-void Grid::LoadCells()
-{
-	Matrix &tiledMapMatrix = Game::GetInstance()->GetTiledMap()->GetMatrix();//hàm trả về tham chiếu đến ma trận của TiledMap
-	for (int i = 0; i < tiledMapMatrix.size(); i++)
+	
+	for (auto obj : listStaticObject)
 	{
-		for (int j = 0; j < tiledMapMatrix[i].size(); j++)
-		{
-			//Tim vi tri o chua tile
-			int cellX = POSXTOCELL(tiledMapMatrix[i][j].x);
-			int cellY = POSYTOCELL(tiledMapMatrix[i][j].y);
+		int cellX = POSXTOCELL((int)obj->GetPositionX());
 
-			Tile *dummyPtr = &tiledMapMatrix[i][j];
-			cells[cellY][cellX]->AddTile(dummyPtr);//Thêm tiled từ ma trận của tilemap vào ma trận của GridCell
+		int cellY = POSYTOCELL((int)(obj->GetPositionY()));
 
-			//if (tiledMapMatrix[i][j].type == ObjectType::BRICK)//nếu ô tiled trong ma trận của TileMap là kiểu BRICK
-			//{
-			//	CollisionTiles.push_back(dummyPtr);//thì thêm vào vector collisiontile
-			//}
-		}
+		cells[cellY][cellX]->AddObject(obj);
 	}
+	
 }
 
 void Grid::GetAladinPosOnGrid(int &l, int &r, int &t, int &b)
@@ -73,78 +81,123 @@ void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 //Hàm update của grid
 void Grid::Update(DWORD dt)
 {
-	int lCell, rCell, tCell, bCell;
-	this->GetCameraPosOnGrid(lCell, rCell, tCell, bCell);
-
 	
-	curTiles.clear();
+	
+	
 
 	for (size_t i = 0; i < cells.size(); i++)
 	{
 		for (size_t j = 0; j < cells[i].size(); j++)
 		{
-			cells[i][j]->clear();
+			//cells[i][j]->clear();
 		}
 	}
 
 	int aladinLCell, aladinRCell, aladinTCell, aladinBCell;
 
-	this->GetAladinPosOnGrid(aladinLCell, aladinRCell, aladinTCell, aladinBCell);
+	//this->GetAladinPosOnGrid(aladinLCell, aladinRCell, aladinTCell, aladinBCell);
 
-	for (int i = aladinBCell; i <= aladinTCell; i++)
+	/*for (int i = aladinBCell; i <= aladinTCell; i++)
 	{
-		
+		for (int j = aladinLCell; j <= aladinRCell; j++)
 		{
-			if ( Game::GetInstance()->GetStage() != Stage::STAGE_BOSS_1 && Game::GetInstance()->GetStage() != Stage::STAGE_BOSS_2)
-			{
-				for (int j = aladinLCell; j <= aladinRCell; j++)
+			
+				GridCell* cell = cells[i][j];
+			
+				if (cell->GetObjects().size() > 0)
 				{
-					cells[i][j]->InsertTiles(curTiles);
+					cell->InsertObjects(curObjects);
+					
 				}
-			}
-			else if ( Game::GetInstance()->GetStage() != Stage::STAGE_BOSS_1 && Game::GetInstance()->GetStage() != Stage::STAGE_BOSS_2)
-			{
-				for (int j = aladinLCell; j <= aladinRCell; j++)
-				{
-					cells[i][j]->InsertTiles(curTiles);
-				}
-			}
-			else if (Game::GetInstance()->GetStage() == Stage::STAGE_BOSS_1)
-			{
-				for (int j = aladinLCell; j <= aladinRCell; j++)
-				{
-					cells[i][j]->InsertTiles(curTiles);
-				}
-			}
-			else if (Game::GetInstance()->GetStage() == Stage::STAGE_BOSS_2)
-			{
-				for (int j = aladinLCell; j <= aladinRCell; j++)
-				{
-					cells[i][j]->InsertTiles(curTiles);
-				}
-			}
+			
+			
 		}
-	}
-
-	aladin->Update(dt);
+		
+		
+	}*/
 	
-}
-//Hàm render của Grid
-void Grid::Render()
-{
 	int lCell, rCell, tCell, bCell;
 	this->GetCameraPosOnGrid(lCell, rCell, tCell, bCell);
-	curTiles.clear();
+
 
 	for (int i = bCell; i <= tCell; i++)
 	{
 		for (int j = lCell; j <= rCell; j++)
 		{
-			cells[i][j]->Render();//gọi hàm render của gridcell để render những cell nằm trong phạm vi của camera
+
+			GridCell* cell = cells[i][j];
+			if (cell->GetObjects().size() > 0)
+
+			{
+				
+				cell->InsertObjects(curObjects);
+				
+			}
+
 		}
 	}
+	for (auto obj : listItemObject)
+	{
+		obj->Update(dt);
+	}
+	for (auto obj : listEnemyObject)
+	{
+		if (viewport->IsObjectInCamera(obj))
+		{
+			obj->Update(dt);
+		}
+		
+	}
+	for (auto obj : listScoreObject)
+	{
+		//if (viewport->IsObjectInCamera(obj))
+		//{
+			obj->Update(dt);
+		//}
 
-	aladin->Render();
+	}
+	//aladin->Update(dt);
+}
+
+//Hàm render của Grid
+void Grid::Render()
+{
+	
+	
+	int lCell, rCell, tCell, bCell;
+	this->GetCameraPosOnGrid(lCell, rCell, tCell, bCell);
+	
+
+	for (int i = bCell; i <= tCell; i++)
+	{
+		for (int j = lCell; j <= rCell; j++)
+		{
+
+			GridCell* cell = cells[i][j];
+			if (cell->GetObjects().size() > 0)
+
+			{
+				for (auto obj : cell->GetObjects())
+				{
+					obj->Render();
+				}
+			}
+
+		}
+	}
+	for (auto obj : listItemObject)
+	{
+		obj->Render();
+	}
+	for (auto obj : listEnemyObject)
+	{
+		obj->Render();
+	}
+	for (auto obj : listScoreObject)
+	{
+		obj->Render();
+	}
+	//aladin->Render();
 	
 }
 

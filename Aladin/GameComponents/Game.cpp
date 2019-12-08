@@ -2,6 +2,7 @@
 #include "Debug.h"
 
 #include "../Scenes/SceneLV1.h"
+#include "../Scenes/SceneLV2.h"
 Game *Game::__instance = NULL;
 HINSTANCE Game::hInstance = NULL;
 //Khởi tạo game chính
@@ -78,62 +79,16 @@ HWND Game::CreateGameWindow(HINSTANCE hInstance, int ScreenWidth, int ScreenHeig
 
 	return hWnd;
 }
-Sprite *background_sprite_1;
-Sprite *background_sprite_2;
+
 void Game::LoadResources()
 {
-	//Tạo sprite background 1 cho game
-	//RECT backgroundRect1;
 
-	//backgroundRect1.left = 0;
-	//backgroundRect1.right = 2270;
-	//backgroundRect1.top = 0;
-	//backgroundRect1.bottom = 1127;
-
-	//SpriteData background_sprite_data_1;
-
-	//background_sprite_data_1.width = 2270;
-	//background_sprite_data_1.height = 1135;
-	//background_sprite_data_1.x = 0;
-	//background_sprite_data_1.y = 1135;
-	//background_sprite_data_1.scale = 1;
-	//background_sprite_data_1.angle = 0;
-	//background_sprite_data_1.isLeft = true;
-	//background_sprite_1 = new Sprite(BACKGROUND_1, backgroundRect1, NULL);
-	//background_sprite_1->SetData(background_sprite_data_1);
-	////Tạo sprite background 2 cho game
-	//RECT backgroundRect2;
-
-	//backgroundRect2.left = 0;
-	//backgroundRect2.right = 2270;
-	//backgroundRect2.top = 0;
-	//backgroundRect2.bottom = 1127;
-
-	//SpriteData background_sprite_data_2;
-
-	//background_sprite_data_2.width = 2270;
-	//background_sprite_data_2.height = 1135;
-	//background_sprite_data_2.x = 0;
-	//background_sprite_data_2.y = 1135;
-	//background_sprite_data_2.scale = 1;
-	//background_sprite_data_2.angle = 0;
-	//background_sprite_data_2.isLeft = true;
-	//background_sprite_2 = new Sprite(BACKGROUND_2, backgroundRect2, D3DCOLOR_XRGB(255, 0, 255));
-	//background_sprite_2->SetData(background_sprite_data_2);
-	//
-	if (NULL == aladin)
-		aladin = Aladin::GetInstance();// khởi tạo aladin
 	if (NULL == tiledMap)
-		tiledMap = TiledMap::GetInstance(TILES_MATRIX_STAGE_1);
+		tiledMap = TiledMap::GetInstance();
 	if (NULL == scene)
-		scene = new SceneLV1();// khởi tạo scene
-	//if (viewport == NULL)
-	//	viewport = Viewport::GetInstance();//xây dựng camera
-	//if (grid == NULL)
-	//	grid = Grid::GetInstance();//Xây dựng bản đồ game
+		scene = SceneLV2::GetInstance();// khởi tạo scene
 	
-	animbrick = new AnimBrick();
-	animball = new AnimBall();
+	
 }
 //Xử lí
 
@@ -297,8 +252,6 @@ void Game::Update(DWORD dt)
 {
 	keyboard->Update(dt);
 	scene->Update(dt);
-	//grid->Update(dt);
-	//viewport->Update(dt);
 	
 }
 void Game::Render()
@@ -313,12 +266,6 @@ void Game::Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 		scene->Draw();
-	
-		//Graphics::GetInstance()->Draw(background_sprite_1);//Vẽ background 1 cho game
-		animbrick->Render(); 
-		animball->Render();
-		//grid->Render(); 
-		//Graphics::GetInstance()->Draw(background_sprite_2);//Vẽ background 2 cho game
 		
 		spriteHandler->End();
 

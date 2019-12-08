@@ -16,7 +16,12 @@ TiledMap *TiledMap::GetInstance(LPCWSTR filePath)
 
 TiledMap::TiledMap(LPCWSTR filePath)
 {
-	LoadMap(filePath);//Gọi hàm loadMap
+	//LoadMap(filePath);//Gọi hàm loadMap
+
+	//mapWidth = 2270;
+	//mapHeight = 1127;
+	mapWidth = 750;
+	mapHeight = 400;
 }
 Row TiledMap::GetMatrixRow(int lineNum, string line, string delimiter)
 {
@@ -299,4 +304,27 @@ void TiledMap::RenderTile(Tile *curTile)
 
 	//Graphics::GetInstance()->Draw(tiles.at(curTile->tileId));//Gọi hàm vẽ
 
+}
+
+void TiledMap::RenderObject(GameObject* object)
+{
+	RECT rect;
+	rect.left = 0;
+	rect.right = object->GetWidth();
+	rect.top = 0;
+	rect.bottom = object->GetHeight();
+
+	std::wstring stemp = s2ws("");// chuyển đổi kiểu dữ liệu của file path
+	LPCWSTR path = stemp.c_str();
+	Sprite *sprite = new Sprite(path, rect, TILES_TRANSCOLOR);//khởi tạo sprite
+	SpriteData spriteData;
+	spriteData.width = object->GetWidth();
+	spriteData.height = object->GetHeight();
+	spriteData.x = object->GetPositionX();
+	spriteData.y = this->mapHeight-object->GetPositionY();
+	spriteData.scale = 1;
+	spriteData.angle = 0;
+	spriteData.isLeft = true;
+	sprite->SetData(spriteData);
+	Graphics::GetInstance()->Draw(sprite);
 }
