@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Aladin",
-    "\\Aladin\\Debug",
-    "\\Aladin\\Scenes",
-    "\\Debug"
+    "\\Aladin\\Scenes"
   ],
-  "SelectedNode": "\\Aladin\\Scenes\\MainScene.cpp",
+  "SelectedNode": "\\Aladin\\Aladin.vcxproj",
   "PreviewInSolutionExplorer": false
 }

@@ -17,6 +17,7 @@ protected:
 	//Item itemtype;
 public:
 	AnimBrick();
+	AnimBrick(int x,int y,int width,int height,string type);
 	~AnimBrick();
 	RECT* LoadRect(char * path);
 	bool IsActive() { return this->Active; }

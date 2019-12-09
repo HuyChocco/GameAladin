@@ -20,9 +20,10 @@ class Animation
 	bool isStop = false;
 	bool isAnimObject = false;
 	bool isReverse = false;
+	
 public:
 	Animation(DWORD defaultDelayTime) { this->defaultDelayTime = defaultDelayTime; };
-
+	~Animation() { frames.clear(); };
 	void SetLastFrameTime(DWORD lastFrameTime) { this->lastFrameTime = lastFrameTime; }
 	DWORD GetLastFrameTime() { return this->lastFrameTime; }	
 	int GetCurFrame() { return curFrame; }

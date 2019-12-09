@@ -24,7 +24,7 @@ RECT Viewport::GetRect()
 	rect.top = y;
 	rect.left = x;
 	rect.right = x + width;
-	rect.bottom = y - height;
+	rect.bottom = (y - height);
 	return rect;
 }
 
@@ -58,13 +58,13 @@ void Viewport::Update(DWORD dt)
 	{
 		this->y = aladin->GetPositionY() + top;
 	}*/
-	if (aladin->GetPositionX() > SCREEN_WIDTH / 2 && aladin->GetPositionX() < Game::GetInstance()->GetTiledMap()->GetWidth() - SCREEN_WIDTH / 2)
+	if (aladin->GetPositionX() > (int)SCREEN_WIDTH / 2 && aladin->GetPositionX() < (int)(Game::GetInstance()->GetTiledMap()->GetWidth() - SCREEN_WIDTH / 2))
 	{
-		this->x = aladin->GetPositionX() - SCREEN_WIDTH / 2;
+		this->x = aladin->GetPositionX() -(int) SCREEN_WIDTH / 2;
 	}
-	if (aladin->GetPositionY() > (int)SCREEN_HEIGHT / 2 && aladin->GetPositionY() < Game::GetInstance()->GetTiledMap()->GetHeight() - SCREEN_HEIGHT / 2)
+	if (aladin->GetPositionY() > (int)SCREEN_HEIGHT / 2 && aladin->GetPositionY() <(int) (Game::GetInstance()->GetTiledMap()->GetHeight() - SCREEN_HEIGHT / 2-1))
 	{
-		this->y = aladin->GetPositionY() +  SCREEN_HEIGHT / 2;
+		this->y = aladin->GetPositionY()+  (int)SCREEN_HEIGHT / 2;
 	}
 }
 //Hàm kiểm tra xem gameobject có trong viewport không

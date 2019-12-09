@@ -62,7 +62,30 @@ void GameObject::CalcPotentialGameObjectCollisions(
 	vector<LPGAMEOBJECT> &coObjects,
 	vector<LPCOLLISIONEVENT> &coEvents)
 {
-	return;
+	this->UpdateObjectCollider();
+	LPGAMEOBJECT solidTileDummy;
+	for (int i = 0; i < coObjects.size(); i++)
+	{
+		
+		solidTileDummy = coObjects[i];
+		
+
+		//if (curTile->type == ObjectType::GROUND)
+		//{
+			LPCOLLISIONEVENT e = SweptAABBEx(solidTileDummy);//kiểm tra va chạm giữa gameobject mới và gameobject hiện tại
+			e->collisionID = 1;
+
+			if (e->t >= 0 && e->t < 1.0f && (e->ny == 1 || e->nx == 1))
+			{
+				coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+			}
+			else
+			{
+				delete e;
+			}
+		//}
+	}
+
 }
 //Hàm tính toán khả năng va chạm giữa object và các tile
 void GameObject::CalcPotentialMapCollisions(
@@ -217,6 +240,8 @@ void GameObject::UpdateObjectCollider()
 	collider.vx = vx;
 	collider.vy = vy;
 	collider.dt = dt;
+	collider.width = width;
+	collider.height = height;
 	collider.direction = direction;
 }
 

@@ -5,16 +5,37 @@ void GridCell::InsertTiles(vector<Tile *> &output)
 {
 	output.insert(output.end(), this->tiles.begin(), this->tiles.end());
 }
+void GridCell::InsertObjects(vector<GameObject *> &output)
+{
+	
+	if (output.size() > 0)
+	{
+		for (int j = 0; j < this->objects.size(); j++)
+		{
+			for (int i = 0; i < output.size(); i++)
+			{
+				if (output[i] == this->objects[j])
+					return;
+			}
 
+			output.push_back(this->objects[j]);
+		}
+	}
+	else
+		output.insert(output.end(), this->objects.begin(), this->objects.end());
+
+	
+}
 void GridCell::Update(DWORD dt)
 {
 	return;
 }
 void GridCell::Render()
 {
-	for (int i = 0; i < tiles.size(); i++)
+	
+	for (int i = 0; i < objects.size(); i++)
 	{
-		TiledMap::GetInstance()->RenderTile(tiles[i]);// Gọi hàm render 1 ô tile của lớp TiledMap
+		TiledMap::GetInstance()->RenderObject(objects[i]);
 	}
 }
 

@@ -9,7 +9,7 @@ AladinState::AladinState(Aladin *aladin, int states)
 
 AladinState::~AladinState()
 {
-
+	aladin->GetAnimationsList().clear();
 }
 
 void AladinState::Jump()
@@ -19,10 +19,10 @@ void AladinState::Jump()
 	switch (state)
 	{
 	
-	case ALADIN_ANI_JUMP_NO_KEY:
+	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
 		break;
 	case ALADIN_ANI_IDLE:
-	case ALADIN_ANI_WALK:
+	case ALADIN_ANI_RUN:
 	{
 		if (aladin->IsGrounded())//kiểm tra nhân vật có ở trên mặt đất không
 		{
@@ -44,14 +44,14 @@ void AladinState::Idle()
 	{
 	case ALADIN_ANI_IDLE:
 		break;
-	case ALADIN_ANI_JUMP_NO_KEY:
+	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
 	case ALADIN_ANI_STOP:
 	{
 		aladin->SetSpeedX(0);//cho nhân vật dừng lại
 		aladin->SetState(aladin->GetIdleState());//Thay đổi state cho nhân vật
 	}
 	break;
-	case ALADIN_ANI_WALK:
+	case ALADIN_ANI_RUN:
 	{
 		aladin->SetSpeedX(0);//cho nhân vật dừng lại
 		aladin->SetState(aladin->GetIdleState());//Thay đổi state cho nhân vật
@@ -65,7 +65,7 @@ void AladinState::Walk()
 	int state = this->states;
 	switch (state)
 	{
-	case ALADIN_ANI_JUMP_NO_KEY:
+	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
 	
 		break;
 	case ALADIN_ANI_IDLE:
@@ -74,7 +74,7 @@ void AladinState::Walk()
 		aladin->SetState(aladin->GetWalkState());
 	}
 	break;
-	case ALADIN_ANI_WALK:
+	case ALADIN_ANI_RUN:
 	{
 		aladin->SetSpeedX(ALADIN_WALK_SPEED * (aladin->IsLeft() ? -1 : 1));
 	}
@@ -87,7 +87,7 @@ void AladinState::Stop()
 	switch (state)
 	{
 
-	case ALADIN_ANI_WALK:
+	case ALADIN_ANI_RUN:
 	{
 		aladin->SetState(aladin->GetStopState());
 		aladin->GetAnimationsList()[ALADIN_ANI_STOP]->setIsStop(true);
@@ -105,7 +105,7 @@ void AladinState::Attack()
 	case ALADIN_ANI_ATTACK:
 		break;
 	case ALADIN_ANI_IDLE:
-	case ALADIN_ANI_WALK:
+	case ALADIN_ANI_RUN:
 	{
 		aladin->SetState(aladin->GetAttackState());
 		
@@ -120,7 +120,7 @@ void AladinState::Falling()
 	switch (state)
 	{
 	case ALADIN_ANI_IDLE:
-	case ALADIN_ANI_WALK:
+	case ALADIN_ANI_RUN:
 	{
 		aladin->SetState(aladin->GetFallingState());
 
@@ -201,7 +201,7 @@ void AladinState::Update(DWORD dt)
 	int state = this->states;//Lấy ra trạng thái nhân vật hiện tại
 	switch (state)
 	{
-	case ALADIN_ANI_JUMP_NO_KEY://Nhân vật nhảy
+	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS://Nhân vật nhảy
 	{
 		if (aladin->IsGrounded())//Nếu nhân vật trên mặt đất
 		{
@@ -229,16 +229,17 @@ void AladinState::Update(DWORD dt)
 #pragma region	Collide with brick
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
-	vector<Tile *> tiles = Grid::GetInstance()->GetCurTiles();//Lấy ra danh sách các tiles hiện tại
-
+	//vector<Tile *> tiles = Grid::GetInstance()->GetCurTiles();//Lấy ra danh sách các tiles hiện tại
+	vector<GameObject *> objects = Grid::GetInstance()->GetCurObjects();
+	
 	//vy của nhân vật luôn bị trừ 0.025f
 	aladin->SetSpeedY(aladin->GetSpeedY() - ALADIN_GRAVITY);
 	coEvents.clear();
 	if (dt >= 40)
 		dt = 40;
 	aladin->SetDt(dt);
-	aladin->CalcPotentialCollisions(tiles, coEvents);//Tính toán khả năng đụng độ giữa tiles hiện tại và aladin object
-	
+	//aladin->CalcPotentialCollisions(tiles, coEvents);//Tính toán khả năng đụng độ giữa tiles hiện tại và aladin object
+	aladin->CalcPotentialGameObjectCollisions(objects, coEvents);
 	if(coEvents.size()>0) //xảy ra đụng độ
 	{
 		float min_tx, min_ty, nx = 0, ny;
@@ -288,7 +289,7 @@ void AladinState::Render()
 		spriteData.width = ALADIN_SPRITE_WIDTH;
 		spriteData.height = ALADIN_SPRITE_HEIGHT;
 		spriteData.x = aladin->GetPositionX();
-		spriteData.y = aladin->GetPositionY();
+		spriteData.y = aladin->GetPositionY()-ALADIN_SPRITE_HEIGHT -4;
 		spriteData.scale = 1;
 		spriteData.angle = 0;
 		spriteData.isLeft = aladin->IsLeft();
@@ -302,9 +303,9 @@ void AladinState::Render()
 		aladin->GetAnimationsList()[ALADIN_ANI_IDLE]->Render(spriteData);
 	}
 	break;
-	case ALADIN_ANI_WALK:
+	case ALADIN_ANI_RUN:
 	{
-		aladin->GetAnimationsList()[ALADIN_ANI_WALK]->Render(spriteData);
+		aladin->GetAnimationsList()[ALADIN_ANI_RUN]->Render(spriteData);
 	}
 	break;
 	case ALADIN_ANI_STOP:
@@ -313,14 +314,14 @@ void AladinState::Render()
 
 	}
 	break;
-	case ALADIN_ANI_JUMP_NO_KEY:
+	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
 	{
-		aladin->GetAnimationsList()[ALADIN_ANI_JUMP_NO_KEY]->Render(spriteData);
+		aladin->GetAnimationsList()[ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS]->Render(spriteData);
 	}
 	break;
-	case ALADIN_ANI_JUMP_WITH_KEY:
+	case ALADIN_ANI_JUMP_WHEN_PRESSING_LEFT_OR_RIGHT_ARROW:
 	{
-		aladin->GetAnimationsList()[ALADIN_ANI_JUMP_WITH_KEY]->Render(spriteData);
+		aladin->GetAnimationsList()[ALADIN_ANI_JUMP_WHEN_PRESSING_LEFT_OR_RIGHT_ARROW]->Render(spriteData);
 	}
 	break;
 	case ALADIN_ANI_FALLING_DOWN:

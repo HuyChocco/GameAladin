@@ -16,7 +16,12 @@ TiledMap *TiledMap::GetInstance(LPCWSTR filePath)
 
 TiledMap::TiledMap(LPCWSTR filePath)
 {
-	LoadMap(filePath);//Gọi hàm loadMap
+	//LoadMap(filePath);//Gọi hàm loadMap
+
+	//mapWidth = 2270;
+	//mapHeight = 1127;
+	mapWidth = 750;
+	mapHeight = 400;
 }
 Row TiledMap::GetMatrixRow(int lineNum, string line, string delimiter)
 {
@@ -130,29 +135,9 @@ std::wstring s2ws(const string& s)
 void TiledMap::LoadMap(LPCWSTR filePath)
 {
 	
-	//Sprite* sprite;
-	/*RECT sourceRect;
-
-	sourceRect.left = 0;
-	sourceRect.right = 2271;
-	sourceRect.top = 0;
-	sourceRect.bottom = 1135;
-	SpriteData spriteData;
-	spriteData.width = 2271;
-	spriteData.height = 1135;
-	spriteData.x = 0;
-	spriteData.y = 1135;
-	spriteData.scale = 1;
-	spriteData.angle = 0;
-	spriteData.isLeft = true;
-	sprite = new Sprite(filePath, sourceRect,NULL);
-	sprite->SetData(spriteData);*/
-	//string tilesLocation = LoadMatrix(filePath);//Nạp matrix của TiledMap và lấy file path tiledset
+	
 	LoadMatrix(filePath);
-	//std::wstring stemp = s2ws(tilesLocation);// chuyển đổi kiểu dữ liệu của file path
-	//LPCWSTR wstrTilesLocation = stemp.c_str();// chuyển đổi kiểu dữ liệu của file path
-
-	//LoadTileSet(wstrTilesLocation);//Gọi hàm LoadTiledSet
+	
 
 }
 void TiledMap::LoadMatrix(LPCWSTR filePath)
@@ -319,4 +304,27 @@ void TiledMap::RenderTile(Tile *curTile)
 
 	//Graphics::GetInstance()->Draw(tiles.at(curTile->tileId));//Gọi hàm vẽ
 
+}
+
+void TiledMap::RenderObject(GameObject* object)
+{
+	RECT rect;
+	rect.left = 0;
+	rect.right = object->GetWidth();
+	rect.top = 0;
+	rect.bottom = object->GetHeight();
+
+	std::wstring stemp = s2ws("");// chuyển đổi kiểu dữ liệu của file path
+	LPCWSTR path = stemp.c_str();
+	Sprite *sprite = new Sprite(path, rect, TILES_TRANSCOLOR);//khởi tạo sprite
+	SpriteData spriteData;
+	spriteData.width = object->GetWidth();
+	spriteData.height = object->GetHeight();
+	spriteData.x = object->GetPositionX();
+	spriteData.y = this->mapHeight-object->GetPositionY();
+	spriteData.scale = 1;
+	spriteData.angle = 0;
+	spriteData.isLeft = true;
+	sprite->SetData(spriteData);
+	Graphics::GetInstance()->Draw(sprite);
 }

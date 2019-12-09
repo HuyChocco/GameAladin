@@ -16,7 +16,7 @@ LoadTXT * LoadTXT::Instance()
 RECT* LoadTXT::LoadRect(char * path)
 {
 	vector<RECT*> listRect;
-	RECT* arrayRect = new RECT[200];
+	
 	fstream f;
 
 	f.open(path, ios::in);
@@ -28,7 +28,7 @@ RECT* LoadTXT::LoadRect(char * path)
 	stringstream stream_data;
 	stream_data << data;
 	stream_data >> number_of_rect;
-
+	RECT* arrayRect = new RECT[number_of_rect];
 	//top-bottom-left-right
 	//int top, bottom, left, right;
 	for (int i = 0; i < number_of_rect; i++)
@@ -53,8 +53,8 @@ RECT* LoadTXT::LoadRect(char * path)
 		RECT rect;
 		rect.left = r->left;
 		rect.right = r->right;
-		rect.top = r->top;
-		rect.bottom = r->bottom;
+		rect.top = r->bottom;
+		rect.bottom = r->top;
 
 		//listRect.push_back(r);
 		arrayRect[i] = rect;

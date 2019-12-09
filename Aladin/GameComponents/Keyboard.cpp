@@ -121,7 +121,7 @@ void Keyboard::UpdateKeyStates(DWORD dt)
 }
 void Keyboard::OnKeyDown(int KeyCode)
 {
-	Aladin* aladin = Game::GetInstance()->GetAladin();
+	Aladin* aladin = Aladin::GetInstance();
 	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 	switch (KeyCode)
 	{
@@ -136,7 +136,7 @@ void Keyboard::OnKeyDown(int KeyCode)
 }
 void Keyboard::OnKeyUp(int KeyCode)
 {
-	Aladin* aladin = Game::GetInstance()->GetAladin();
+	Aladin* aladin = Aladin::GetInstance();
 	DebugOut(L"[INFO] KeyUp: %d\n", KeyCode);
 	switch (KeyCode)
 	{
@@ -144,7 +144,7 @@ void Keyboard::OnKeyUp(int KeyCode)
 		aladin->SetIsCrouching(false);
 	case DIK_LEFT:
 	case DIK_RIGHT:
-		if (ALADIN_ANI_WALK == aladin->GetStateNumber())
+		if (ALADIN_ANI_RUN == aladin->GetStateNumber())
 		{ 
 			aladin->Stop();
 		}
