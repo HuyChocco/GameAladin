@@ -17,11 +17,17 @@ TiledMap *TiledMap::GetInstance(LPCWSTR filePath)
 TiledMap::TiledMap(LPCWSTR filePath)
 {
 	//LoadMap(filePath);//Gọi hàm loadMap
-
-	//mapWidth = 2270;
-	//mapHeight = 1127;
-	mapWidth = 750;
-	mapHeight = 400;
+	if (Game::GetInstance()->GetStage() == Stage::STAGE_1)
+	{
+		mapWidth = 2270;
+		mapHeight = 1127;
+	}
+	else if (Game::GetInstance()->GetStage() == Stage::STAGE_BOSS_1)
+	{
+		mapWidth = 750;
+		mapHeight = 400;
+	}
+	
 }
 Row TiledMap::GetMatrixRow(int lineNum, string line, string delimiter)
 {
