@@ -20,7 +20,7 @@ void Game::Init()
 
 	keyboard->InitKeyboard(hWnd);
 	//Thiết lập màn chơi ban đầu
-	this->stage = STAGE_1;
+	this->stage = STAGE_BOSS_1;
 	//Nạp các tài nguyên trong game
 	LoadResources();
 	OutputDebugString(L"[INFO] InitGame done;\n");
