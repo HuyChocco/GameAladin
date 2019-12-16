@@ -8,6 +8,7 @@ class AladinState : public State
 private:
 	Aladin *aladin;
 	int states;
+	int prevState;
 public:
 	AladinState(Aladin *aladin, int states);
 	~AladinState();
@@ -23,6 +24,7 @@ public:
 	void SitDown() override;
 	void ThrowCherryInTheAir() override;
 	void ThrowCherryWhenStand() override;
+	void Climb() override;
 	void Update(DWORD dt) override;
 	void Render() override;
 	

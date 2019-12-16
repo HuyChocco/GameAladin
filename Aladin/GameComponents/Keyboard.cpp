@@ -108,26 +108,30 @@ void Keyboard::UpdateKeyStates(DWORD dt)
 			aladin->TurnRight();
 			aladin->Walk();
 	}
-	 if (IsKeyDown(DIK_LEFT))
+	if (IsKeyDown(DIK_LEFT))
 	{
 		aladin->TurnLeft();
 		aladin->Walk();
 	}
-	 if (IsKeyDown(DIK_C))
+	if (IsKeyDown(DIK_C))
 	{
 		aladin->Jump();
 	}
-	 if (IsKeyDown(DIK_X))
+	if (IsKeyDown(DIK_X))
 	{
 		aladin->Attack();
 	}
-	 if (IsKeyDown(DIK_Z))
+	if (IsKeyDown(DIK_Z))
 	{
 		aladin->ThrowCherryWhenStand();
 	}
-	 if (IsKeyDown(DIK_DOWN))
+	if (IsKeyDown(DIK_DOWN))
 	{
 		aladin->SitDown();
+	}
+	if (IsKeyDown(DIK_UP))
+	{
+		 aladin->Climb();
 	}
 }
 void Keyboard::OnKeyDown(int KeyCode)
@@ -160,11 +164,17 @@ void Keyboard::OnKeyUp(int KeyCode)
 		aladin->SetState(aladin->GetIdleState());
 		break;
 	case DIK_X:
+		if (ALADIN_ANI_ATTACK_WHEN_SIT_DOWN == aladin->GetStateNumber())
+		{
+			aladin->SitDown();
+		}
 		break;
 	case DIK_Z:
 		break;
 	case DIK_C:
+		
 		break;
+	
 	}
 }
 

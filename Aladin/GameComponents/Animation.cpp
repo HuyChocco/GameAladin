@@ -72,7 +72,8 @@ void Animation::Render(SpriteData spriteData)
 			else if (IsAttack() == true)
 			{
 				Aladin* aladin = Aladin::GetInstance();
-				aladin->Idle();
+				if(aladin->GetStateNumber()==ALADIN_ANI_ATTACK|| aladin->GetStateNumber() == ALADIN_ANI_THROW_CHERRY_WHEN_STANDING)
+					aladin->Idle();
 				done = true;
 				setIsAttack(false);
 				curFrame = 0;

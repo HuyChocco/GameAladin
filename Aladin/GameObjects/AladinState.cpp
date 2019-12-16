@@ -53,6 +53,11 @@ void AladinState::Idle()
 	switch (state)
 	{
 	case ALADIN_ANI_THROW_CHERRY_WHEN_STANDING:
+	{
+		aladin->SetSpeedX(0);
+		aladin->SetState(aladin->GetIdleState());
+	}
+	break;
 	case ALADIN_ANI_THROW_CHERRY_WHEN_IN_THE_AIR:
 	case ALADIN_ANI_SIT_DOWN:
 	{
@@ -182,6 +187,7 @@ void AladinState::SitDown()
 
 	switch (state)
 	{
+	case ALADIN_ANI_SIT_DOWN:
 	case ALADIN_ANI_RUN:
 	case ALADIN_ANI_IDLE:
 	{
@@ -221,11 +227,30 @@ void AladinState::ThrowCherryWhenStand()
 	break;
 	}
 }
+void AladinState::Climb()
+{
+	int state = this->states;
+
+	switch (state)
+	{
+	case ALADIN_ANI_JUMP_WHEN_PRESSING_LEFT_OR_RIGHT_ARROW:
+	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
+	case ALADIN_ANI_RUN:
+	case ALADIN_ANI_IDLE:
+	{
+		aladin->SetState(aladin->GetClimbTheLadderState());
+		
+	}
+	break;
+	}
+}
 void AladinState::Update(DWORD dt)
 {
 	
 	setDelta(dt);
+	
 	int state = this->states;//Lấy ra trạng thái nhân vật hiện tại
+
 	switch (state)
 	{
 	case ALADIN_ANI_JUMP_WHEN_PRESSING_LEFT_OR_RIGHT_ARROW:
@@ -250,15 +275,14 @@ void AladinState::Update(DWORD dt)
 	break;
 	case ALADIN_ANI_THROW_CHERRY_WHEN_STANDING:
 	{
-		Cherry *cherry = new Cherry();
-		cherry->Update(dt);
-		cherry->Render();
+		Cherry *cherry = Cherry::GetInstance();
+		aladin->AddToCherryList(cherry);
 	}
 	break;
 	default:
 		break;
 	}
-
+	
 	
 
 #pragma region	Collide with map
@@ -276,7 +300,17 @@ void AladinState::Update(DWORD dt)
 	if (dt >= 40)
 		dt = 40;
 	aladin->SetDt(dt);
-	
+	if (aladin->GetCherryList().size() > 0)
+	{
+		for (auto o : aladin->GetCherryList())
+		{
+			if (o->GetState() == CHERRY_EXPLOSION)
+			{
+				aladin->DestroyCherryList();
+			}
+			
+		}
+	}
 	aladin->CheckMapCollision(objects, coEvents);
 	
 
@@ -298,6 +332,12 @@ void AladinState::Update(DWORD dt)
 				aladin->SetSpeedY(0);
 				aladin->SetIsGrounded(true);//Cho aladin dứng trên mặt đất
 			}
+		}
+		else if (coEventsResult[0]->collisionID == 2)
+		{
+			aladin->Climb();
+			aladin->SetSpeedX(0);
+			aladin->SetSpeedY(0);
 		}
 		
 		
@@ -396,10 +436,11 @@ void AladinState::Render()
 	case ALADIN_ANI_THROW_CHERRY_WHEN_STANDING:
 	{
 		aladin->GetAnimationsList()[ALADIN_ANI_THROW_CHERRY_WHEN_STANDING]->Render(spriteData);
+		
 	}
 	break;
 	}
 	
-
+	
 }
 

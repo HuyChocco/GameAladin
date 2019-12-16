@@ -56,3 +56,8 @@ void State::ThrowCherryWhenStand()
 {
 
 }
+
+void State::Climb()
+{
+
+}

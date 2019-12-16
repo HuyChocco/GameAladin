@@ -150,6 +150,7 @@
     <ClInclude Include="GameObjects\Chain.h" />
     <ClInclude Include="GameObjects\Cherry.h" />
     <ClInclude Include="GameObjects\Egg.h" />
+    <ClInclude Include="GameObjects\Enemy.h" />
     <ClInclude Include="GameObjects\Enemy1.h" />
     <ClInclude Include="GameObjects\Enemy2.h" />
     <ClInclude Include="GameObjects\Enemy3.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="GameObjects\Chain.cpp" />
     <ClCompile Include="GameObjects\Cherry.cpp" />
     <ClCompile Include="GameObjects\Egg.cpp" />
+    <ClCompile Include="GameObjects\Enemy.cpp" />
     <ClCompile Include="GameObjects\Enemy1.cpp" />
     <ClCompile Include="GameObjects\Enemy2.cpp" />
     <ClCompile Include="GameObjects\Enemy3.cpp" />

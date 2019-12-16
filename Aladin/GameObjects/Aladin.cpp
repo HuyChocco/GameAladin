@@ -19,6 +19,7 @@ Aladin::Aladin()
 	attackWhenSitDownState= new AladinState(this, ALADIN_ANI_ATTACK_WHEN_SIT_DOWN);
 	throwCherryInTheAirState= new AladinState(this, ALADIN_ANI_THROW_CHERRY_WHEN_IN_THE_AIR);
 	throwCherryWhenStandState = new AladinState(this, ALADIN_ANI_THROW_CHERRY_WHEN_STANDING);
+	climbTheLadderState = new AladinState(this, ALADIN_ANI_CLIMB_THE_LADDER);
 	state = idleState;//trạng thái ban đầu cho aladin
 
 	this->x = 60;
@@ -431,6 +432,11 @@ State * Aladin::GetThrowCherryWhenStandState()
 	this->SetStateNumber(ALADIN_ANI_THROW_CHERRY_WHEN_STANDING);
 	return throwCherryWhenStandState;
 }
+State * Aladin::GetClimbTheLadderState()
+{
+	this->SetStateNumber(ALADIN_ANI_CLIMB_THE_LADDER);
+	return climbTheLadderState;
+}
 void Aladin::Idle()
 {
 	state->Idle();
@@ -470,6 +476,10 @@ void Aladin::ThrowCherryWhenStand()
 {
 	state->ThrowCherryWhenStand();
 }
+void Aladin::Climb()
+{
+	state->Climb();
+}
 void Aladin::TurnLeft()
 {
 	isLeft = true;
@@ -491,10 +501,12 @@ void Aladin::Update(DWORD dt)
 
 	
 	state->Update(dt);// gọi hàm cập nhật của aladin state
-	
+	for (auto o : this->cherryList)
+		o->Update(dt);
 }
 void Aladin::Render()
 {
 	state->Render();//gọi hàm cập nhật của aladin state
-	
+	for (auto o : this->cherryList)
+		o->Render();
 }
