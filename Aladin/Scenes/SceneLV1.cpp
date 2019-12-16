@@ -116,7 +116,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Land(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"land");
+				obj = new Land(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -126,7 +126,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Ground(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"ground");
+				obj = new Ground(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -136,7 +136,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Wood(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"woods");
+				obj = new Wood(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -146,7 +146,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Wall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"wall");
+				obj = new Wall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -156,7 +156,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Roof(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "roof");
+				obj = new Roof(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -166,7 +166,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Chain(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "chain");
+				obj = new Chain(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -176,7 +176,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Stair(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "stair");
+				obj = new Stair(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -186,7 +186,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Egg(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "egg");
+				obj = new Egg(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "item");
 				_listItemObject.push_back(obj);
 			}
 
@@ -196,7 +196,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Bowl(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "bottle");
+				obj = new Bowl(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "item");
 				_listItemObject.push_back(obj);
 			}
 
@@ -206,7 +206,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Apple(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "apple");
+				obj = new Apple(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "item");
 				_listItemObject.push_back(obj);
 			}
 
@@ -217,7 +217,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				GameObject* obj = new Enemy1(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy1");
+				GameObject* obj = new Enemy1(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy");
 				_listEnemyObject.push_back(obj);
 			}
 
@@ -227,7 +227,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				GameObject* obj = new Enemy2(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy2");
+				GameObject* obj = new Enemy2(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy");
 				_listEnemyObject.push_back(obj);
 			}
 
@@ -237,7 +237,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new ScoreObject1(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "scoreobject1");
+				obj = new ScoreObject1(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "scoreobject");
 				_listScoreObject.push_back(obj);
 			}
 
@@ -247,7 +247,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new ScoreObject2(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "scoreobject2");
+				obj = new ScoreObject2(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "scoreobject");
 				_listScoreObject.push_back(obj);
 			}
 
@@ -257,7 +257,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new AnimNail(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animnail");
+				obj = new AnimNail(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -267,7 +267,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new AnimBall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animball");
+				obj = new AnimBall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -277,7 +277,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new AnimBrick(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animbrick");
+				obj = new AnimBrick(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -287,7 +287,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Pole(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "pole");
+				obj = new Pole(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -307,11 +307,11 @@ void SceneLV1::LoadContent(char* filePath)
 	viewport = Viewport::GetInstance();
 	tiledmap = TiledMap::GetInstance();
 	grid = Grid::GetInstance();
-	grid->AddStaticObjectsToGrid(_listStaticObject);//them static object vao grid
-	grid->AddEnemyObjectsToGrid(_listEnemyObject);
-	grid->AddScoreObjectsToGrid(_listScoreObject);
-	grid->AddItemObjectsToGrid(_listItemObject);
-	
+	//grid->AddStaticObjectsToGrid(_listStaticObject);//them static object vao grid
+	//grid->AddEnemyObjectsToGrid(_listEnemyObject);
+	//grid->AddScoreObjectsToGrid(_listScoreObject);
+	//grid->AddItemObjectsToGrid(_listItemObject);
+	grid->AddObjectsToGrid(_listStaticObject, _listEnemyObject, _listItemObject, _listScoreObject);
 }
 
 void SceneLV1::Update(float dt)

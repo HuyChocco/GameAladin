@@ -14,8 +14,11 @@ Aladin::Aladin()
 	attackState = new AladinState(this, ALADIN_ANI_ATTACK);
 	fallingState = new AladinState(this, ALADIN_ANI_FALLING_DOWN);
 	actionWhenStandState = new AladinState(this, ALADIN_ANI_ACTION_WHEN_STAND);
-	
-
+	jumpWhenPressingState= new AladinState(this, ALADIN_ANI_JUMP_WHEN_PRESSING_LEFT_OR_RIGHT_ARROW);
+	sitDownState= new AladinState(this, ALADIN_ANI_SIT_DOWN);
+	attackWhenSitDownState= new AladinState(this, ALADIN_ANI_ATTACK_WHEN_SIT_DOWN);
+	throwCherryInTheAirState= new AladinState(this, ALADIN_ANI_THROW_CHERRY_WHEN_IN_THE_AIR);
+	throwCherryWhenStandState = new AladinState(this, ALADIN_ANI_THROW_CHERRY_WHEN_STANDING);
 	state = idleState;//trạng thái ban đầu cho aladin
 
 	this->x = 60;
@@ -398,12 +401,35 @@ State * Aladin::GetActionWhenStandState()
 	this->SetStateNumber(ALADIN_ANI_ACTION_WHEN_STAND);
 	return actionWhenStandState;
 }
-
-
+State * Aladin::GetJumpWhenPressingState()
+{
+	this->SetStateNumber(ALADIN_ANI_JUMP_WHEN_PRESSING_LEFT_OR_RIGHT_ARROW);
+	return jumpWhenPressingState;
+}
+State * Aladin::GetSitDownState()
+{
+	this->SetStateNumber(ALADIN_ANI_SIT_DOWN);
+	return sitDownState;
+}
+State * Aladin::GetAttackWhenSitDownState()
+{
+	this->SetStateNumber(ALADIN_ANI_ATTACK_WHEN_SIT_DOWN);
+	return attackWhenSitDownState;
+}
 State * Aladin::GetStopState()
 {
 	this->SetStateNumber(ALADIN_ANI_STOP);
 	return stopState;
+}
+State * Aladin::GetThrowCherryInTheAirState()
+{
+	this->SetStateNumber(ALADIN_ANI_THROW_CHERRY_WHEN_IN_THE_AIR);
+	return throwCherryInTheAirState;
+}
+State * Aladin::GetThrowCherryWhenStandState()
+{
+	this->SetStateNumber(ALADIN_ANI_THROW_CHERRY_WHEN_STANDING);
+	return throwCherryWhenStandState;
 }
 void Aladin::Idle()
 {
@@ -432,7 +458,18 @@ void Aladin::Falling()
 	state->Falling();
 }
 
-
+void Aladin::SitDown()
+{
+	state->SitDown();
+}
+void Aladin::ThrowCherryInTheAir()
+{
+	state->ThrowCherryInTheAir();
+}
+void Aladin::ThrowCherryWhenStand()
+{
+	state->ThrowCherryWhenStand();
+}
 void Aladin::TurnLeft()
 {
 	isLeft = true;

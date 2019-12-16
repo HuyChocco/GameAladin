@@ -61,6 +61,9 @@ protected:
 	Collider collider;
 	string type;
 public:
+	bool isActive = false;
+	bool isDead = false;
+
 	void SetPositionX(float x) { this->x = x; }
 	void SetPositionY(float y) { this->y = y; }
 
@@ -90,8 +93,10 @@ public:
 
 	Collider GetCollider() { return this->collider; }
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT coO);
-
-	void CalcPotentialGameObjectCollisions(
+	void CheckEnemyCollision(
+		vector<LPGAMEOBJECT> &enemies, 
+		vector<LPCOLLISIONEVENT> &coEvents);
+	void CheckMapCollision(
 		vector<LPGAMEOBJECT> &coObjects,
 		vector<LPCOLLISIONEVENT> &coEvents);
 

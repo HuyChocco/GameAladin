@@ -108,16 +108,27 @@ void Keyboard::UpdateKeyStates(DWORD dt)
 			aladin->TurnRight();
 			aladin->Walk();
 	}
-	else if (IsKeyDown(DIK_LEFT))
+	 if (IsKeyDown(DIK_LEFT))
 	{
 		aladin->TurnLeft();
 		aladin->Walk();
 	}
-	//else if (IsKeyDown(DIK_X))
-	//{
-		//aladin->Attack();
-	//}
-	
+	 if (IsKeyDown(DIK_C))
+	{
+		aladin->Jump();
+	}
+	 if (IsKeyDown(DIK_X))
+	{
+		aladin->Attack();
+	}
+	 if (IsKeyDown(DIK_Z))
+	{
+		aladin->ThrowCherryWhenStand();
+	}
+	 if (IsKeyDown(DIK_DOWN))
+	{
+		aladin->SitDown();
+	}
 }
 void Keyboard::OnKeyDown(int KeyCode)
 {
@@ -125,13 +136,7 @@ void Keyboard::OnKeyDown(int KeyCode)
 	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 	switch (KeyCode)
 	{
-		case DIK_C:
-			aladin->Jump();
-			break;
-		case DIK_X:
-			aladin->Attack();
-			break;
-		
+	
 	}
 }
 void Keyboard::OnKeyUp(int KeyCode)
@@ -141,7 +146,8 @@ void Keyboard::OnKeyUp(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_DOWN:
-		aladin->SetIsCrouching(false);
+		aladin->Idle();
+		break;
 	case DIK_LEFT:
 	case DIK_RIGHT:
 		if (ALADIN_ANI_RUN == aladin->GetStateNumber())
@@ -149,12 +155,15 @@ void Keyboard::OnKeyUp(int KeyCode)
 			aladin->Stop();
 		}
 		break;
-	//case DIK_SPACE:
+	
 	case DIK_UP:
 		aladin->SetState(aladin->GetIdleState());
 		break;
 	case DIK_X:
-		aladin->SetState(aladin->GetIdleState());
+		break;
+	case DIK_Z:
+		break;
+	case DIK_C:
 		break;
 	}
 }

@@ -178,13 +178,11 @@ void SceneLV2::LoadContent(char* filePath)
 		
 	}
 	aladin = Aladin::GetInstance();
+	
 	viewport = Viewport::GetInstance();
 	tiledmap = TiledMap::GetInstance();
 	grid = Grid::GetInstance();
-	grid->AddStaticObjectsToGrid(_listStaticObject);//them static object vao grid
-	grid->AddEnemyObjectsToGrid(_listEnemyObject);
-	grid->AddScoreObjectsToGrid(_listScoreObject);
-	grid->AddItemObjectsToGrid(_listItemObject);
+	grid->AddObjectsToGrid(_listStaticObject, _listEnemyObject, _listItemObject, _listScoreObject);
 
 }
 
@@ -193,7 +191,7 @@ void SceneLV2::Update(float dt)
 
 	Scene::Update(dt);
 	aladin->Update(dt);
-
+	
 
 }
 
@@ -204,6 +202,7 @@ void SceneLV2::Draw()
 	Graphics::GetInstance()->Draw(_backgroundTextures[1]);
 	Scene::Draw();//vẽ chính
 	aladin->Render();
+	
 }
 
 Scene* SceneLV2::GetInstance()

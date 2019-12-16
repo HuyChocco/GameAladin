@@ -63,7 +63,21 @@ void Animation::Render(SpriteData spriteData)
 				setIsStop(false);
 				curFrame = 0;
 			}
-			if (IsAnimObject() == true)
+			else if (IsSitDown() == true)
+			{
+				Aladin* aladin = Aladin::GetInstance();
+				done = true;
+				curFrame = frames.size() - 1;
+			}
+			else if (IsAttack() == true)
+			{
+				Aladin* aladin = Aladin::GetInstance();
+				aladin->Idle();
+				done = true;
+				setIsAttack(false);
+				curFrame = 0;
+			}
+			else if (IsAnimObject() == true)
 			{
 				setIsReverse(true);
 				curFrame = frames.size()-1;

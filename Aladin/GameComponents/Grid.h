@@ -3,7 +3,7 @@
 #include "Constants.h" 
 #include "GridCell.h"
 #include "../GameObjects/Aladin.h"
-
+#include "../GameObjects/Cherry.h"
 #include <vector>
 
 #include <fstream>
@@ -15,6 +15,7 @@
 
 using namespace std;
 class Aladin;
+class Cherry;
 class Cell;
 
 typedef vector<GridCell *> CellRow;
@@ -28,10 +29,11 @@ private:
 
 	vector<Tile *> curTiles;
 	vector<GameObject *> curObjects;
+	vector<GameObject *> curEnemyObjects;
 	vector<Tile *> CollisionTiles;
 
 	Viewport *viewport;
-
+	Cherry * cherry;
 	Aladin * aladin;
 	vector<GameObject*> listStaticObject;
 	vector<GameObject*> listEnemyObject;
@@ -47,13 +49,19 @@ public:
 	void GetCameraPosOnGrid(int &l, int &r, int &t, int &b);
 	void GetAladinPosOnGrid(int &l, int &r, int &t, int &b);
 
-	vector<Tile *> GetCurTiles() { return this->curTiles; }
+	//vector<Tile *> GetCurTiles() { return this->curTiles; }
 	vector<GameObject *> GetCurObjects() { return this->curObjects; }
-	vector<Tile *> GetCollisionTiles() { return this->CollisionTiles; }
+	vector<GameObject *> GetCurEnemyObjects() { return this->curEnemyObjects; }
+	vector<GameObject *> GetCurStaticObjects() { return this->listStaticObject; }
+	//vector<Tile *> GetCollisionTiles() { return this->CollisionTiles; }
 	void AddStaticObjectsToGrid(vector<GameObject*> &staticObjects);
 	void AddEnemyObjectsToGrid(vector<GameObject*> &objects);
 	void AddScoreObjectsToGrid(vector<GameObject*> &objects);
 	void AddItemObjectsToGrid(vector<GameObject*> &objects);
+	void AddObjectsToGrid(vector<GameObject*> &staticObjects, 
+		vector<GameObject*> &enemyObjects, 
+		vector<GameObject*> &itemObjects,
+		vector<GameObject*> &scoreObjects);
 	void Update(DWORD dt);
 	void Render();
 
