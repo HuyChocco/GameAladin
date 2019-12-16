@@ -53,7 +53,7 @@ enum ObjectType
 
 //Giá trị tốc độ đi, tốc độ nhảy, trọng lực
 #define ALADIN_WALK_SPEED		0.25f
-#define ALADIN_JUMP_SPEED_Y		0.8f
+#define ALADIN_JUMP_SPEED_Y		0.6f
 #define ALADIN_GRAVITY			0.025f
 
 // Animation của aladin
@@ -156,18 +156,15 @@ enum ObjectType
 #define STAIR_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(163, 73, 164)
 #define EGG_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(248, 0, 248)
 #define BOTTLE_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(248, 0, 248)
+
 #define WALL_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(163, 73, 164)
 #define ROOF_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(163, 73, 164)
 #define POLE_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(163, 73, 164)
 //Animation của Shield
-#define SHIELD_SIDE 0
-#define SHIELD_CENTER 1
-#define SHIELD_UP 2
-#define SHIELD_DOWN 3
-
-#define SHIELD_WIDTH 16
-#define SHIELD_HEIGHT 16
-#define SHIELD_SPEED 0.125f
+#define CHERRY_HIDDEN 0
+#define CHERRY_ATTACK 1
+#define CHERRY_EXPLOSION 2
+#define CHERRY_SPEED 0.125f
 
 struct BoundingBox
 {

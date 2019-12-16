@@ -58,7 +58,33 @@ LPCOLLISIONEVENT GameObject::SweptAABBEx(LPGAMEOBJECT coO)
 	LPCOLLISIONEVENT e = new CollisionEvent(t, nx, ny, coO);// sự kiện dụng độ
 	return e;// Trả về con trỏ sự kiện va chạm
 }
-void GameObject::CalcPotentialGameObjectCollisions(
+void GameObject::CheckEnemyCollision(vector<LPGAMEOBJECT>& enemies, vector<LPCOLLISIONEVENT>& coEvents)
+{
+	this->UpdateObjectCollider();
+	LPGAMEOBJECT collisionEnemy;
+	for (int i = 0; i < enemies.size(); i++)
+	{
+		if (enemies[i]->isActive == true && enemies[i]->isDead == false)
+		{
+			collisionEnemy = enemies[i];
+
+
+			LPCOLLISIONEVENT e = SweptAABBEx(collisionEnemy);
+			e->collisionID = 1;
+
+			if (e->t >= 0 && e->t < 1.0f && (e->ny == 1 ))
+			{
+				coEvents.push_back(e);
+			}
+			else
+			{
+				delete e;
+			}
+		}
+	}
+}
+
+void GameObject::CheckMapCollision(
 	vector<LPGAMEOBJECT> &coObjects,
 	vector<LPCOLLISIONEVENT> &coEvents)
 {
@@ -75,7 +101,7 @@ void GameObject::CalcPotentialGameObjectCollisions(
 			LPCOLLISIONEVENT e = SweptAABBEx(solidTileDummy);//kiểm tra va chạm giữa gameobject mới và gameobject hiện tại
 			e->collisionID = 1;
 
-			if (e->t >= 0 && e->t < 1.0f && (e->ny == 1 || e->nx == 1))
+			if (e->t >= 0 && e->t < 1.0f && (e->ny == 1|| e->nx==1))
 			{
 				coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
 			}

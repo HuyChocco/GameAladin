@@ -23,20 +23,11 @@ class Aladin : public GameObject
 	State *state;
 	State *fallingState;
 	State *actionWhenStandState;
-	//State *crouchState;//cúi
-	//State *throwShieldState;//ném khiêng
-	//State *rollState;//trượt
-	//State *kickState;//đá
-	//State *standHitState;//đứng đánh
-	//State *crouchHitState;//ngồi đánh
-	//State *sitOnShieldState;//ngồi trên khiêng
-	//State *swingState;//đung đưa
-	//State *wadeState;//lội
-	//State *shieldUpState;//đưa khiêng lên 
-	//State *getHurtState;//bị thương
-	//State *deadState;//chết
-	
-
+	State *jumpWhenPressingState;
+	State *sitDownState;
+	State *attackWhenSitDownState;
+	State *throwCherryInTheAirState;
+	State *throwCherryWhenStandState;
 
 	int stateNumber;
 
@@ -76,20 +67,11 @@ public:
 	State *GetAttackState();
 	State *GetFallingState();
 	State *GetActionWhenStandState();
-	/*State *GetCrouchState();
-	State *GetThrowShieldState();
-	State *GetRollState();
-	State *GetKickState();
-	State *GetStandHitState();
-	State *GetCrouchHitState();
-	State *GetSitOnShieldState();
-	State *GetSwingState();
-	State *GetWadeState();
-	State *GetShieldUpState();
-	State *GetGetHurtState();
-	State *GetDeadState();
-	State *GetStopState();*/
-	//Các hàm kiểm tra trạng thái nhân vật
+	State *GetJumpWhenPressingState();
+	State *GetSitDownState();
+	State *GetAttackWhenSitDownState();
+	State *GetThrowCherryInTheAirState();
+	State *GetThrowCherryWhenStandState();
 	bool IsGrounded() { return isGrounded; }
 	bool IsCrouching() { return isCrouching; }
 	bool IsShieldUp() { return isShieldUp; }
@@ -105,17 +87,11 @@ public:
 	void Jump();
 	void Attack();
 	void Falling();
-	/*void ThrowShield();
-	void Roll();
-	void Kick();
-	void StandHit();
-	void CrouchHit();
-	void SitOnShield();
-	void Swing();
-	void Wade();
-	void ShieldUp();
-	void GetHurt();
-	void Dead();*/
+	void JumpWhenPressing();
+	void SitDown();
+	void AttackWhenSitDown();
+	void ThrowCherryInTheAir();
+	void ThrowCherryWhenStand();
 	//set width,height cho collider object captain
 	void SetColliderDemension(float width, float height)
 	{
@@ -134,4 +110,5 @@ public:
 	void Update(DWORD dt) override;
 	//Hàm render captain
 	void Render() override;
+	bool isHurting = false;
 };

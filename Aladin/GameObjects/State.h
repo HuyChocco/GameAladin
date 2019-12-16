@@ -16,18 +16,9 @@ public:
 	virtual void Attack();
 	virtual void Falling();
 	virtual void ActionWhenStand();
-	/*virtual void Crouch();
-	virtual void ThrowShield();
-	virtual void Roll();
-	virtual void Kick();
-	virtual void StandHit();
-	virtual void CrouchHit();
-	virtual void SitOnShield();
-	virtual void Swing();
-	virtual void Wade();
-	virtual void ShieldUp();
-	virtual void GetHurt();
-	virtual void Dead();*/
+	virtual void SitDown();
+	virtual void ThrowCherryInTheAir();
+	virtual void ThrowCherryWhenStand();
 	virtual void Update(DWORD dt);
 	virtual void Render();
 };

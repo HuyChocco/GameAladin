@@ -13,12 +13,13 @@ Grid::Grid()
 	//Lưu aladin
 	this->aladin = Aladin::GetInstance();
 
+	
 
 }
 void Grid::AddStaticObjectsToGrid(vector<GameObject*> &staticObjects)
 {
 	listStaticObject.assign( staticObjects.begin(), staticObjects.end());
-	LoadCells();
+	
 }
 void Grid::AddEnemyObjectsToGrid(vector<GameObject*> &objects)
 {
@@ -34,6 +35,17 @@ void Grid::AddItemObjectsToGrid(vector<GameObject*> &objects)
 {
 	listItemObject.assign(objects.begin(), objects.end());
 
+}
+void Grid::AddObjectsToGrid(vector<GameObject*> &staticObjects,
+	vector<GameObject*> &enemyObjects,
+	vector<GameObject*> &itemObjects,
+	vector<GameObject*> &scoreObjects)
+{
+	listStaticObject.assign(staticObjects.begin(), staticObjects.end());
+	listEnemyObject.assign(enemyObjects.begin(), enemyObjects.end());
+	listScoreObject.assign(scoreObjects.begin(), scoreObjects.end());
+	listItemObject.assign(itemObjects.begin(), itemObjects.end());
+	LoadCells();
 }
 void Grid::LoadCells()
 {
@@ -59,7 +71,30 @@ void Grid::LoadCells()
 
 		cells[cellY][cellX]->AddObject(obj);
 	}
-	
+	for (auto obj : listEnemyObject)
+	{
+		int cellX = POSXTOCELL((int)obj->GetPositionX());
+
+		int cellY = POSYTOCELL((int)(obj->GetPositionY()));
+
+		cells[cellY][cellX]->AddObject(obj);
+	}
+	for (auto obj : listItemObject)
+	{
+		int cellX = POSXTOCELL((int)obj->GetPositionX());
+
+		int cellY = POSYTOCELL((int)(obj->GetPositionY()));
+
+		cells[cellY][cellX]->AddObject(obj);
+	}
+	for (auto obj : listScoreObject)
+	{
+		int cellX = POSXTOCELL((int)obj->GetPositionX());
+
+		int cellY = POSYTOCELL((int)(obj->GetPositionY()));
+
+		cells[cellY][cellX]->AddObject(obj);
+	}
 }
 
 void Grid::GetAladinPosOnGrid(int &l, int &r, int &t, int &b)
@@ -93,29 +128,8 @@ void Grid::Update(DWORD dt)
 		}
 	}
 
-	int aladinLCell, aladinRCell, aladinTCell, aladinBCell;
-
-	//this->GetAladinPosOnGrid(aladinLCell, aladinRCell, aladinTCell, aladinBCell);
-
-	/*for (int i = aladinBCell; i <= aladinTCell; i++)
-	{
-		for (int j = aladinLCell; j <= aladinRCell; j++)
-		{
-			
-				GridCell* cell = cells[i][j];
-			
-				if (cell->GetObjects().size() > 0)
-				{
-					cell->InsertObjects(curObjects);
-					
-				}
-			
-			
-		}
-		
-		
-	}*/
 	
+
 	int lCell, rCell, tCell, bCell;
 	this->GetCameraPosOnGrid(lCell, rCell, tCell, bCell);
 
@@ -138,7 +152,10 @@ void Grid::Update(DWORD dt)
 	}
 	for (auto obj : listItemObject)
 	{
-		obj->Update(dt);
+		if (viewport->IsObjectInCamera(obj))
+		{
+			obj->Update(dt);
+		}
 	}
 	for (auto obj : listEnemyObject)
 	{
@@ -150,13 +167,13 @@ void Grid::Update(DWORD dt)
 	}
 	for (auto obj : listScoreObject)
 	{
-		//if (viewport->IsObjectInCamera(obj))
-		//{
+		if (viewport->IsObjectInCamera(obj))
+		{
 			obj->Update(dt);
-		//}
+		}
 
 	}
-	//aladin->Update(dt);
+	
 }
 
 //Hàm render của Grid
@@ -197,7 +214,6 @@ void Grid::Render()
 	{
 		obj->Render();
 	}
-	//aladin->Render();
 	
 }
 

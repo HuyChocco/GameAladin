@@ -41,61 +41,18 @@ void State::ActionWhenStand()
 {
 
 }
-//void State::Crouch()
-//{
-//}
-//
-//void State::ThrowShield()
-//{
-//}
-//
-//void State::Roll()
-//{
-//
-//}
-//
-//void State::Kick()
-//{
-//
-//}
-//
-//void State::StandHit()
-//{
-//
-//}
-//
-//void State::CrouchHit()
-//{
-//
-//}
-//
-//void State::SitOnShield()
-//{
-//
-//}
-//
-//void State::Swing()
-//{
-//
-//}
-//
-//void State::Wade()
-//{
-//
-//}
-//
-//void State::ShieldUp()
-//{
-//
-//}
-//
-//void State::GetHurt()
-//{
-//
-//}
-//
-//void State::Dead()
-//{
-//
-//}
 
+void State::SitDown()
+{
+
+}
+
+void State::ThrowCherryInTheAir()
+{
+
+}
+
+void State::ThrowCherryWhenStand()
+{
+
+}

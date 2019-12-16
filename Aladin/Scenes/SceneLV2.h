@@ -15,6 +15,7 @@ private:
 	std::vector<Sprite*> _backgroundTextures;
 	Aladin *aladin;
 	static Scene *__instance;
+	Cherry * cherry;
 public:
 	SceneLV2();
 	~SceneLV2();

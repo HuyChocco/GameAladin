@@ -18,6 +18,8 @@ class Animation
 	int curFrame;
 	bool done = false;
 	bool isStop = false;
+	bool isAttack = false;
+	bool isSitDown = false;
 	bool isAnimObject = false;
 	bool isReverse = false;
 	
@@ -32,6 +34,10 @@ public:
 	void setIsReverse(bool isReverse) { this->isReverse = isReverse; }
 	bool IsReverse() { return this->isReverse; }
 	bool IsStop() { return this->isStop; }
+	void setIsSitDown(bool isSitDown) { this->isSitDown = isSitDown; }
+	bool IsSitDown() { return this->isSitDown; }
+	void setIsAttack(bool isAttack) { this->isAttack = isAttack; }
+	bool IsAttack() { return this->isAttack; }
 	void setIsAnimObject(bool isAnimObject) { this->isAnimObject = isAnimObject; }
 	bool IsAnimObject() { return this->isAnimObject; }
 	void Reset() { curFrame = -1; }
