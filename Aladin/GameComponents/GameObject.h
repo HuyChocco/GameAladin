@@ -57,6 +57,8 @@ protected:
 
 	bool isLeft;
 	bool isFlipped;
+	bool isFlipHorizontal;
+	BoundingBox boundingBox;
 
 	Collider collider;
 	string type;
@@ -85,6 +87,9 @@ public:
 
 	void SetCollider(Collider col) { this->collider = col; }
 
+	BoundingBox GetBoundingBox() { return this->boundingBox; }
+	void SetBoundingBox(BoundingBox bb) { this->boundingBox = bb; }
+	void UpdateObjectBoundingBox();
 	void UpdateObjectCollider();
 	void UpdateTileCollider();
 
@@ -100,13 +105,7 @@ public:
 		vector<LPGAMEOBJECT> &coObjects,
 		vector<LPCOLLISIONEVENT> &coEvents);
 
-	void CalcPotentialMapCollisions(
-		vector<Tile *> &tiles,
-		vector<LPCOLLISIONEVENT> &coEvents);
-
-	void CalcPotentialCollisions(
-		vector<Tile *> &tiles,
-		vector<LPCOLLISIONEVENT> &coEvents);
+	
 
 	void FilterCollision(
 		vector<LPCOLLISIONEVENT> &coEvents,

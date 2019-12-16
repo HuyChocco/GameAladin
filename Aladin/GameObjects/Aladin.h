@@ -4,8 +4,8 @@
 #include "../GameComponents/Constants.h"
 #include "../GameComponents/Game.h"
 #include "AladinState.h"
-
-
+#include "Cherry.h"
+class Cherry;
 class Aladin : public GameObject
 {
 	Aladin();//constructor của Captain
@@ -28,7 +28,7 @@ class Aladin : public GameObject
 	State *attackWhenSitDownState;
 	State *throwCherryInTheAirState;
 	State *throwCherryWhenStandState;
-
+	State *climbTheLadderState;
 	int stateNumber;
 
 	bool isGrounded = false;
@@ -38,7 +38,7 @@ class Aladin : public GameObject
 
 	static vector<Animation *> animations;
 	DWORD lastFrameTime;
-	//vector<Animation *> animations;
+	vector<Cherry *> cherryList;
 public:
 	//Nạp các tài nguyên cho nhân vật
 	void LoadResources();
@@ -72,6 +72,7 @@ public:
 	State *GetAttackWhenSitDownState();
 	State *GetThrowCherryInTheAirState();
 	State *GetThrowCherryWhenStandState();
+	State *GetClimbTheLadderState();
 	bool IsGrounded() { return isGrounded; }
 	bool IsCrouching() { return isCrouching; }
 	bool IsShieldUp() { return isShieldUp; }
@@ -92,13 +93,24 @@ public:
 	void AttackWhenSitDown();
 	void ThrowCherryInTheAir();
 	void ThrowCherryWhenStand();
+	void Climb();
 	//set width,height cho collider object captain
 	void SetColliderDemension(float width, float height)
 	{
 		this->collider.width = width;
 		this->collider.height = height;
 	}
-
+	void AddToCherryList(Cherry* cherry) 
+	{ 
+		this->cherryList.push_back(cherry);
+	}
+	vector<Cherry*> GetCherryList() {
+		return this->cherryList;
+	}
+	void DestroyCherryList()
+	{
+		this->cherryList.clear();
+	}
 	void Reset();
 	//Hàm thiết lập trạng thái quay trái cho nhân vật
 	void TurnLeft();

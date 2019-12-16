@@ -93,6 +93,7 @@ void Cherry::Update(DWORD dt)
 
 			if (coEventsResult[0]->collisionID == 1)
 			{
+				this->state = CHERRY_EXPLOSION;
 				//if (ny == 1)
 				{
 					this->SetSpeedY(0);
@@ -140,8 +141,8 @@ void Cherry::Render()
 			//this->animations[CHERRY_HIDDEN]->Render(spriteEnemyData);
 		if (this->state == CHERRY_ATTACK)
 			this->animations[CHERRY_HIDDEN]->Render(spriteEnemyData);
-		if (this->state == CHERRY_EXPLOSION)
-			this->animations[CHERRY_EXPLOSION]->Render(spriteEnemyData);
+		/*if (this->state == CHERRY_EXPLOSION)
+			this->animations[CHERRY_EXPLOSION]->Render(spriteEnemyData);*/
 		
 
 		

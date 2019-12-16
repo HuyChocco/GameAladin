@@ -19,6 +19,7 @@ public:
 	virtual void SitDown();
 	virtual void ThrowCherryInTheAir();
 	virtual void ThrowCherryWhenStand();
+	virtual void Climb();
 	virtual void Update(DWORD dt);
 	virtual void Render();
 };

@@ -13,6 +13,27 @@
 #define MAX_FRAME_RATE 90
 
 //
+enum EnemyType
+{
+	ENEMY1, // 
+	ENEMY2, //
+	ENEMY3, //
+	BOSS1,
+	ENEMY4, //
+	ENEMY5,
+	BOSS2,
+};
+
+enum eEnemyState
+{
+	EnemyIDLE,
+	EnemyWALK,
+	EnemyCROUCH,
+	EnemyHURT,
+	EnemyJUMP,
+
+};
+
 enum Stage {
 	STAGE_1,
 	STAGE_2,

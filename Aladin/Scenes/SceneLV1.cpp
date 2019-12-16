@@ -100,7 +100,7 @@ void SceneLV1::LoadContent(char* filePath)
 	background_sprite_2->SetData(background_sprite_data_2);
 
 	_backgroundTextures.push_back(background_sprite_2);
-	
+	aladin = Aladin::GetInstance();
 	////
 	Tmx::Map* mMap = new Tmx::Map();
 	mMap->ParseFile(filePath);
@@ -176,7 +176,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Stair(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
+				obj = new Stair(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "stair");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -303,7 +303,7 @@ void SceneLV1::LoadContent(char* filePath)
 
 		}
 	}
-	aladin = Aladin::GetInstance();
+	
 	viewport = Viewport::GetInstance();
 	tiledmap = TiledMap::GetInstance();
 	grid = Grid::GetInstance();
