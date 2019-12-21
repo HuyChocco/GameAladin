@@ -13,7 +13,7 @@ class Cherry : public GameObject
 
 	int state;
 
-	bool Active;
+	
 
 	bool isStart = true;
 

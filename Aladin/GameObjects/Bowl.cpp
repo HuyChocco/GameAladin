@@ -14,7 +14,7 @@ Bowl::Bowl(int x, int y, int width, int height, string type)
 	this->height = height;
 	this->type = type;
 	vx = vy = 0;
-
+	this->isActive = true;
 	collider.x = this->x;
 	collider.y = this->y;
 	collider.vx = this->vx;
@@ -33,7 +33,7 @@ Bowl::Bowl(int x, int y, int width, int height, string type)
 	}
 
 	animations.push_back(anim);
-
+	state = 0;
 }
 Bowl::~Bowl()
 {
@@ -44,7 +44,8 @@ Bowl::~Bowl()
 
 void Bowl::Update(DWORD dt)
 {
-
+	if (this->isActive == false)
+		state = 1;
 }
 void Bowl::Render()
 {
@@ -59,7 +60,13 @@ void Bowl::Render()
 	spriteData.angle = 0;
 	spriteData.isLeft = false;
 	spriteData.isFlipped = false;
-	this->GetAnimationsList()[0]->Render(spriteData);
+	if (state == 1)
+	{
+
+	}
+	else
+		this->GetAnimationsList()[0]->Render(spriteData);
+
 
 }
 RECT * Bowl::LoadRect(char * path)

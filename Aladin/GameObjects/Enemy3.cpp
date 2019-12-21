@@ -15,7 +15,7 @@ Enemy3::Enemy3(int x, int y, int width, int height, string type)
 	this->height = height;
 	this->type = type;
 	vx = vy = 0;
-
+	this->isActive = true;
 	collider.x = this->x;
 	collider.y = this->y;
 	collider.vx = this->vx;
@@ -38,22 +38,22 @@ void Enemy3::LoadContent()
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
-	//// Enemy3_ANI_ATTACK
-	//anim = new Animation(100);
-	//for (int i = 9; i < 15; i++)
-	//{
-	//	Sprite * sprite = new Sprite(Enemy3_TEXTURE_LOCATION, listSprite[i], Enemy3_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
-	//// Enemy3_ANI_GET_HIT
-	//anim = new Animation(100);
-	//for (int i = 15; i < 24; i++)
-	//{
-	//	Sprite * sprite = new Sprite(Enemy3_TEXTURE_LOCATION, listSprite[i], Enemy3_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	// Enemy3_ANI_ATTACK
+	anim = new Animation(100);
+	for (int i = 9; i < 15; i++)
+	{
+		Sprite * sprite = new Sprite(ENEMY3_TEXTURE_LOCATION, listSprite[i], ENEMY3_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
+	// Enemy3_ANI_GET_HIT
+	anim = new Animation(100);
+	for (int i = 15; i < 24; i++)
+	{
+		Sprite * sprite = new Sprite(ENEMY3_TEXTURE_LOCATION, listSprite[i], ENEMY3_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 }
 Enemy3::~Enemy3()
 {

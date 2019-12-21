@@ -22,7 +22,8 @@ class Animation
 	bool isSitDown = false;
 	bool isAnimObject = false;
 	bool isReverse = false;
-	
+	bool isActionWhenStand = false;
+	int timeToTrans = 0;
 public:
 	Animation(DWORD defaultDelayTime) { this->defaultDelayTime = defaultDelayTime; };
 	~Animation() { frames.clear(); };
@@ -39,6 +40,9 @@ public:
 	void setIsAttack(bool isAttack) { this->isAttack = isAttack; }
 	bool IsAttack() { return this->isAttack; }
 	void setIsAnimObject(bool isAnimObject) { this->isAnimObject = isAnimObject; }
+	bool IsActionWhenStand() { return this->isActionWhenStand; }
+	
+	void setIsActionWhenStand(bool isActionWhenStand) { this->isActionWhenStand = isActionWhenStand; }
 	bool IsAnimObject() { return this->isAnimObject; }
 	void Reset() { curFrame = -1; }
 

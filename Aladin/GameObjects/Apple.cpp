@@ -14,7 +14,7 @@ Apple::Apple(int x, int y, int width, int height, string type)
 	this->height = height;
 	this->type = type;
 	vx = vy = 0;
-
+	this->isActive = true;
 	collider.x = this->x;
 	collider.y = this->y;
 	collider.vx = this->vx;
@@ -32,7 +32,8 @@ Apple::Apple(int x, int y, int width, int height, string type)
 	}
 
 	animations.push_back(anim);
-
+	state = 0;
+	
 }
 Apple::~Apple()
 {
@@ -43,7 +44,8 @@ Apple::~Apple()
 
 void Apple::Update(DWORD dt)
 {
-
+	if (this->isActive == false)
+		state = 1;
 }
 void Apple::Render()
 {
@@ -57,7 +59,12 @@ void Apple::Render()
 	spriteData.angle = 0;
 	spriteData.isLeft = false;
 	spriteData.isFlipped = false;
-	this->GetAnimationsList()[0]->Render(spriteData);
+	if (state == 1)
+	{
+
+	}
+	else
+		this->GetAnimationsList()[0]->Render(spriteData);
 
 
 }

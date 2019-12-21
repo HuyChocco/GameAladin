@@ -57,6 +57,8 @@ SceneLV1::~SceneLV1()
 
 void SceneLV1::LoadContent(char* filePath)
 {
+	lifeHUD = LifeHUD::GetInstance();
+	bulletHUD = BulletHUD::GetInstance();
 	Sprite *sprite;
 	Sprite *background_sprite_2;
 	RECT sourceRect;
@@ -100,7 +102,7 @@ void SceneLV1::LoadContent(char* filePath)
 	background_sprite_2->SetData(background_sprite_data_2);
 
 	_backgroundTextures.push_back(background_sprite_2);
-	aladin = Aladin::GetInstance();
+	
 	////
 	Tmx::Map* mMap = new Tmx::Map();
 	mMap->ParseFile(filePath);
@@ -186,7 +188,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Egg(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "item");
+				obj = new Egg(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "egg");
 				_listItemObject.push_back(obj);
 			}
 
@@ -196,7 +198,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Bowl(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "item");
+				obj = new Bowl(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "bottle");
 				_listItemObject.push_back(obj);
 			}
 
@@ -206,7 +208,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Apple(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "item");
+				obj = new Apple(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "apple");
 				_listItemObject.push_back(obj);
 			}
 
@@ -217,7 +219,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				GameObject* obj = new Enemy1(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy");
+				GameObject* obj = new Enemy1(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy1");
 				_listEnemyObject.push_back(obj);
 			}
 
@@ -227,7 +229,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				GameObject* obj = new Enemy2(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy");
+				GameObject* obj = new Enemy2(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy2");
 				_listEnemyObject.push_back(obj);
 			}
 
@@ -287,7 +289,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Pole(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
+				obj = new Pole(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "pole");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -303,7 +305,7 @@ void SceneLV1::LoadContent(char* filePath)
 
 		}
 	}
-	
+	aladin = Aladin::GetInstance();
 	viewport = Viewport::GetInstance();
 	tiledmap = TiledMap::GetInstance();
 	grid = Grid::GetInstance();
@@ -312,6 +314,7 @@ void SceneLV1::LoadContent(char* filePath)
 	//grid->AddScoreObjectsToGrid(_listScoreObject);
 	//grid->AddItemObjectsToGrid(_listItemObject);
 	grid->AddObjectsToGrid(_listStaticObject, _listEnemyObject, _listItemObject, _listScoreObject);
+	
 }
 
 void SceneLV1::Update(float dt)
@@ -319,8 +322,8 @@ void SceneLV1::Update(float dt)
 	
 	Scene::Update(dt);
 	aladin->Update(dt);
-	
-
+	lifeHUD->Update(dt);
+	bulletHUD->Update(dt);
 }
 
 void SceneLV1::Draw()
@@ -329,6 +332,8 @@ void SceneLV1::Draw()
 	Scene::Draw();//vẽ chính
 	aladin->Render();
 	Graphics::GetInstance()->Draw(_backgroundTextures[1]);
+	lifeHUD->Render();
+	bulletHUD->Render();
 }
 
 Scene* SceneLV1::GetInstance()

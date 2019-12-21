@@ -125,6 +125,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GameComponents\dxaudio.h" />
+    <ClInclude Include="GameComponents\Sound.h" />
     <ClInclude Include="GameObjects\Aladin.h" />
     <ClInclude Include="GameObjects\AladinState.h" />
     <ClInclude Include="GameComponents\Animation.h" />
@@ -156,6 +158,10 @@
     <ClInclude Include="GameObjects\Enemy3.h" />
     <ClInclude Include="GameObjects\GameItem.h" />
     <ClInclude Include="GameObjects\Ground.h" />
+    <ClInclude Include="GameObjects\Hub\BulletHub.h" />
+    <ClInclude Include="GameObjects\Hub\HubObject.h" />
+    <ClInclude Include="GameObjects\Hub\LifeHub.h" />
+    <ClInclude Include="GameObjects\Hub\Text.h" />
     <ClInclude Include="GameObjects\Land.h" />
     <ClInclude Include="GameObjects\Pole.h" />
     <ClInclude Include="GameObjects\Roof.h" />
@@ -197,6 +203,7 @@
   <ItemGroup>
     <ClCompile Include="GameComponents\Animation.cpp" />
     <ClCompile Include="GameComponents\Debug.cpp" />
+    <ClCompile Include="GameComponents\dxaudio.cpp" />
     <ClCompile Include="GameComponents\Game.cpp" />
     <ClCompile Include="GameComponents\GameObject.cpp" />
     <ClCompile Include="GameComponents\Graphics.cpp" />
@@ -205,6 +212,7 @@
     <ClCompile Include="GameComponents\Keyboard.cpp" />
     <ClCompile Include="GameComponents\LoadTXT.cpp" />
     <ClCompile Include="GameComponents\Main.cpp" />
+    <ClCompile Include="GameComponents\Sound.cpp" />
     <ClCompile Include="GameComponents\Sprite.cpp" />
     <ClCompile Include="GameComponents\TiledMap.cpp" />
     <ClCompile Include="GameComponents\Viewport.cpp" />
@@ -223,6 +231,10 @@
     <ClCompile Include="GameObjects\Enemy2.cpp" />
     <ClCompile Include="GameObjects\Enemy3.cpp" />
     <ClCompile Include="GameObjects\Ground.cpp" />
+    <ClCompile Include="GameObjects\Hub\BulletHub.cpp" />
+    <ClCompile Include="GameObjects\Hub\HubObject.cpp" />
+    <ClCompile Include="GameObjects\Hub\LifeHub.cpp" />
+    <ClCompile Include="GameObjects\Hub\Text.cpp" />
     <ClCompile Include="GameObjects\Land.cpp" />
     <ClCompile Include="GameObjects\Pole.cpp" />
     <ClCompile Include="GameObjects\Roof.cpp" />

@@ -13,6 +13,7 @@ void Animation::AddFrame(Sprite *sprite, DWORD time)
 bool isReverse = false;
 void Animation::Render(SpriteData spriteData)
 {
+	
 	//Lấy giá trị thời gian hiện tại
 	DWORD now = GetTickCount();
 	//Nếu currentFrame = -1 thì khởi tạo giá trị cho các biến
@@ -22,8 +23,8 @@ void Animation::Render(SpriteData spriteData)
 		lastFrameTime = now;
 		done = false;
 	}
-	spriteData.width = frames[curFrame].first->GetRect().right - frames[curFrame].first->GetRect().left;
-	spriteData.height = frames[curFrame].first->GetRect().bottom - frames[curFrame].first->GetRect().top;
+	//spriteData.width = frames[curFrame].first->GetRect().right - frames[curFrame].first->GetRect().left;
+	//spriteData.height = frames[curFrame].first->GetRect().bottom - frames[curFrame].first->GetRect().top;
 	frames[curFrame].first->SetData(spriteData);
 	//Vẽ frame hiện tại
 	Graphics::GetInstance()->Draw(frames[curFrame].first);
@@ -57,32 +58,43 @@ void Animation::Render(SpriteData spriteData)
 		{
 			if (IsStop() == true)
 			{
-				Aladin* aladin= Aladin::GetInstance();
-				aladin->Idle();
+				
 				done = true;
 				setIsStop(false);
 				curFrame = 0;
+				Aladin* aladin = Aladin::GetInstance();
+				aladin->Idle();
 			}
 			else if (IsSitDown() == true)
 			{
-				Aladin* aladin = Aladin::GetInstance();
+				
 				done = true;
 				curFrame = frames.size() - 1;
 			}
 			else if (IsAttack() == true)
 			{
-				Aladin* aladin = Aladin::GetInstance();
-				if(aladin->GetStateNumber()==ALADIN_ANI_ATTACK|| aladin->GetStateNumber() == ALADIN_ANI_THROW_CHERRY_WHEN_STANDING)
-					aladin->Idle();
+				
 				done = true;
 				setIsAttack(false);
 				curFrame = 0;
+				Aladin* aladin = Aladin::GetInstance();
+				if (aladin->GetStateNumber() == ALADIN_ANI_ATTACK || aladin->GetStateNumber() == ALADIN_ANI_THROW_CHERRY_WHEN_STANDING)
+					aladin->Idle();
 			}
 			else if (IsAnimObject() == true)
 			{
 				setIsReverse(true);
 				curFrame = frames.size()-1;
 				done = true;
+			}
+			else if (IsActionWhenStand() == true)
+			{
+				
+				setIsActionWhenStand(false);
+				curFrame = 0;
+				done = true;
+				Aladin* aladin = Aladin::GetInstance();
+				aladin->PlayWhenStand();
 			}
 			else
 			{

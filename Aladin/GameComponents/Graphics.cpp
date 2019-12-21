@@ -121,6 +121,19 @@ void Graphics::Draw(Sprite *sprite, D3DCOLOR color)
 	spriteHandler->SetTransform(&matrix);
 	spriteHandler->Draw(sprite->GetTexture(), &(sprite->GetRect()), NULL, NULL, color);
 }
+void Graphics::DrawWithoutTransformation(Sprite * sprite, float x, float y, D3DCOLOR color)
+{
+	if (sprite->GetTexture() == NULL)
+		return;
+
+	D3DXMATRIX mt;
+	D3DXMatrixIdentity(&mt);
+	mt._41 = x;
+	mt._42 = y;
+	Graphics::GetInstance()->GetSpriteHandler()->SetTransform(&mt);
+	Graphics::GetInstance()->GetSpriteHandler()->Draw(sprite->GetTexture(), &(sprite->GetRect()), NULL, NULL, D3DCOLOR_ARGB(255, 255, 255, 255));
+}
+
 //Hàm hủy Graphics chính
 Graphics::~Graphics()
 {

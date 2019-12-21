@@ -20,6 +20,7 @@ Aladin::Aladin()
 	throwCherryInTheAirState= new AladinState(this, ALADIN_ANI_THROW_CHERRY_WHEN_IN_THE_AIR);
 	throwCherryWhenStandState = new AladinState(this, ALADIN_ANI_THROW_CHERRY_WHEN_STANDING);
 	climbTheLadderState = new AladinState(this, ALADIN_ANI_CLIMB_THE_LADDER);
+	playWhenStandState = new AladinState(this, ALADIN_ANI_PLAY_WITH_CHERRY);
 	state = idleState;//trạng thái ban đầu cho aladin
 
 	this->x = 60;
@@ -58,7 +59,7 @@ void Aladin::LoadResources()
 	}
 	animations.push_back(animi);
 	//// ALADIN_ANI_ACTION_WHEN_STAND
-	animi = new Animation(100);
+	animi = new Animation(200);
 	for (int i = 1; i < 7; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
@@ -437,6 +438,11 @@ State * Aladin::GetClimbTheLadderState()
 	this->SetStateNumber(ALADIN_ANI_CLIMB_THE_LADDER);
 	return climbTheLadderState;
 }
+State * Aladin::GetPlayWhenStandState()
+{
+	this->SetStateNumber(ALADIN_ANI_PLAY_WITH_CHERRY);
+	return playWhenStandState;
+}
 void Aladin::Idle()
 {
 	state->Idle();
@@ -454,10 +460,17 @@ void Aladin::Jump()
 {
 	state->Jump();
 }
-
+void Aladin::JumpWhenPressing()
+{
+	state->JumpWhenPressing();
+}
 void Aladin::Attack()
 {
 	state->Attack();
+}
+void Aladin::AttackWhenSitDown()
+{
+	state->AttackWhenSitDown();
 }
 void Aladin::Falling()
 {
@@ -480,6 +493,14 @@ void Aladin::Climb()
 {
 	state->Climb();
 }
+void Aladin::PlayWhenStand()
+{
+	state->PlayWhenStand();
+}
+void Aladin::ActionWhenStand()
+{
+	state->ActionWhenStand();
+}
 void Aladin::TurnLeft()
 {
 	isLeft = true;
@@ -488,6 +509,7 @@ void Aladin::TurnRight()
 {
 	isLeft = false;
 }
+
 //Hàm trả về trạng thái nhân vật và camera ban đầu
 void Aladin::Reset()
 {

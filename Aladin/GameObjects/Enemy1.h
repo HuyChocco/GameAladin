@@ -1,23 +1,23 @@
 #pragma once
 #include "../GameComponents/GameObject.h"
 #include "../GameComponents/Game.h"
-#include "Enemy.h"
+
 class GameObject;
 class Enemy1 :
-	public Enemy
+	public GameObject
 {
 private:
 	static int Enemy1Id;
-	//float timeToFire = 50;
-
-	float countTimeToFire = 0;
-
-protected:
-	int Id;
+	vector<Animation *> animations;
 	
-	bool Active;
-
-	static vector<Animation *> animations;
+	int bloodCount;
+	int bloodNum;
+	
+protected:
+	eEnemyState eState;
+	
+	
+	
 	vector<SpriteData> spritedatalist;
 	
 public:
@@ -26,15 +26,18 @@ public:
 	void LoadContent();
 	~Enemy1();
 	RECT* LoadRect(char * path);
-	bool IsActive() { return this->Active; }
-	void SetActive(bool value) { this->Active = value; }
-	vector<Animation *> GetAnimationsList() { return animations; }
+	
+	
 	static int GetEnemy1Id() { return Enemy1Id++; }
-	int GetId() { return this->Id; }
-
+	
+	vector<Animation *> GetAnimationList() { return this->animations; }
 	virtual void Update(DWORD dt);
 	virtual void Render();
-
+	void MoveToObject(GameObject* otherObject);
+	void Bleeding();
 	bool IsLeft() { return isLeft; }
 	bool IsFlipped() { isFlipped = isLeft ? true : false; return isFlipped; }
+	eEnemyState GetEnumState() { return this->eState; }
+	void SetEnumState(eEnemyState estate) { this->eState = estate; }
+
 };
