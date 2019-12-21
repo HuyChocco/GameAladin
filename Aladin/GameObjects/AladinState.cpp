@@ -32,6 +32,20 @@ void AladinState::Jump()
 		}
 		break;
 	}
+	
+	
+	}
+}
+void AladinState::JumpWhenPressing()
+{
+	int state = this->states;//lấy trạng thái hiện tại
+
+	switch (state)
+	{
+
+	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
+	case ALADIN_ANI_IDLE:
+	case ALADIN_ANI_CLIMB_THE_LADDER:
 	case ALADIN_ANI_RUN:
 	{
 		if (aladin->IsGrounded())//kiểm tra nhân vật có ở trên mặt đất không
@@ -42,10 +56,9 @@ void AladinState::Jump()
 		}
 		break;
 	}
-	
+
 	}
 }
-
 void AladinState::Idle()
 {
 	int state = this->states;
@@ -99,7 +112,9 @@ void AladinState::Walk()
 	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
 	
 		break;
-	
+	case ALADIN_ANI_PLAY_WITH_CHERRY:
+	case ALADIN_ANI_ACTION_WHEN_STAND:
+	case ALADIN_ANI_CLIMB_THE_LADDER:
 	case ALADIN_ANI_IDLE:
 	{
 		aladin->SetSpeedX(ALADIN_WALK_SPEED * (aladin->IsLeft() ? -1 : 1));
@@ -136,6 +151,8 @@ void AladinState::Attack()
 	{
 	case ALADIN_ANI_ATTACK:
 		break;
+	case ALADIN_ANI_PLAY_WITH_CHERRY:
+	case ALADIN_ANI_ACTION_WHEN_STAND:
 	case ALADIN_ANI_IDLE:
 	case ALADIN_ANI_RUN:
 	{
@@ -143,6 +160,15 @@ void AladinState::Attack()
 		aladin->GetAnimationsList()[ALADIN_ANI_ATTACK]->setIsAttack(true);
 	}
 	break;
+	
+	}
+}
+void AladinState::AttackWhenSitDown()
+{
+	int state = this->states;
+	switch (state)
+	{
+	case ALADIN_ANI_ATTACK:
 	case ALADIN_ANI_SIT_DOWN:
 	{
 		aladin->SetState(aladin->GetAttackWhenSitDownState());
@@ -172,10 +198,11 @@ void AladinState::ActionWhenStand()
 
 	switch (state)
 	{
+
 	case ALADIN_ANI_IDLE:
 	{
 		aladin->SetState(aladin->GetActionWhenStandState());
-
+		aladin->GetAnimationsList()[ALADIN_ANI_ACTION_WHEN_STAND]->setIsActionWhenStand(true);
 	}
 	break;
 	}
@@ -187,6 +214,8 @@ void AladinState::SitDown()
 
 	switch (state)
 	{
+	case ALADIN_ANI_PLAY_WITH_CHERRY:
+	case ALADIN_ANI_ACTION_WHEN_STAND:
 	case ALADIN_ANI_SIT_DOWN:
 	case ALADIN_ANI_RUN:
 	case ALADIN_ANI_IDLE:
@@ -203,6 +232,8 @@ void AladinState::ThrowCherryInTheAir()
 
 	switch (state)
 	{
+	case ALADIN_ANI_PLAY_WITH_CHERRY:
+	case ALADIN_ANI_ACTION_WHEN_STAND:
 	case ALADIN_ANI_RUN:
 	case ALADIN_ANI_IDLE:
 	{
@@ -218,10 +249,14 @@ void AladinState::ThrowCherryWhenStand()
 
 	switch (state)
 	{
+	case ALADIN_ANI_PLAY_WITH_CHERRY:
+	case ALADIN_ANI_ACTION_WHEN_STAND:
 	case ALADIN_ANI_RUN:
 	case ALADIN_ANI_IDLE:
 	{
 		aladin->SetState(aladin->GetThrowCherryWhenStandState());
+		Cherry *cherry = new Cherry();
+		aladin->AddToCherryList(cherry);
 		aladin->GetAnimationsList()[ALADIN_ANI_THROW_CHERRY_WHEN_STANDING]->setIsAttack(true);
 	}
 	break;
@@ -233,12 +268,30 @@ void AladinState::Climb()
 
 	switch (state)
 	{
+	case ALADIN_ANI_PLAY_WITH_CHERRY:
+	case ALADIN_ANI_ACTION_WHEN_STAND:
 	case ALADIN_ANI_JUMP_WHEN_PRESSING_LEFT_OR_RIGHT_ARROW:
 	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
 	case ALADIN_ANI_RUN:
 	case ALADIN_ANI_IDLE:
 	{
 		aladin->SetState(aladin->GetClimbTheLadderState());
+		
+	}
+	break;
+	}
+}
+int countTimeToTrans = 0;
+void AladinState::PlayWhenStand()
+{
+	int state = this->states;
+
+	switch (state)
+	{
+	
+	case ALADIN_ANI_ACTION_WHEN_STAND:
+	{
+		aladin->SetState(aladin->GetPlayWhenStandState());
 		
 	}
 	break;
@@ -268,15 +321,25 @@ void AladinState::Update(DWORD dt)
 	{
 		if (aladin->IsGrounded())//Nếu nhân vật trên mặt đất
 		{
-			//aladin->SetState(aladin->GetActionWhenStandState());
-			//aladin->SetSpeedX(0);
+			if (aladin->GetTimeToTrans() == 0)
+			{
+				aladin->SetTimeToTrans(100);
+
+			}
+			else if (aladin->GetTimeToTrans() == countTimeToTrans)
+			{
+				aladin->ActionWhenStand();//chuyển sang trạng thái mới
+				countTimeToTrans = 0;
+			}
+			else
+				countTimeToTrans++;
+			
 		}
 	}
 	break;
 	case ALADIN_ANI_THROW_CHERRY_WHEN_STANDING:
 	{
-		Cherry *cherry = Cherry::GetInstance();
-		aladin->AddToCherryList(cherry);
+		
 	}
 	break;
 	default:
@@ -319,6 +382,11 @@ void AladinState::Update(DWORD dt)
 		float min_tx, min_ty, nx = 0, ny;
 
 		aladin->FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+		 if (coEventsResult[0]->collisionID == 2)//stair
+		{
+			aladin->Climb();
+			aladin->SetSpeedY(0);
+		}
 		float moveX = min_tx * aladin->GetSpeedX() * dt + nx * 0.4;
 		float moveY = min_ty * aladin->GetSpeedY() * dt + ny * 0.4;
 
@@ -333,13 +401,12 @@ void AladinState::Update(DWORD dt)
 				aladin->SetIsGrounded(true);//Cho aladin dứng trên mặt đất
 			}
 		}
-		else if (coEventsResult[0]->collisionID == 2)
-		{
-			aladin->Climb();
-			aladin->SetSpeedX(0);
-			aladin->SetSpeedY(0);
-		}
 		
+		else if (coEventsResult[0]->collisionID == 3|| 
+			coEventsResult[0]->collisionID == 4|| coEventsResult[0]->collisionID == 5)//item
+		{
+			coEventsResult[0]->coO->SetIsActive (false);
+		}
 		
 	}
 	else //trường hợp không xảy ra đụng độ
@@ -437,6 +504,18 @@ void AladinState::Render()
 	{
 		aladin->GetAnimationsList()[ALADIN_ANI_THROW_CHERRY_WHEN_STANDING]->Render(spriteData);
 		
+	}
+	break;
+	case ALADIN_ANI_CLIMB_THE_LADDER:
+	{
+		aladin->GetAnimationsList()[ALADIN_ANI_CLIMB_THE_LADDER]->Render(spriteData);
+
+	}
+	break;
+	case ALADIN_ANI_PLAY_WITH_CHERRY:
+	{
+		aladin->GetAnimationsList()[ALADIN_ANI_PLAY_WITH_CHERRY]->Render(spriteData);
+
 	}
 	break;
 	}

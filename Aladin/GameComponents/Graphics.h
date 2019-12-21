@@ -27,6 +27,8 @@ public:
 	HRESULT LoadTexture(LPCWSTR filePath, D3DCOLOR transColor, LPDIRECT3DTEXTURE9 &texture);
 	//Vẽ các sprite lấy từ textures
 	void Draw(Sprite *sprite, D3DCOLOR color = D3DCOLOR_ARGB(255, 255, 255, 255));
+	void DrawWithoutTransformation(Sprite * sprite, float x, float y, D3DCOLOR color = D3DCOLOR_ARGB(255, 255, 255, 255));
+
 	//Các hàm lấy thông tin cần thiết
 	LPDIRECT3DDEVICE9 GetDirect3DDevice() { return this->d3ddv; }
 	LPDIRECT3DSURFACE9 GetBackBuffer() { return backBuffer; }

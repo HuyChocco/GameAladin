@@ -94,14 +94,13 @@ void GameObject::CheckMapCollision(
 	{
 		
 		solidTileDummy = coObjects[i];
-		
-
-		
+		if (solidTileDummy->isActive == true)
+		{
 			LPCOLLISIONEVENT e = SweptAABBEx(solidTileDummy);//kiểm tra va chạm giữa gameobject mới và gameobject hiện tại
-			
+
 			if (solidTileDummy->GetType() == "stair")
 			{
-				if (e->t >= 0 && e->t < 1.0f )
+				if (e->t >= 0 && e->t < 1.0f)
 				{
 					e->collisionID = 2;
 					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
@@ -111,6 +110,67 @@ void GameObject::CheckMapCollision(
 					delete e;
 				}
 			}
+			else if (solidTileDummy->GetType() == "enemy1" || solidTileDummy->GetType() == "enemy2")
+			{
+				if (e->t >= 0 && e->t < 1.0f&&e->nx != 0)
+				{
+					e->collisionID = 7;
+					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+				}
+				else
+				{
+					delete e;
+				}
+			}
+			else if (solidTileDummy->GetType() == "apple")
+			{
+				if (e->t >= 0 && e->t < 1.0f)
+				{
+					e->collisionID = 3;
+					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+				}
+				else
+				{
+					delete e;
+				}
+			}
+			else if (solidTileDummy->GetType() == "egg")
+			{
+				if (e->t >= 0 && e->t < 1.0f)
+				{
+					e->collisionID = 4;
+					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+				}
+				else
+				{
+					delete e;
+				}
+			}
+			else if (solidTileDummy->GetType() == "bottle")
+			{
+				if (e->t >= 0 && e->t < 1.0f)
+				{
+					e->collisionID = 5;
+					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+				}
+				else
+				{
+					delete e;
+				}
+			}
+			else if (solidTileDummy->GetType() == "pole")
+			{
+				if (e->t >= 0 && e->t < 1.0f)
+				{
+					e->collisionID = 6;
+					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+				}
+				else
+				{
+					delete e;
+				}
+			}
+			
 			else
 			{
 				if (e->t >= 0 && e->t < 1.0f && (e->ny == 1 || e->nx == 1))
@@ -123,6 +183,10 @@ void GameObject::CheckMapCollision(
 					delete e;
 				}
 			}
+		}
+
+		
+			
 			
 		
 	}
@@ -178,11 +242,11 @@ bool GameObject::IsCollide(GameObject *CollisionObject)
 	rec.left = MainObject.x;
 	rec.right = MainObject.x + MainObject.width;
 	rec.bottom = MainObject.y - MainObject.height;
-
+	
 	Collider TargetObject = CollisionObject->collider;
 	if (MainObject.direction == 1)
 	{
-		if (TargetObject.x > rec.left && TargetObject.x < rec.right )
+		if (TargetObject.x > rec.left && TargetObject.x-2 < rec.right )
 		{
 			if ((rec.top < TargetObject.y && rec.top > TargetObject.y - TargetObject.height)
 				|| (rec.top > TargetObject.y && rec.bottom < TargetObject.y))

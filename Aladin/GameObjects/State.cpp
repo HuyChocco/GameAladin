@@ -29,7 +29,15 @@ void State::Jump()
 {
 
 }
+void State::JumpWhenPressing()
+{
+
+}
 void State::Attack()
+{
+
+}
+void State::AttackWhenSitDown()
 {
 
 }
@@ -58,6 +66,11 @@ void State::ThrowCherryWhenStand()
 }
 
 void State::Climb()
+{
+
+}
+
+void State::PlayWhenStand()
 {
 
 }

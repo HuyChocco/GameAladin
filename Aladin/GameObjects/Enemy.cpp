@@ -15,7 +15,7 @@ void Enemy::Reset()
 	this->currentHealth = this->maxHealth;
 	this->SetPositionX(this->startPositionX);
 	this->SetPositionY(this->startPositionY);
-	this->timeToAction = 0;
+	
 }
 
 void Enemy::SetState(eEnemyState state)

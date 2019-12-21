@@ -11,7 +11,7 @@ protected:
 	int Id;
 	vector<Animation *> animations;
 	bool Active;
-
+	int state;
 
 	vector<SpriteData> spritedatalist;
 	//Item itemtype;

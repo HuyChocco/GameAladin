@@ -14,7 +14,7 @@ Stair::Stair(int x, int y, int width, int height, string type)
 	this->height = height;
 	this->type = type;
 	vx = vy = 0;
-
+	this->isActive = true;
 	collider.x = this->x;
 	collider.y = this->y;
 	collider.vx = this->vx;

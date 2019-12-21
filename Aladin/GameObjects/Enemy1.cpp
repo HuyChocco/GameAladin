@@ -1,5 +1,5 @@
 #include "Enemy1.h"
-vector<Animation *> Enemy1::animations = vector<Animation *>();
+
 Enemy1::Enemy1()
 {
 	
@@ -15,14 +15,15 @@ Enemy1::Enemy1(int x, int y, int width, int height, string type)
 	this->height = height;
 	this->type = type;
 	vx = vy = 0;
-
+	this->isActive = true;
 	collider.x = this->x;
 	collider.y = this->y;
 	collider.vx = this->vx;
 	collider.vy = this->vy;
 	collider.width = this->width;
 	collider.height = this->height;
-
+	SetEnumState(eEnemyState::EnemyIDLE);
+	bloodCount = bloodNum = 10;
 	this->LoadContent();
 	
 }
@@ -30,8 +31,15 @@ void Enemy1::LoadContent()
 {
 	
 	RECT* listSprite = this->LoadRect((char*)"Resources\\Enemy\\Enemy1.txt");
-	// ENEMY1_ANI_WALK
 	Animation * anim = new Animation(100);
+	for (int i = 0; i < 1; i++)
+	{
+		Sprite * sprite = new Sprite(ENEMY1_TEXTURE_LOCATION, listSprite[i], ENEMY1_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
+	// ENEMY1_ANI_WALK
+	anim = new Animation(100);
 	for (int i = 0; i < 9; i++)
 	{
 		Sprite * sprite = new Sprite(ENEMY1_TEXTURE_LOCATION, listSprite[i], ENEMY1_TEXTURE_TRANS_COLOR);
@@ -64,8 +72,15 @@ Enemy1::~Enemy1()
 
 void Enemy1::Update(DWORD dt)
 {
+	if (bloodCount == 0)
+	{
+		SetEnumState(eEnemyState::EnemyDIE);
+		this->isActive = false;
+		return;
+	}
 	if (Viewport::GetInstance()->IsObjectInCamera(this) == true)
 	{
+		
 		this->isActive = true;
 		std::vector<LPCOLLISIONEVENT> coEvents;
 		std::vector<LPCOLLISIONEVENT> coEventsResult;
@@ -107,9 +122,13 @@ void Enemy1::Update(DWORD dt)
 
 			if (coEventsResult[0]->collisionID == 1)
 			{
-				//if (ny == 1)
+				if (ny == 1)//enemy dang dung tren map
 				{
 					this->SetSpeedY(0);
+					
+					MoveToObject(Aladin::GetInstance());
+					
+
 				}
 			}
 		}
@@ -120,32 +139,109 @@ void Enemy1::Update(DWORD dt)
 	{
 		this->isActive = false;
 	}
-	if (this->isActive)
+	
+
+}
+void Enemy1::MoveToObject(GameObject* otherObject)
+{
+	float otherPositionX = otherObject->GetPositionX();
+	float otherPositionY = otherObject->GetPositionY();
+
+	float enemyPositionX = this->GetPositionX();
+	float enemyPositionY = this->GetPositionY();
+
+	int currentState = this->GetEnumState();
+	//float deltaScale=this->getScale
+	if (currentState != eEnemyState::EnemyHURT && currentState != eEnemyState::EnemyDIE && currentState!=eEnemyState::EnemyATTACK)
 	{
-		
+		if (otherPositionX > enemyPositionX&&otherPositionX - enemyPositionX < SCREEN_WIDTH)
+		{
+			this->isLeft = false;
+			this->SetSpeedX(ENEMY_WALK_SPEED);//move right
+			
+			this->SetEnumState(eEnemyState::EnemyWALK);
+		}
+		else if (otherPositionX < enemyPositionX&&enemyPositionX - otherPositionX < SCREEN_WIDTH)
+		{
+			this->isLeft = true;
+			this->SetSpeedX(ENEMY_WALK_SPEED*-1);//move left
+			
+			this->SetEnumState(eEnemyState::EnemyWALK);
+		}
+		if (abs(enemyPositionX - otherPositionX) < this->GetWidth()*1.5)
+		{
+			this->SetSpeedX(0);//stop
+			this->SetSpeedY(0);
+			this->SetEnumState(eEnemyState::EnemyATTACK);//attack
+		}
+	}
+	else
+	{
 		if (this->IsCollide(Aladin::GetInstance()))
 		{
 			
+			if (Aladin::GetInstance()->GetStateNumber() == ALADIN_ANI_ATTACK|| Aladin::GetInstance()->GetStateNumber()==ALADIN_ANI_ATTACK_WHEN_SIT_DOWN)
+				Bleeding();
+		}
+		else
+		{
+			this->SetEnumState(eEnemyState::EnemyIDLE);
+			this->SetSpeedX(0);
 		}
 		
 	}
+	
+}
+void Enemy1::Bleeding()
+{
+	
+	this->SetSpeedX(0);
+	this->SetSpeedY(0);
+	if (this->GetAnimationList()[3]->GetCurFrame() == 0)
+	{
+		this->SetEnumState(eEnemyState::EnemyHURT);
+		bloodCount--;
+		
+	}
+	
 
 }
 void Enemy1::Render()
 {
-	SpriteData spriteData;
+	if (isActive == true)
+	{
+		SpriteData spriteData;
 
-	spriteData.width = this->width;
-	spriteData.height = this->height;
-	spriteData.x = this->x;
-	spriteData.y = this->y - this->height - 4;
-	spriteData.scale = 1;
-	spriteData.angle = 0;
-	spriteData.isLeft = false;
-	spriteData.isFlipped = false;
-	this->GetAnimationsList()[0]->Render(spriteData);
+		spriteData.width = this->width;
+		spriteData.height = this->height;
+		spriteData.x = this->x;
+		spriteData.y = this->y - this->height - 4;
+		spriteData.scale = 1;
+		spriteData.angle = 0;
+		spriteData.isLeft = !isLeft;
+		spriteData.isFlipped = !isLeft;
+
+		
+
+		switch (this->GetEnumState())
+		{
+		case eEnemyState::EnemyIDLE:
+			this->GetAnimationList()[0]->Render(spriteData);
+			break;
+		case eEnemyState::EnemyWALK:
+			this->GetAnimationList()[1]->Render(spriteData);
+			break;
+		case eEnemyState::EnemyHURT:
+			this->GetAnimationList()[3]->Render(spriteData);
+			break;
+		case eEnemyState::EnemyATTACK:
+			this->GetAnimationList()[2]->Render(spriteData);
+			break;
+		default:
+			break;
+		}
+	}
 	
-
 }
 
 RECT* Enemy1::LoadRect(char * path)

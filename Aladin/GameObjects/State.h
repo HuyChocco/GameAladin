@@ -13,13 +13,16 @@ public:
 	virtual void Walk();
 	virtual void Stop();
 	virtual void Jump();
+	virtual void JumpWhenPressing();
 	virtual void Attack();
+	virtual void AttackWhenSitDown();
 	virtual void Falling();
 	virtual void ActionWhenStand();
 	virtual void SitDown();
 	virtual void ThrowCherryInTheAir();
 	virtual void ThrowCherryWhenStand();
 	virtual void Climb();
+	virtual void PlayWhenStand();
 	virtual void Update(DWORD dt);
 	virtual void Render();
 };

@@ -13,17 +13,15 @@ protected:
 
 	int ID;
 
-	int typeAttribute = 0;
+	int bloodCount;
+	int bloodNum;
+
 
 	int maxHealth;
 
 	int currentHealth;
 
-	int timeUntouchable = 30;
-
-	int countTimeUntouchable = 30;
-
-	int timeToAction = 0;
+	
 
 	bool isRender = true;
 
@@ -41,7 +39,7 @@ public:
 
 	int GetID() { return this->ID; }
 	void SetID(int id) { this->ID = id; }
-	void SetTypeAttribute(int type) { this->typeAttribute = type; }
+	
 	int GetCurrentHealth() { return this->currentHealth; }
 	void ResetHealth() { this->currentHealth = maxHealth; }
 
@@ -50,11 +48,10 @@ public:
 
 	vector<Animation *> GetAnimationList() { return this->animations; }
 
-	bool isActive = false;
+	
 	bool isDead = false;
 
-	void TurnLeft() { this->isFlipped= true; }
-	void TurnRight() { this->isFlipped = false; }
+	
 	void DisposeBoudingBox();
 
 	bool IsFlipHorizontal() { return isFlipHorizontal ? true : false; }

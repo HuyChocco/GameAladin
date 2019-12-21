@@ -19,7 +19,7 @@ Cherry::Cherry()
 	this->type = "bullet";
 	vx =  0.125f;
 	vy = 0;
-
+	this->isActive = true;
 	collider.x = this->x;
 	collider.y = this->y;
 	collider.vx = this->vx;
@@ -59,7 +59,7 @@ void Cherry::Update(DWORD dt)
 		std::vector<GameObject *> mapObjects = Grid::GetInstance()->GetCurObjects();
 
 		this->SetSpeedY(this->GetSpeedY() - ALADIN_GRAVITY);
-		this->SetSpeedX(ALADIN_WALK_SPEED);
+		this->SetSpeedX((Aladin::GetInstance()->IsLeft() ? -1 : 1)*ALADIN_WALK_SPEED);
 		coEvents.clear();
 		if (dt >= 40)
 			dt = 40;

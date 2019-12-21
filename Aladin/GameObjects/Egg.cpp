@@ -14,7 +14,7 @@ Egg::Egg(int x, int y, int width, int height, string type)
 	this->height = height;
 	this->type = type;
 	vx = vy = 0;
-
+	this->isActive = true;
 	collider.x = this->x;
 	collider.y = this->y;
 	collider.vx = this->vx;
@@ -32,7 +32,7 @@ Egg::Egg(int x, int y, int width, int height, string type)
 	}
 
 	animations.push_back(anim);
-
+	state = 0;
 }
 Egg::~Egg()
 {
@@ -43,7 +43,8 @@ Egg::~Egg()
 
 void Egg::Update(DWORD dt)
 {
-
+	if (this->isActive == false)
+		state = 1;
 }
 void Egg::Render()
 {
@@ -57,7 +58,13 @@ void Egg::Render()
 	spriteData.angle = 0;
 	spriteData.isLeft = false;
 	spriteData.isFlipped = false;
-	this->GetAnimationsList()[0]->Render(spriteData);
+	if (state == 1)
+	{
+
+	}
+	else
+		this->GetAnimationsList()[0]->Render(spriteData);
+
 
 }
 RECT * Egg::LoadRect(char * path)

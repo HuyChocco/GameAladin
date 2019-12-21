@@ -33,6 +33,7 @@ public:
 	void SetTexture(LPCWSTR filePath, D3DCOLOR transColor);
 	void SetRect(RECT rect);
 	void SetData(SpriteData spriteData);
+	void SetSize(int width, int height) { this->width = width; this->height = height; }
 
 	LPDIRECT3DTEXTURE9 GetTexture() { return texture; };
 	RECT GetRect() { return rect; };

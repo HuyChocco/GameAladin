@@ -15,7 +15,7 @@ Enemy2::Enemy2(int x, int y, int width, int height, string type)
 	this->height = height;
 	this->type = type;
 	vx = vy = 0;
-
+	this->isActive = true;
 	collider.x = this->x;
 	collider.y = this->y;
 	collider.vx = this->vx;
@@ -42,45 +42,45 @@ void Enemy2::LoadContent()
 	}
 	animations.push_back(anim);
 	// ENEMY2_ANI_ACTION_WHEN_STANDING
-	//anim = new Animation(100);
-	//for (int i = 9; i < 15; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
-	//// ENEMY2_ANI_ATTACK_1
-	//anim = new Animation(100);
-	//for (int i = 15; i < 21; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	anim = new Animation(100);
+	for (int i = 9; i < 15; i++)
+	{
+		Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
+	// ENEMY2_ANI_ATTACK_1
+	anim = new Animation(100);
+	for (int i = 15; i < 21; i++)
+	{
+		Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 	// ENEMY2_ANI_ATTACK_2
-	//anim = new Animation(100);
-	//for (int i = 21; i < 26; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
-	//// ENEMY2_ANI_GET_HIT_1
-	//anim = new Animation(100);
-	//for (int i = 26; i < 32; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
-	//// ENEMY2_ANI_GET_HIT_2
-	//anim = new Animation(100);
-	//for (int i = 32; i < 41; i++)
-	//{
-	//	Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
-	//	anim->AddFrame(sprite);
-	//}
-	//animations.push_back(anim);
+	anim = new Animation(100);
+	for (int i = 21; i < 26; i++)
+	{
+		Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
+	// ENEMY2_ANI_GET_HIT_1
+	anim = new Animation(100);
+	for (int i = 26; i < 32; i++)
+	{
+		Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
+	// ENEMY2_ANI_GET_HIT_2
+	anim = new Animation(100);
+	for (int i = 32; i < 41; i++)
+	{
+		Sprite * sprite = new Sprite(ENEMY2_TEXTURE_LOCATION, listSprite[i], ENEMY2_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+	animations.push_back(anim);
 }
 Enemy2::~Enemy2()
 {

@@ -12,7 +12,7 @@ protected:
 	vector<Animation *> animations;
 	bool Active;
 
-
+	int state;
 	vector<SpriteData> spritedatalist;
 	//Item itemtype;
 public:
