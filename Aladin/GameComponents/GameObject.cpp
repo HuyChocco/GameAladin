@@ -98,7 +98,7 @@ void GameObject::CheckMapCollision(
 		{
 			LPCOLLISIONEVENT e = SweptAABBEx(solidTileDummy);//kiểm tra va chạm giữa gameobject mới và gameobject hiện tại
 
-			if (solidTileDummy->GetType() == "stair")
+			if (solidTileDummy->GetType() == "chain")
 			{
 				if (e->t >= 0 && e->t < 1.0f)
 				{
@@ -110,11 +110,23 @@ void GameObject::CheckMapCollision(
 					delete e;
 				}
 			}
-			else if (solidTileDummy->GetType() == "enemy1" || solidTileDummy->GetType() == "enemy2")
+			else if (solidTileDummy->GetType() == "enemy1" )
 			{
 				if (e->t >= 0 && e->t < 1.0f&&e->nx != 0)
 				{
 					e->collisionID = 7;
+					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+				}
+				else
+				{
+					delete e;
+				}
+			}
+			else if (solidTileDummy->GetType() == "enemy2")
+			{
+				if (e->t >= 0 && e->t < 1.0f&&e->nx != 0)
+				{
+					e->collisionID = 9;
 					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
 				}
 				else
@@ -162,7 +174,7 @@ void GameObject::CheckMapCollision(
 			{
 				if (e->t >= 0 && e->t < 1.0f)
 				{
-					e->collisionID = 6;
+					e->collisionID = 1;//trùng với land
 					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
 				}
 				else
@@ -171,9 +183,31 @@ void GameObject::CheckMapCollision(
 				}
 			}
 			
+			else if (solidTileDummy->GetType() == "animball"||solidTileDummy->GetType() == "animnail")
+			{
+				if (e->t >= 0 && e->t < 1.0f&&e->nx != 0)
+				{
+					e->collisionID = 8;
+					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+				}
+				else
+				{
+					delete e;
+				}
+			}
 			else
 			{
-				if (e->t >= 0 && e->t < 1.0f && (e->ny == 1 || e->nx == 1))
+				if (solidTileDummy->GetType() == "wall")
+				{
+					if (e->t >= 0 && e->t < 1.0f &&  e->nx !=0)
+					{
+						e->collisionID = 1;
+						coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+					}
+					else
+						delete e;
+				}
+				else if (e->t >= 0 && e->t < 1.0f && (e->ny == 1 || e->nx == 1))
 				{
 					e->collisionID = 1;
 					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
@@ -261,7 +295,7 @@ bool GameObject::IsCollide(GameObject *CollisionObject)
 	}
 	else if (MainObject.direction == -1)
 	{
-		if (TargetObject.x + TargetObject.width > rec.left && TargetObject.x + TargetObject.width < rec.right)
+		if (TargetObject.x + TargetObject.width > rec.left-2 && TargetObject.x + TargetObject.width < rec.right)
 		{
 			if ((rec.top < TargetObject.y && rec.top > TargetObject.y - TargetObject.height)
 				|| (rec.top > TargetObject.y && rec.bottom < TargetObject.y))

@@ -44,7 +44,7 @@ void Cherry::LoadResources()
 	Sprite * sprite = new Sprite(L"Resources\\GameItem\\items.png", listSprite[0], APPLE_TEXTURE_TRANS_COLOR);
 	animation->AddFrame(sprite);
 	animations.push_back(animation);
-	
+	animations.push_back(Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_CHERRY_EXPLOSION]);
 }
 
 void Cherry::Update(DWORD dt)
@@ -58,8 +58,8 @@ void Cherry::Update(DWORD dt)
 
 		std::vector<GameObject *> mapObjects = Grid::GetInstance()->GetCurObjects();
 
-		this->SetSpeedY(this->GetSpeedY() - ALADIN_GRAVITY);
-		this->SetSpeedX((Aladin::GetInstance()->IsLeft() ? -1 : 1)*ALADIN_WALK_SPEED);
+		this->SetSpeedY(this->GetSpeedY() - APPLE_GRAVITY);
+		this->SetSpeedX((Aladin::GetInstance()->IsLeft() ? -1 : 1)*APPLE_WALK_SPEED);
 		coEvents.clear();
 		if (dt >= 40)
 			dt = 40;
@@ -91,12 +91,17 @@ void Cherry::Update(DWORD dt)
 			if (nx != 0) this->SetSpeedX(0);
 			if (ny != 0) this->SetSpeedY(0);
 
-			if (coEventsResult[0]->collisionID == 1)
+			
 			{
 				this->state = CHERRY_EXPLOSION;
-				//if (ny == 1)
+				
 				{
 					this->SetSpeedY(0);
+				}
+				if (this->animations[CHERRY_ATTACK]->IsDone() == true)
+				{
+					this->isActive = false;
+
 				}
 			}
 		}
@@ -107,12 +112,7 @@ void Cherry::Update(DWORD dt)
 	{
 		this->isActive = false;
 	}
-	if (this->isActive)
-	{
-
-		
-
-	}
+	
 }
 
 void Cherry::CherryAttacking()
@@ -137,12 +137,20 @@ void Cherry::Render()
 		spriteEnemyData.isFlipped =aladin->IsFlipped();
 		spriteEnemyData.isLeft = aladin->IsLeft();
 
-		//if (this->state == CHERRY_HIDDEN)
-			//this->animations[CHERRY_HIDDEN]->Render(spriteEnemyData);
-		if (this->state == CHERRY_ATTACK)
-			this->animations[CHERRY_HIDDEN]->Render(spriteEnemyData);
-		/*if (this->state == CHERRY_EXPLOSION)
-			this->animations[CHERRY_EXPLOSION]->Render(spriteEnemyData);*/
+		
+		if (this->isActive)
+		{
+			if (this->state == CHERRY_ATTACK)
+				this->animations[CHERRY_HIDDEN]->Render(spriteEnemyData);
+			if (this->state == CHERRY_EXPLOSION)
+			{
+				//this->animations[CHERRY_ATTACK]->setIsExplosion(true);
+				this->animations[CHERRY_ATTACK]->Render(spriteEnemyData);
+			}
+				
+
+		}
+		
 		
 
 		
