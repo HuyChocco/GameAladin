@@ -9,6 +9,7 @@ BulletHUD::BulletHUD()
 }
 void BulletHUD::SetText(int num)
 {
+	resultString.clear();
 	this->numBullet = num;
 	stringstream ss;
 	ss << this->numBullet;
