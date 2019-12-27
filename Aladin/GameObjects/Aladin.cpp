@@ -22,6 +22,7 @@ Aladin::Aladin()
 	climbTheLadderState = new AladinState(this, ALADIN_ANI_CLIMB_THE_LADDER);
 	climbTheRopeState = new AladinState(this, ALADIN_ANI_CLIMB_THE_ROPE);
 	playWhenStandState = new AladinState(this, ALADIN_ANI_PLAY_WITH_CHERRY);
+	hurtState = new AladinState(this, ALADIN_ANI_HURT);
 	state = idleState;//trạng thái ban đầu cho aladin
 
 	this->x = 60;
@@ -36,7 +37,7 @@ Aladin::Aladin()
 	collider.width = this->width;
 	collider.height = this->height;
 	this->isActive = true;
-	bloodNum = 20;
+	bloodNum = 120;
 	LoadResources();
 }
 
@@ -207,7 +208,19 @@ void Aladin::LoadResources()
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-	
+	//// ALADIN_ANI_HURT
+	animi = new Animation(200);
+	for (int i = 1; i < 3; i++)
+	{
+		RECT rect;
+		rect.left = 0;
+		rect.top = 0;
+		rect.right = 0;
+		rect.bottom = 0;
+		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, rect, ALADIN_TEXTURE_TRANS_COLOR);
+		animi->AddFrame(sprite);
+	}
+	animations.push_back(animi);
 }
 
 void Aladin::SetState(State * state)
@@ -292,6 +305,11 @@ State * Aladin::GetPlayWhenStandState()
 	this->SetStateNumber(ALADIN_ANI_PLAY_WITH_CHERRY);
 	return playWhenStandState;
 }
+State * Aladin::GetHurtState()
+{
+	this->SetStateNumber(ALADIN_ANI_HURT);
+	return hurtState;
+}
 void Aladin::Idle()
 {
 	state->Idle();
@@ -349,6 +367,10 @@ void Aladin::PlayWhenStand()
 void Aladin::ActionWhenStand()
 {
 	state->ActionWhenStand();
+}
+void Aladin::Hurt()
+{
+	state->Hurt();
 }
 void Aladin::TurnLeft()
 {

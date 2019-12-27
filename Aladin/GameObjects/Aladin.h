@@ -31,6 +31,7 @@ class Aladin : public GameObject
 	State *climbTheLadderState;
 	State *climbTheRopeState;
 	State *playWhenStandState;
+	State *hurtState;
 	int stateNumber;
 
 	bool isGrounded = false;
@@ -82,6 +83,7 @@ public:
 	State *GetClimbTheLadderState();
 	State *GetClimbTheRopeState();
 	State *GetPlayWhenStandState();
+	State *GetHurtState();
 	bool IsGrounded() { return isGrounded; }
 	bool IsCrouching() { return isCrouching; }
 	bool IsShieldUp() { return isShieldUp; }
@@ -105,6 +107,7 @@ public:
 	void Climb();
 	void PlayWhenStand();
 	void ActionWhenStand();
+	void Hurt();
 	//set width,height cho collider object captain
 	void SetColliderDemension(float width, float height)
 	{

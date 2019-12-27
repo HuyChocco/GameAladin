@@ -37,14 +37,30 @@ AnimBall::AnimBall(int x,int y,int width,int height,string type)
 	spritedatalist.push_back(spriteData);
 
 	RECT* listSprite = LoadRect((char*)"Resources\\GameItem\\animball.txt");
-	Animation * anim = new Animation(100);
-	for (int i = 0; i < 15; i++)
+	if (this->type == "animball1")
 	{
-		Sprite * sprite = new Sprite(ANIMBALL_TEXTURE_LOCATION, listSprite[i], ANIMBALL_TEXTURE_TRANS_COLOR);
-		anim->AddFrame(sprite);
+		Animation * anim = new Animation(100);
+		for (int i = 0; i < 15; i++)
+		{
+			Sprite * sprite = new Sprite(ANIMBALL_TEXTURE_LOCATION, listSprite[i], ANIMBALL_TEXTURE_TRANS_COLOR);
+			anim->AddFrame(sprite);
+		}
+		anim->setIsAnimObject(true);
+		animations.push_back(anim);
 	}
-	anim->setIsAnimObject(true);
-	animations.push_back(anim);
+	else if (this->type == "animball2")
+	{
+		Animation * anim = new Animation(100);
+		for (int i = 15; i >=0;i--)
+		{
+			Sprite * sprite = new Sprite(ANIMBALL_TEXTURE_LOCATION, listSprite[i], ANIMBALL_TEXTURE_TRANS_COLOR);
+			anim->AddFrame(sprite);
+		}
+		anim->setIsAnimObject(true);
+		animations.push_back(anim);
+	}
+	
+
 }
 AnimBall::~AnimBall()
 {

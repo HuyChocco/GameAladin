@@ -183,7 +183,7 @@ void GameObject::CheckMapCollision(
 				}
 			}
 			
-			else if (solidTileDummy->GetType() == "animball"||solidTileDummy->GetType() == "animnail")
+			else if (solidTileDummy->GetType() == "animball1"||solidTileDummy->GetType() == "animnail"||solidTileDummy->GetType() == "animball2"  )
 			{
 				if (e->t >= 0 && e->t < 1.0f&&e->nx != 0)
 				{

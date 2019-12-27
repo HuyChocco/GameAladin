@@ -36,14 +36,29 @@ AnimBrick::AnimBrick(int x,int y,int width,int height,string type)
 	spriteData.isFlipped = false;
 	spritedatalist.push_back(spriteData);
 	RECT* listSprite = LoadRect((char*)"Resources\\GameItem\\animbrick.txt");
-	Animation * anim = new Animation(300);
-	for (int i = 0; i < 5; i++)
+	if (this->type== "animbrick1")
 	{
-		Sprite * sprite = new Sprite(ANIMBRICK_TEXTURE_LOCATION, listSprite[i], ANIMBRICK_TEXTURE_TRANS_COLOR);
-		anim->AddFrame(sprite);
+		Animation * anim = new Animation(300);
+		for (int i = 0; i < 5; i++)
+		{
+			Sprite * sprite = new Sprite(ANIMBRICK_TEXTURE_LOCATION, listSprite[i], ANIMBRICK_TEXTURE_TRANS_COLOR);
+			anim->AddFrame(sprite);
+		}
+		anim->setIsAnimObject(true);
+		animations.push_back(anim);
 	}
-	anim->setIsAnimObject(true);
-	animations.push_back(anim);
+	else if (this->type == "animbrick2")
+	{
+		Animation * anim = new Animation(300);
+		for (int i =4; i >= 0; i--)
+		{
+			Sprite * sprite = new Sprite(ANIMBRICK_TEXTURE_LOCATION, listSprite[i], ANIMBRICK_TEXTURE_TRANS_COLOR);
+			anim->AddFrame(sprite);
+		}
+		anim->setIsAnimObject(true);
+		animations.push_back(anim);
+	}
+	
 }
 AnimBrick::~AnimBrick()
 {

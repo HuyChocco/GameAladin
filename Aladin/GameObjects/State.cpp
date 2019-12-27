@@ -74,3 +74,8 @@ void State::PlayWhenStand()
 {
 
 }
+
+void State::Hurt()
+{
+
+}

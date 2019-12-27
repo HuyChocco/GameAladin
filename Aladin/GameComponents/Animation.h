@@ -24,9 +24,11 @@ class Animation
 	bool isReverse = false;
 	bool isActionWhenStand = false;
 	int timeToTrans = 0;
+	
 	//cherry's animations
 	//bool isExplosion = false;
 public:
+	SpriteData spriteData;
 	Animation(DWORD defaultDelayTime) { this->defaultDelayTime = defaultDelayTime; };
 	~Animation() { frames.clear(); };
 	void SetLastFrameTime(DWORD lastFrameTime) { this->lastFrameTime = lastFrameTime; }

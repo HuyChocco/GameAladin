@@ -104,7 +104,7 @@ enum ObjectType
 #define ALADIN_ANI_GET_HIT 16
 #define ALADIN_ANI_DIE 17
 #define ALADIN_ANI_STOP 18
-
+#define ALADIN_ANI_HURT 19
 //#define ALADIN_ANI_LOOP_5X 600
 //
 #define ALADIN_ANI_FALLING_DOWN 130
