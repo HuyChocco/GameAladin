@@ -4,6 +4,8 @@
 #include "Aladin.h"
 #include "Enemy1.h"
 #include "Enemy2.h"
+#include "AnimNail.h"
+
 class Enemy1;
 class Enemy2;
 class Aladin;
@@ -32,6 +34,7 @@ public:
 	void Climb() override;
 	void PlayWhenStand() override;
 	void Hurt() override;
+	void Die() override;
 	void Update(DWORD dt) override;
 	void Render() override;
 	

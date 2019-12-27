@@ -32,6 +32,15 @@ Apple::Apple(int x, int y, int width, int height, string type)
 	}
 
 	animations.push_back(anim);
+	listSprite = LoadRect((char*)"Resources\\GameItem\\appleexplosion.txt");
+	 anim = new Animation(100);
+	for (int i = 0; i < 4; i++)
+	{
+		Sprite * sprite = new Sprite(L"Resources\\GameItem\\items.png", listSprite[i], APPLE_TEXTURE_TRANS_COLOR);
+		anim->AddFrame(sprite);
+	}
+
+	animations.push_back(anim);
 	state = 0;
 	
 }
@@ -49,6 +58,7 @@ void Apple::Update(DWORD dt)
 }
 void Apple::Render()
 {
+	
 	SpriteData spriteData;
 
 	spriteData.width = this->width;
@@ -61,7 +71,9 @@ void Apple::Render()
 	spriteData.isFlipped = false;
 	if (state == 1)
 	{
-
+		if (this->GetAnimationsList()[1]->IsDone())
+			return;
+		this->GetAnimationsList()[1]->Render(spriteData);
 	}
 	else
 		this->GetAnimationsList()[0]->Render(spriteData);
@@ -87,6 +99,7 @@ RECT * Apple::LoadRect(char * path)
 	RECT* arrayRect = new RECT[number_of_rect];
 	for (int i = 0; i < number_of_rect; i++)
 	{
+		stringstream stream_data;
 		data = "";
 		stream_data.clear();
 

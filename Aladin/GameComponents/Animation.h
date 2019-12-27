@@ -24,6 +24,7 @@ class Animation
 	bool isReverse = false;
 	bool isActionWhenStand = false;
 	int timeToTrans = 0;
+	bool isStopEnemy = false;
 	
 	//cherry's animations
 	//bool isExplosion = false;
@@ -34,6 +35,8 @@ public:
 	void SetLastFrameTime(DWORD lastFrameTime) { this->lastFrameTime = lastFrameTime; }
 	DWORD GetLastFrameTime() { return this->lastFrameTime; }	
 	int GetCurFrame() { return curFrame; }
+	bool IsStopEnemy() { return isStopEnemy; }
+	void SetIsStopEnemy(bool isStopEnemy) { this->isStopEnemy = isStopEnemy; }
 	bool IsDone() { return done; }
 	void SetIsDone(bool done) { this->done=done; }
 	void setIsStop(bool isStop) { this->isStop = isStop; }

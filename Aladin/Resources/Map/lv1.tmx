@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="1" height="1" tilewidth="2270" tileheight="1127" infinite="0" nextlayerid="25" nextobjectid="392">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="1" height="1" tilewidth="2270" tileheight="1127" infinite="0" nextlayerid="26" nextobjectid="393">
  <tileset firstgid="1" source="Aladdin-Level4-Sultan'sDungeon.tsx"/>
  <layer id="1" name="Tile Layer 1" width="1" height="1">
   <data encoding="base64" compression="zlib">
@@ -47,17 +47,17 @@
   <object id="15" x="128" y="751.333" width="128" height="6.66667"/>
   <object id="16" x="424.667" y="818.667" width="191.333" height="4.66667"/>
   <object id="17" x="449.332" y="915.69" width="483.33" height="4.66799" rotation="-0.113267"/>
-  <object id="18" x="946" y="673.333" width="63.3333" height="8"/>
+  <object id="18" x="946" y="673.333" width="63.3333" height="12"/>
   <object id="19" x="864" y="704.667" width="94.6667" height="6.66667"/>
   <object id="20" x="449.333" y="705.333" width="334.667" height="4.66667"/>
   <object id="21" x="548" y="585.333" width="364" height="4.66667"/>
   <object id="23" x="1114.67" y="689.333" width="164.667" height="6"/>
-  <object id="25" x="1111.33" y="912.667" width="119.333" height="6"/>
+  <object id="25" x="1111.33" y="912.667" width="119.333" height="8.66667"/>
   <object id="26" x="1064.67" y="481.333" width="170" height="6.66667"/>
   <object id="27" x="763.333" y="737.333" width="125.333" height="4.66667"/>
   <object id="29" x="768.667" y="218" width="142.667" height="4"/>
   <object id="30" x="1097.33" y="210.333" width="165.333" height="3"/>
-  <object id="32" x="1120" y="320" width="141.333" height="6"/>
+  <object id="32" x="1120" y="320" width="141.333" height="14"/>
   <object id="34" x="1232" y="368" width="502" height="5.33333"/>
   <object id="35" x="1792" y="369.333" width="161.333" height="5.33333"/>
   <object id="37" x="424" y="456.667" width="216" height="5.33333"/>
@@ -118,15 +118,15 @@
   <object id="367" x="401.333" y="316" width="56" height="48"/>
  </objectgroup>
  <objectgroup id="20" name="enemy3">
-  <object id="346" x="951" y="576" width="56" height="98"/>
-  <object id="347" x="929" y="736" width="56" height="98"/>
-  <object id="348" x="594" y="818" width="56" height="98"/>
-  <object id="349" x="1150" y="815" width="56" height="98"/>
-  <object id="350" x="1346" y="655" width="56" height="98"/>
-  <object id="351" x="1193" y="223" width="56" height="98"/>
-  <object id="362" x="1622" y="434" width="56" height="98"/>
-  <object id="363" x="1716" y="671" width="56" height="98"/>
-  <object id="364" x="1819" y="510" width="56" height="98"/>
+  <object id="346" x="951" y="576" width="56" height="94"/>
+  <object id="347" x="929" y="736" width="56" height="96.6667"/>
+  <object id="348" x="594" y="818" width="56" height="91.3333"/>
+  <object id="349" x="1150" y="815" width="56" height="92.6667"/>
+  <object id="350" x="1346" y="655" width="56" height="90"/>
+  <object id="351" x="1193" y="223" width="56" height="94"/>
+  <object id="362" x="1622" y="434" width="56" height="87.3333"/>
+  <object id="363" x="1716" y="671" width="56" height="91.3333"/>
+  <object id="364" x="1819" y="510" width="56" height="91.3333"/>
  </objectgroup>
  <objectgroup id="16" name="stair">
   <object id="280" x="240" y="570" width="18" height="181"/>
@@ -320,6 +320,9 @@
   <object id="386" x="388" y="918.667" width="21.3333" height="16"/>
   <object id="387" x="1002.67" y="852" width="21.3333" height="16"/>
   <object id="388" x="1032" y="292" width="21.3333" height="16"/>
+ </objectgroup>
+ <objectgroup id="25" name="magictable">
+  <object id="392" x="312" y="300" width="81.3333" height="64"/>
  </objectgroup>
  <objectgroup id="22" name="animbrick2">
   <object id="372" x="353.333" y="685.333" width="40" height="26.6667"/>

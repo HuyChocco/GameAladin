@@ -24,6 +24,7 @@ public:
 	virtual void Climb();
 	virtual void PlayWhenStand();
 	virtual void Hurt();
+	virtual void Die();
 	virtual void Update(DWORD dt);
 	virtual void Render();
 };

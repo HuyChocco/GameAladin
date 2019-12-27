@@ -6,6 +6,7 @@
 #include "../lib/Tmx.h.in"
 #include"../GameObjects/Hub/LifeHub.h"
 #include"../GameObjects/Hub/BulletHub.h"
+#include "../GameComponents/Sound.h"
 class Aladin;
 
 class LifeHUD;

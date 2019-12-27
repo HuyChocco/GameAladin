@@ -37,10 +37,10 @@ Viewport *Viewport::GetInstance()
 }
 void Viewport::Reset()
 {
-	width = 0;
+	width = SCREEN_WIDTH;
 	height = SCREEN_HEIGHT;
 	x = 0;
-	y = 235;
+	y = 300;
 }
 //Hàm cập nhật viewport theo nhân vật chính
 void Viewport::Update(DWORD dt)

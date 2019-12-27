@@ -36,7 +36,7 @@ AnimNail::AnimNail(int x, int y, int width, int height, string type)
 	spriteData.isFlipped = false;
 	spritedatalist.push_back(spriteData);
 	RECT* listSprite = LoadRect((char*)"Resources\\GameItem\\AnimNail.txt");
-	Animation * anim = new Animation(100);
+	Animation * anim = new Animation(250);
 	for (int i = 0; i < 5; i++)
 	{
 		Sprite * sprite = new Sprite(ANIMNAIL_TEXTURE_LOCATION, listSprite[i], ANIMNAIL_TEXTURE_TRANS_COLOR);
@@ -54,7 +54,18 @@ AnimNail::~AnimNail()
 
 void AnimNail::Update(DWORD dt)
 {
+	if (this->GetAnimationsList()[0]->GetCurFrame() == 4)
 
+	{
+		this->isDamage = true;
+		this->isActive = true;
+	}
+	else
+
+	{
+		this->isDamage = false;
+		this->isActive = false;
+	}
 }
 void AnimNail::Render()
 {
@@ -84,6 +95,7 @@ RECT * AnimNail::LoadRect(char * path)
 
 	for (int i = 0; i < number_of_rect; i++)
 	{
+		stringstream stream_data;
 		data = "";
 		stream_data.clear();
 

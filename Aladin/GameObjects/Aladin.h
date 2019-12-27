@@ -32,6 +32,7 @@ class Aladin : public GameObject
 	State *climbTheRopeState;
 	State *playWhenStandState;
 	State *hurtState;
+	State *dieState;
 	int stateNumber;
 
 	bool isGrounded = false;
@@ -44,9 +45,15 @@ class Aladin : public GameObject
 	//vector<Cherry *> cherryList;
 	
 	int timeToTrans = 0;
-	
+	bool isHurting = false;
 public:
+	void SetIsHurting(bool isHurting) { this->isHurting = isHurting; }
+	bool GetIsHurting() { return this->isHurting; }
 	float bloodNum;
+	float lifeNum;
+	float score;
+	float bulletAppleNum;
+	float eggNum;
 	Cherry* cherry;
 	//Nạp các tài nguyên cho nhân vật
 	void LoadResources();
@@ -84,6 +91,7 @@ public:
 	State *GetClimbTheRopeState();
 	State *GetPlayWhenStandState();
 	State *GetHurtState();
+	State *GetDieState();
 	bool IsGrounded() { return isGrounded; }
 	bool IsCrouching() { return isCrouching; }
 	bool IsShieldUp() { return isShieldUp; }
@@ -108,6 +116,7 @@ public:
 	void PlayWhenStand();
 	void ActionWhenStand();
 	void Hurt();
+	void Die();
 	//set width,height cho collider object captain
 	void SetColliderDemension(float width, float height)
 	{
@@ -136,7 +145,7 @@ public:
 	void Update(DWORD dt) override;
 	//Hàm render captain
 	void Render() override;
-	bool isHurting = false;
+	
 
 	//Hàm thiết lập time chuyển state
 	void SetTimeToTrans(int time) { this->timeToTrans = time; }

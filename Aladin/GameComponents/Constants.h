@@ -35,6 +35,9 @@ enum eEnemyState
 	EnemyHURT2,
 	EnemyJUMP,
 	EnemyDIE,
+	EnemyFLY,
+	EnemyPREPARE,
+	EnemyPREPARE_ATTACK
 
 };
 
@@ -59,6 +62,7 @@ enum ObjectType
 //#define BACKGROUND_1 L"Resources\\TiledMap\\Map-Charleston.png"
 #define BACKGROUND_1 L"Resources\\Map\\SultansDungeonBackGround1.png"
 #define BACKGROUND_2 L"Resources\\Map\\SultansDungeonBackGround2.png"
+#define BACKGROUND_3 L"Resources\\Map\\lv1background3.png"
 #define BACKGROUND_BOSS_1 L"Resources\\Map\\final1.png"
 #define BACKGROUND_BOSS_2 L"Resources\\Map\\final2.png"
 // TILE
@@ -162,10 +166,13 @@ enum ObjectType
 #define ENEMY2_SPRITE_WIDTH 44
 #define ENEMY2_SPRITE_HEIGHT 50
 
-#define ENEMY3_TEXTURE_LOCATION L"Resources\\Enemy\\Enemies_Sprite_1.png"
-#define ENEMY3_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(120, 193, 152)
+#define ENEMY3_TEXTURE_LOCATION L"Resources\\Enemy\\enemy3_sprites.png"
+#define ENEMY3_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(255, 0, 255)
 #define ENEMY3_SPRITE_WIDTH 44
 #define ENEMY3_SPRITE_HEIGHT 50
+
+#define BAT_TEXTURE_LOCATION L"Resources\\Enemy\\bat_sprites.png"
+#define BAT_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(255, 0, 255)
 
 #define BOSS1_TEXTURE_LOCATION L"Resources\\Enemy\\Boss_Sprite.png"
 #define BOSS1_TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(186, 254, 202)
