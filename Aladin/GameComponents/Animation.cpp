@@ -25,6 +25,7 @@ void Animation::Render(SpriteData spriteData)
 	}
 	spriteData.width = abs(frames[curFrame].first->GetRect().right - frames[curFrame].first->GetRect().left);
 	spriteData.height = abs(frames[curFrame].first->GetRect().bottom - frames[curFrame].first->GetRect().top);
+	this->spriteData = spriteData;
 	frames[curFrame].first->SetData(spriteData);
 	//Vẽ frame hiện tại
 	Graphics::GetInstance()->Draw(frames[curFrame].first);

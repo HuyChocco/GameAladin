@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="1" height="1" tilewidth="2270" tileheight="1127" infinite="0" nextlayerid="22" nextobjectid="370">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="1" height="1" tilewidth="2270" tileheight="1127" infinite="0" nextlayerid="25" nextobjectid="392">
  <tileset firstgid="1" source="Aladdin-Level4-Sultan'sDungeon.tsx"/>
  <layer id="1" name="Tile Layer 1" width="1" height="1">
   <data encoding="base64" compression="zlib">
@@ -18,7 +18,7 @@
   <object id="54" x="617" y="417" width="109" height="12"/>
   <object id="55" x="872" y="512" width="102" height="13"/>
   <object id="56" x="946" y="447" width="165" height="14"/>
-  <object id="57" x="928" y="271" width="192" height="16"/>
+  <object id="57" x="928" y="275" width="192" height="12"/>
   <object id="58" x="1049" y="771" width="70" height="12"/>
   <object id="59" x="904" y="833" width="213" height="14"/>
   <object id="60" x="1383" y="208" width="174" height="14"/>
@@ -144,14 +144,11 @@
   <object id="297" x="126" y="716" width="20" height="34"/>
   <object id="366" x="767" y="33.3333" width="17" height="180.333"/>
  </objectgroup>
- <objectgroup id="11" name="animball">
+ <objectgroup id="11" name="animball1">
   <object id="249" x="976" y="1007" width="35" height="58"/>
-  <object id="251" x="1039" y="1008" width="35" height="58"/>
   <object id="252" x="1105" y="1007" width="35" height="58"/>
   <object id="253" x="576" y="606" width="35" height="58"/>
-  <object id="254" x="689" y="606" width="35" height="58"/>
   <object id="255" x="575" y="495" width="35" height="58"/>
-  <object id="256" x="686" y="494" width="35" height="58"/>
  </objectgroup>
  <objectgroup id="6" name="enemy2">
   <object id="78" x="967" y="216" width="59" height="53"/>
@@ -191,7 +188,7 @@
  <objectgroup id="14" name="bottle">
   <object id="262" x="470" y="783" width="22" height="35"/>
   <object id="263" x="725" y="334" width="22" height="35"/>
-  <object id="264" x="1157" y="447" width="22" height="35"/>
+  <object id="264" x="1157" y="447" width="22" height="33.6667"/>
   <object id="265" x="1654" y="333" width="22" height="35"/>
   <object id="266" x="1894" y="334" width="22" height="35"/>
   <object id="267" x="1861" y="816" width="22" height="35"/>
@@ -293,45 +290,57 @@
   <object id="193" x="1658" y="40" width="12" height="14"/>
   <object id="194" x="1722" y="40" width="12" height="14"/>
  </objectgroup>
- <objectgroup id="9" name="animbrick">
+ <objectgroup id="9" name="animbrick1">
   <object id="198" x="290" y="639" width="39.3333" height="23.6667"/>
-  <object id="200" x="352" y="686" width="42" height="27.6667"/>
   <object id="201" x="301" y="732" width="42" height="25"/>
-  <object id="202" x="354" y="782" width="42" height="25"/>
-  <object id="203" x="1361" y="544" width="42" height="25"/>
   <object id="204" x="1297" y="656" width="42" height="25"/>
-  <object id="205" x="1249" y="975" width="42" height="25"/>
   <object id="206" x="1299" y="495" width="42" height="25"/>
   <object id="207" x="1440" y="320" width="42" height="25"/>
-  <object id="208" x="1632" y="878" width="42" height="25"/>
   <object id="209" x="1984" y="544" width="42" height="25"/>
-  <object id="210" x="607" y="208" width="42" height="25"/>
-  <object id="211" x="609" y="127" width="42" height="25"/>
   <object id="212" x="656" y="175" width="42" height="25"/>
   <object id="213" x="1296" y="1023" width="42" height="25"/>
   <object id="214" x="1314" y="943" width="42" height="25"/>
-  <object id="215" x="1986" y="768" width="42" height="25"/>
   <object id="216" x="1663" y="927" width="42" height="25"/>
   <object id="217" x="2048" y="818" width="42" height="25"/>
-  <object id="218" x="1217" y="864" width="42" height="25"/>
   <object id="219" x="561" y="255" width="42" height="25"/>
   <object id="220" x="546" y="93" width="42" height="25"/>
-  <object id="221" x="2113" y="863" width="42" height="25"/>
   <object id="222" x="2064" y="895" width="42" height="25"/>
   <object id="223" x="2113" y="943" width="42" height="25"/>
-  <object id="224" x="2048" y="975" width="42" height="25"/>
   <object id="225" x="1984" y="1022" width="42" height="25"/>
   <object id="226" x="2048" y="720" width="42" height="25"/>
-  <object id="227" x="1586" y="128" width="42" height="25"/>
   <object id="228" x="1649" y="94" width="42" height="25"/>
   <object id="229" x="1632" y="175" width="42" height="25"/>
   <object id="230" x="1582" y="223" width="42" height="25"/>
-  <object id="231" x="1632" y="271" width="42" height="25"/>
   <object id="232" x="1583" y="318" width="42" height="25"/>
   <object id="233" x="1824" y="304" width="42" height="25"/>
-  <object id="234" x="1953" y="495" width="42" height="25"/>
   <object id="235" x="1969" y="367" width="42" height="25"/>
   <object id="236" x="658" y="847" width="42" height="25"/>
+ </objectgroup>
+ <objectgroup id="23" name="bat">
+  <object id="386" x="388" y="918.667" width="21.3333" height="16"/>
+  <object id="387" x="1002.67" y="852" width="21.3333" height="16"/>
+  <object id="388" x="1032" y="292" width="21.3333" height="16"/>
+ </objectgroup>
+ <objectgroup id="22" name="animbrick2">
+  <object id="372" x="353.333" y="685.333" width="40" height="26.6667"/>
+  <object id="373" x="356" y="782.667" width="40" height="26.6667"/>
+  <object id="374" x="612" y="206.667" width="40" height="26.6667"/>
+  <object id="375" x="608" y="125.333" width="40" height="26.6667"/>
+  <object id="376" x="1248" y="972" width="40" height="26.6667"/>
+  <object id="377" x="1217.33" y="864" width="40" height="26.6667"/>
+  <object id="378" x="1362.67" y="542.667" width="40" height="26.6667"/>
+  <object id="379" x="1953.33" y="494.667" width="40" height="26.6667"/>
+  <object id="380" x="1633.33" y="878.667" width="40" height="26.6667"/>
+  <object id="381" x="1985.33" y="768" width="40" height="26.6667"/>
+  <object id="382" x="2114.67" y="862.667" width="40" height="26.6667"/>
+  <object id="383" x="2048" y="974.667" width="40" height="26.6667"/>
+  <object id="384" x="1633.33" y="270.667" width="40" height="26.6667"/>
+  <object id="385" x="1586.67" y="125.333" width="40" height="26.6667"/>
+ </objectgroup>
+ <objectgroup id="24" name="animball2">
+  <object id="389" x="690.667" y="496" width="33.3333" height="57.3333"/>
+  <object id="390" x="1040" y="1006.67" width="33.3333" height="57.3333"/>
+  <object id="391" x="689.333" y="606.667" width="33.3333" height="57.3333"/>
  </objectgroup>
  <objectgroup id="3" name="wall">
   <object id="317" x="2" y="995" width="6" height="101"/>

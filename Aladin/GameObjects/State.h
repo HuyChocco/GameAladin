@@ -23,6 +23,7 @@ public:
 	virtual void ThrowCherryWhenStand();
 	virtual void Climb();
 	virtual void PlayWhenStand();
+	virtual void Hurt();
 	virtual void Update(DWORD dt);
 	virtual void Render();
 };

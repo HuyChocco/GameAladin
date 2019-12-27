@@ -21,6 +21,7 @@ void AladinState::Jump()
 	
 	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
 		break;
+	case ALADIN_ANI_HURT:
 	case ALADIN_ANI_PLAY_WITH_CHERRY:
 	case ALADIN_ANI_ACTION_WHEN_STAND:
 	case ALADIN_ANI_IDLE:
@@ -44,7 +45,7 @@ void AladinState::JumpWhenPressing()
 
 	switch (state)
 	{
-
+	
 	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
 	case ALADIN_ANI_IDLE:
 	case ALADIN_ANI_CLIMB_THE_ROPE:
@@ -67,6 +68,7 @@ void AladinState::Idle()
 
 	switch (state)
 	{
+	case ALADIN_ANI_HURT:
 	case ALADIN_ANI_THROW_CHERRY_WHEN_STANDING:
 	{
 		aladin->SetSpeedX(0);
@@ -119,6 +121,7 @@ void AladinState::Walk()
 	case ALADIN_ANI_ACTION_WHEN_STAND:
 	case ALADIN_ANI_CLIMB_THE_ROPE:
 	case ALADIN_ANI_IDLE:
+	case ALADIN_ANI_HURT:
 	{
 		aladin->SetSpeedX(ALADIN_WALK_SPEED * (aladin->IsLeft() ? -1 : 1));
 		aladin->SetState(aladin->GetWalkState());
@@ -160,6 +163,7 @@ void AladinState::Attack()
 	case ALADIN_ANI_ACTION_WHEN_STAND:
 	case ALADIN_ANI_IDLE:
 	case ALADIN_ANI_RUN:
+	case ALADIN_ANI_HURT:
 	{
 		aladin->SetState(aladin->GetAttackState());
 		aladin->GetAnimationsList()[ALADIN_ANI_ATTACK]->setIsAttack(true);
@@ -175,6 +179,7 @@ void AladinState::AttackWhenSitDown()
 	{
 	case ALADIN_ANI_ATTACK:
 	case ALADIN_ANI_SIT_DOWN:
+	case ALADIN_ANI_HURT:
 	{
 		aladin->SetState(aladin->GetAttackWhenSitDownState());
 		aladin->GetAnimationsList()[ALADIN_ANI_ATTACK_WHEN_SIT_DOWN]->setIsAttack(true);
@@ -188,6 +193,7 @@ void AladinState::Falling()
 	
 	switch (state)
 	{
+	case ALADIN_ANI_HURT:
 	case ALADIN_ANI_STOP:
 	case ALADIN_ANI_IDLE:
 	case ALADIN_ANI_RUN:
@@ -204,6 +210,7 @@ void AladinState::ActionWhenStand()
 
 	switch (state)
 	{
+	case ALADIN_ANI_HURT:
 	case ALADIN_ANI_IDLE:
 	{
 		aladin->SetState(aladin->GetActionWhenStandState());
@@ -225,6 +232,7 @@ void AladinState::SitDown()
 	case ALADIN_ANI_SIT_DOWN:
 	case ALADIN_ANI_RUN:
 	case ALADIN_ANI_IDLE:
+	case ALADIN_ANI_HURT:
 	{
 		aladin->SetState(aladin->GetSitDownState());
 		aladin->GetAnimationsList()[ALADIN_ANI_SIT_DOWN]->setIsSitDown(true);
@@ -279,13 +287,9 @@ void AladinState::Climb()
 
 	switch (state)
 	{
-	case ALADIN_ANI_STOP:
-	case ALADIN_ANI_PLAY_WITH_CHERRY:
-	case ALADIN_ANI_ACTION_WHEN_STAND:
+	
 	case ALADIN_ANI_JUMP_WHEN_PRESSING_LEFT_OR_RIGHT_ARROW:
 	case ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS:
-	case ALADIN_ANI_RUN:
-	case ALADIN_ANI_IDLE:
 	{
 		aladin->SetState(aladin->GetClimbTheRopeState());
 		
@@ -308,6 +312,10 @@ void AladinState::PlayWhenStand()
 	}
 	break;
 	}
+}
+void AladinState::Hurt()
+{
+		aladin->SetState(aladin->GetHurtState());
 }
 void AladinState::Update(DWORD dt)
 {
@@ -414,17 +422,33 @@ void AladinState::Update(DWORD dt)
 				aladin->SetIsGrounded(true);//Cho aladin dứng trên mặt đất
 			}
 		}
+		else if (coEventsResult[0]->collisionID == 8)//animball
+		{
+			if (ny == 1)
+			{
+				aladin->SetSpeedY(0);
+				aladin->SetIsGrounded(true);//Cho aladin dứng trên mặt đất
+			}
+		}
 		else if (coEventsResult[0]->collisionID == 7)//enemy1
 		{
 			Enemy1 * enemy = dynamic_cast<Enemy1*>(coEventsResult[0]->coO);
-			if (enemy->GetEnumState() == EnemyATTACK1)
+			if (enemy->GetEnumState() == EnemyATTACK1&& enemy->GetAnimationList()[2]->IsDone()==true)
+			{
+				aladin->Hurt();
 				aladin->bloodNum--;
+			}
+				
 		}
 		else if (coEventsResult[0]->collisionID == 9)//enemy2
 		{
 			Enemy2 * enemy = dynamic_cast<Enemy2*>(coEventsResult[0]->coO);
-			if (enemy->GetEnumState() == EnemyATTACK1)
+			if (enemy->GetEnumState() == EnemyATTACK1 && enemy->GetAnimationList()[4]->IsDone() == true)
+			{
+				aladin->Hurt();
 				aladin->bloodNum--;
+			}
+				
 		}
 		else if (coEventsResult[0]->collisionID == 3|| 
 			coEventsResult[0]->collisionID == 4|| coEventsResult[0]->collisionID == 5)//item
@@ -458,7 +482,7 @@ void AladinState::Render()
 		spriteData.width = ALADIN_SPRITE_WIDTH;
 		spriteData.height = ALADIN_SPRITE_HEIGHT;
 		spriteData.x = aladin->GetPositionX();
-		spriteData.y = aladin->GetPositionY()-ALADIN_SPRITE_HEIGHT -4;
+		spriteData.y = aladin->GetPositionY() - ALADIN_SPRITE_HEIGHT - 4;
 		spriteData.scale = 1;
 		spriteData.angle = 0;
 		spriteData.isLeft = aladin->IsLeft();
@@ -470,6 +494,7 @@ void AladinState::Render()
 	case ALADIN_ANI_IDLE:
 	{
 		aladin->GetAnimationsList()[ALADIN_ANI_IDLE]->Render(spriteData);
+
 	}
 	break;
 	case ALADIN_ANI_RUN:
@@ -508,7 +533,7 @@ void AladinState::Render()
 		aladin->GetAnimationsList()[ALADIN_ANI_ACTION_WHEN_STAND]->Render(spriteData);
 	}
 	break;
-	
+
 	case ALADIN_ANI_SIT_DOWN:
 	{
 		aladin->GetAnimationsList()[ALADIN_ANI_SIT_DOWN]->Render(spriteData);
@@ -527,12 +552,12 @@ void AladinState::Render()
 	case ALADIN_ANI_THROW_CHERRY_WHEN_STANDING:
 	{
 		aladin->GetAnimationsList()[ALADIN_ANI_THROW_CHERRY_WHEN_STANDING]->Render(spriteData);
-		
+
 	}
 	break;
-	case ALADIN_ANI_CLIMB_THE_LADDER:
+	case ALADIN_ANI_CLIMB_THE_ROPE:
 	{
-		aladin->GetAnimationsList()[ALADIN_ANI_CLIMB_THE_LADDER]->Render(spriteData);
+		aladin->GetAnimationsList()[ALADIN_ANI_CLIMB_THE_ROPE]->Render(spriteData);
 
 	}
 	break;
@@ -540,6 +565,15 @@ void AladinState::Render()
 	{
 		aladin->GetAnimationsList()[ALADIN_ANI_PLAY_WITH_CHERRY]->Render(spriteData);
 
+	}
+	break;
+	case ALADIN_ANI_HURT:
+	{
+		if (aladin->GetAnimationsList()[ALADIN_ANI_HURT]->IsDone() == false)
+		{
+			aladin->GetAnimationsList()[ALADIN_ANI_HURT]->Render(spriteData);
+		}
+		
 	}
 	break;
 	}

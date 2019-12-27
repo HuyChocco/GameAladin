@@ -31,7 +31,7 @@ public:
 	void ThrowCherryWhenStand() override;
 	void Climb() override;
 	void PlayWhenStand() override;
-
+	void Hurt() override;
 	void Update(DWORD dt) override;
 	void Render() override;
 	

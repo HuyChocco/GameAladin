@@ -264,22 +264,42 @@ void SceneLV1::LoadContent(char* filePath)
 			}
 
 		}
-		else if (groupObject->GetName() == "animball")
+		else if (groupObject->GetName() == "animball1")
 		{
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new AnimBall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animball");
+				obj = new AnimBall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animball1");
 				_listStaticObject.push_back(obj);
 			}
 
 		}
-		else if (groupObject->GetName() == "animbrick")
+		else if (groupObject->GetName() == "animball2")
+		{
+		for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
+		{
+			auto outObj = groupObjectList[iObject];
+			obj = new AnimBall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animball2");
+			_listStaticObject.push_back(obj);
+		}
+
+		}
+		else if (groupObject->GetName() == "animbrick1")
 		{
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new AnimBrick(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animbrick");
+				obj = new AnimBrick(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animbrick1");
+				_listStaticObject.push_back(obj);
+			}
+
+		}
+		else if (groupObject->GetName() == "animbrick2")
+		{
+		for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
+			{
+				auto outObj = groupObjectList[iObject];
+				obj = new AnimBrick(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animbrick2");
 				_listStaticObject.push_back(obj);
 			}
 
