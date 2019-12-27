@@ -36,7 +36,7 @@ AnimBrick::AnimBrick(int x,int y,int width,int height,string type)
 	spriteData.isFlipped = false;
 	spritedatalist.push_back(spriteData);
 	RECT* listSprite = LoadRect((char*)"Resources\\GameItem\\animbrick.txt");
-	Animation * anim = new Animation(100);
+	Animation * anim = new Animation(300);
 	for (int i = 0; i < 5; i++)
 	{
 		Sprite * sprite = new Sprite(ANIMBRICK_TEXTURE_LOCATION, listSprite[i], ANIMBRICK_TEXTURE_TRANS_COLOR);

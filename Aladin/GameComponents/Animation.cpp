@@ -23,8 +23,8 @@ void Animation::Render(SpriteData spriteData)
 		lastFrameTime = now;
 		done = false;
 	}
-	//spriteData.width = frames[curFrame].first->GetRect().right - frames[curFrame].first->GetRect().left;
-	//spriteData.height = frames[curFrame].first->GetRect().bottom - frames[curFrame].first->GetRect().top;
+	spriteData.width = abs(frames[curFrame].first->GetRect().right - frames[curFrame].first->GetRect().left);
+	spriteData.height = abs(frames[curFrame].first->GetRect().bottom - frames[curFrame].first->GetRect().top);
 	frames[curFrame].first->SetData(spriteData);
 	//Vẽ frame hiện tại
 	Graphics::GetInstance()->Draw(frames[curFrame].first);
@@ -96,6 +96,12 @@ void Animation::Render(SpriteData spriteData)
 				Aladin* aladin = Aladin::GetInstance();
 				aladin->PlayWhenStand();
 			}
+			//if (IsExplosion() == true)
+			//{
+				//curFrame = 0;
+				//done = true;
+				//setIsExplosion(false);
+			//}
 			else
 			{
 				curFrame = 0;

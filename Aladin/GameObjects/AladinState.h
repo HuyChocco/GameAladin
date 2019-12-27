@@ -2,6 +2,10 @@
 #include "State.h"
 #include "../GameComponents/Constants.h"
 #include "Aladin.h"
+#include "Enemy1.h"
+#include "Enemy2.h"
+class Enemy1;
+class Enemy2;
 class Aladin;
 class AladinState : public State
 {

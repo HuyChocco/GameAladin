@@ -1,7 +1,7 @@
 #pragma once
 #include "../GameComponents/GameObject.h"
 #include "../GameComponents/Game.h"
-
+#include "EnemyExplosion.h"
 class GameObject;
 class Enemy1 :
 	public GameObject
@@ -12,7 +12,7 @@ private:
 	
 	int bloodCount;
 	int bloodNum;
-	
+	EnemyExplosion * enemyExplosion;
 protected:
 	eEnemyState eState;
 	

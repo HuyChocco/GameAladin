@@ -20,6 +20,7 @@ Aladin::Aladin()
 	throwCherryInTheAirState= new AladinState(this, ALADIN_ANI_THROW_CHERRY_WHEN_IN_THE_AIR);
 	throwCherryWhenStandState = new AladinState(this, ALADIN_ANI_THROW_CHERRY_WHEN_STANDING);
 	climbTheLadderState = new AladinState(this, ALADIN_ANI_CLIMB_THE_LADDER);
+	climbTheRopeState = new AladinState(this, ALADIN_ANI_CLIMB_THE_ROPE);
 	playWhenStandState = new AladinState(this, ALADIN_ANI_PLAY_WITH_CHERRY);
 	state = idleState;//trạng thái ban đầu cho aladin
 
@@ -34,7 +35,8 @@ Aladin::Aladin()
 	collider.vy = 0;
 	collider.width = this->width;
 	collider.height = this->height;
-
+	this->isActive = true;
+	bloodNum = 20;
 	LoadResources();
 }
 
@@ -49,8 +51,7 @@ void Aladin::LoadResources()
 {
 	LoadTXT loadTXT;
 	RECT* listSprite = loadTXT.LoadRect((char*)"Resources\\Aladin\\Aladin.txt");
-
-	// ALADIN_ANI_IDLE
+	//// ALADIN_ANI_IDLE
 	Animation * animi = new Animation(100);
 	for (int i = 0; i < 1; i++)
 	{
@@ -66,8 +67,7 @@ void Aladin::LoadResources()
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-	
-	/////ALADIN_ANI_CHERRY_EXPLOSION
+	////ALADIN_ANI_CHERRY_EXPLOSION
 	animi = new Animation(100);
 	for (int i = 7; i < 13; i++)
 	{
@@ -75,8 +75,7 @@ void Aladin::LoadResources()
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_PLAY_WITH_CHERRY
+	////ALADIN_ANI_PLAY_WITH_CHERRY
 	animi = new Animation(100);
 	for (int i = 13; i < 45; i++)
 	{
@@ -84,8 +83,7 @@ void Aladin::LoadResources()
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_THROW_CHERRY_WHEN_STANDING
+	////ALADIN_ANI_THROW_CHERRY_WHEN_STANDING
 	animi = new Animation(100);
 	for (int i = 45; i < 51; i++)
 	{
@@ -93,8 +91,7 @@ void Aladin::LoadResources()
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_ATTACK
+	////ALADIN_ANI_ATTACK
 	animi = new Animation(100);
 	for (int i = 51; i < 56; i++)
 	{
@@ -102,55 +99,42 @@ void Aladin::LoadResources()
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_LOOP_5X
+	////ALADIN_ANI_LOOK_UP
 	animi = new Animation(100);
-	for (int i = 56; i < 68; i++)
+	for (int i = 56; i < 59; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
 
-	/////ALADIN_ANI_LOOK_UP
+	////ALADIN_ANI_SIT_DOWN
 	animi = new Animation(100);
-	for (int i = 68; i < 71; i++)
+	for (int i = 59; i < 63; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_SIT_DOWN
-	animi = new Animation(100);
-	for (int i = 71; i < 75; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
 	/////ALADIN_ANI_THROW_CHERRY_WHEN_SIT_DOWN
 	animi = new Animation(100);
-	for (int i = 75; i < 80; i++)
+	for (int i = 63; i < 68; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
 	/////ALADIN_ANI_ATTACK_WHEN_SIT_DOWN
 	animi = new Animation(100);
-	for (int i = 80; i < 87; i++)
+	for (int i = 68; i < 75; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
 	/////ALADIN_ANI_JUMP_WHEN_PRESSING_LEFT_OR_RIGHT_ARROW
 	animi = new Animation(100);
-	for (int i = 87; i < 94; i++)
+	for (int i = 75; i < 84; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
@@ -159,25 +143,15 @@ void Aladin::LoadResources()
 
 	/////ALADIN_ANI_JUMP_WITH_NO_KEY_PRESS
 	animi = new Animation(100);
-	for (int i = 94; i < 105; i++)
+	for (int i = 84; i < 94; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_FALLING_DOWN
-	animi = new Animation(100);
-	for (int i = 105; i < 123; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
 	/////ALADIN_ANI_THROW_CHERRY_WHEN_IN_THE_AIR
 	animi = new Animation(100);
-	for (int i = 123; i < 128; i++)
+	for (int i = 94; i < 99; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
@@ -186,184 +160,54 @@ void Aladin::LoadResources()
 
 	/////ALADIN_ANI_ATTACK_WHEN_IN_THE_AIR
 	animi = new Animation(100);
-	for (int i = 128; i < 134; i++)
+	for (int i = 99; i < 105; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_HANH_DONG_TREN_KHONG_KHI_BAT_MOT_DON_BAY
-	animi = new Animation(100);
-	for (int i = 134; i < 142; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
 	/////ALADIN_ANI_RUN
 	animi = new Animation(100);
-	for (int i = 142; i < 155; i++)
+	for (int i = 105; i < 118; i++)
 	{
 		Sprite * sprite
 			= new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_STOP
-	animi = new Animation(100);
-	for (int i = 155; i < 164; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_CLIMB_THE_LADDER
-	animi = new Animation(100);
-	for (int i = 164; i < 174; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
 	/////ALADIN_ANI_CLIMB_THE_ROPE
 	animi = new Animation(100);
-	for (int i = 174; i < 184; i++)
+	for (int i = 118; i < 128; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_ACTION_WHEN_STOP_ON_THE_ROPE
+	///////ALADIN_ANI_GET_HIT
 	animi = new Animation(100);
-	for (int i = 184; i < 189; i++)
+	for (int i = 128; i < 134; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_THROW_CHERRY_WHEN_ON_THE_ROPE
+	///////ALADIN_ANI_DIE
 	animi = new Animation(100);
-	for (int i = 189; i < 194; i++)
+	for (int i = 134; i < 162; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_ATTACK_WHEN_ON_THE_ROPE
+	///////ALADIN_ANI_STOP
 	animi = new Animation(100);
-	for (int i = 194; i < 201; i++)
+	for (int i = 162; i < 171; i++)
 	{
 		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
-
-	/////ALADIN_ANI_JUMP_OUT_FROM_THE_ROPE
-	animi = new Animation(100);
-	for (int i = 201; i < 210; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_PUSH
-	animi = new Animation(100);
-	for (int i = 210; i < 219; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_???
-	animi = new Animation(100);
-	for (int i = 219; i < 227; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_DANG_O_TREN_THAM_BAY
-	animi = new Animation(100);
-	for (int i = 227; i < 232; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_NAP_KHI_TREN_THAM_BAY
-	animi = new Animation(100);
-	for (int i = 232; i < 233; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_GET_HIT
-	animi = new Animation(100);
-	for (int i = 233; i < 239; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_DIE
-	animi = new Animation(100);
-	for (int i = 239; i < 266; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_GET_BACK_FROM_THE_DEATH
-	animi = new Animation(100);
-	for (int i = 266; i < 280; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_COMPLETE_LEVEL
-	animi = new Animation(100);
-	for (int i = 280; i < 288; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_FLY_IN_THE_NIGHT
-	animi = new Animation(100);
-	for (int i = 288; i < 293; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
-
-	/////ALADIN_ANI_KISS
-	animi = new Animation(100);
-	for (int i = 293; i < 303; i++)
-	{
-		Sprite * sprite = new Sprite(ALADIN_TEXTURE_LOCATION, listSprite[i], ALADIN_TEXTURE_TRANS_COLOR);
-		animi->AddFrame(sprite);
-	}
-	animations.push_back(animi);
+	
 }
 
 void Aladin::SetState(State * state)
@@ -437,6 +281,11 @@ State * Aladin::GetClimbTheLadderState()
 {
 	this->SetStateNumber(ALADIN_ANI_CLIMB_THE_LADDER);
 	return climbTheLadderState;
+}
+State * Aladin::GetClimbTheRopeState()
+{
+	this->SetStateNumber(ALADIN_ANI_CLIMB_THE_ROPE);
+	return climbTheRopeState;
 }
 State * Aladin::GetPlayWhenStandState()
 {
@@ -521,14 +370,15 @@ void Aladin::Reset()
 void Aladin::Update(DWORD dt)
 {
 
-	
-	state->Update(dt);// gọi hàm cập nhật của aladin state
-	for (auto o : this->cherryList)
-		o->Update(dt);
+	if(this->isActive==true)
+		state->Update(dt);// gọi hàm cập nhật của aladin state
+	//for (auto o : this->cherryList)
+		//o->Update(dt);
 }
 void Aladin::Render()
 {
-	state->Render();//gọi hàm cập nhật của aladin state
-	for (auto o : this->cherryList)
-		o->Render();
+	if(this->isActive==true)
+		state->Render();//gọi hàm cập nhật của aladin state
+	//for (auto o : this->cherryList)
+		//o->Render();
 }

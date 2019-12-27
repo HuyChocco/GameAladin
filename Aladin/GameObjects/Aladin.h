@@ -29,6 +29,7 @@ class Aladin : public GameObject
 	State *throwCherryInTheAirState;
 	State *throwCherryWhenStandState;
 	State *climbTheLadderState;
+	State *climbTheRopeState;
 	State *playWhenStandState;
 	int stateNumber;
 
@@ -39,9 +40,13 @@ class Aladin : public GameObject
 
 	static vector<Animation *> animations;
 	DWORD lastFrameTime;
-	vector<Cherry *> cherryList;
+	//vector<Cherry *> cherryList;
+	
 	int timeToTrans = 0;
+	
 public:
+	float bloodNum;
+	Cherry* cherry;
 	//Nạp các tài nguyên cho nhân vật
 	void LoadResources();
 	//Lấy thể hiện của đối tượng captain
@@ -75,6 +80,7 @@ public:
 	State *GetThrowCherryInTheAirState();
 	State *GetThrowCherryWhenStandState();
 	State *GetClimbTheLadderState();
+	State *GetClimbTheRopeState();
 	State *GetPlayWhenStandState();
 	bool IsGrounded() { return isGrounded; }
 	bool IsCrouching() { return isCrouching; }
@@ -105,17 +111,17 @@ public:
 		this->collider.width = width;
 		this->collider.height = height;
 	}
-	void AddToCherryList(Cherry* cherry) 
-	{ 
-		this->cherryList.push_back(cherry);
-	}
-	vector<Cherry*> GetCherryList() {
-		return this->cherryList;
-	}
-	void DestroyCherryList()
-	{
-		this->cherryList.clear();
-	}
+	//void AddToCherryList(Cherry* cherry) 
+	//{ 
+		//this->cherryList.push_back(cherry);
+	//}
+	//vector<Cherry*> GetCherryList() {
+	//	return this->cherryList;
+	//}
+	//void DestroyCherryList()
+	//{
+	//	this->cherryList.clear();
+	//}
 	void Reset();
 	//Hàm thiết lập trạng thái quay trái cho nhân vật
 	void TurnLeft();

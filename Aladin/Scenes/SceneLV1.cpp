@@ -148,7 +148,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Wall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"static");
+				obj = new Wall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(),"wall");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -168,7 +168,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new Chain(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
+				obj = new Chain(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "chain");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -259,7 +259,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new AnimNail(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
+				obj = new AnimNail(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animnail");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -269,7 +269,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new AnimBall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
+				obj = new AnimBall(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animball");
 				_listStaticObject.push_back(obj);
 			}
 
@@ -279,7 +279,7 @@ void SceneLV1::LoadContent(char* filePath)
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				obj = new AnimBrick(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "static");
+				obj = new AnimBrick(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "animbrick");
 				_listStaticObject.push_back(obj);
 			}
 

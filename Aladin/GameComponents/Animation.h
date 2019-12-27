@@ -24,6 +24,8 @@ class Animation
 	bool isReverse = false;
 	bool isActionWhenStand = false;
 	int timeToTrans = 0;
+	//cherry's animations
+	//bool isExplosion = false;
 public:
 	Animation(DWORD defaultDelayTime) { this->defaultDelayTime = defaultDelayTime; };
 	~Animation() { frames.clear(); };
@@ -31,6 +33,7 @@ public:
 	DWORD GetLastFrameTime() { return this->lastFrameTime; }	
 	int GetCurFrame() { return curFrame; }
 	bool IsDone() { return done; }
+	void SetIsDone(bool done) { this->done=done; }
 	void setIsStop(bool isStop) { this->isStop = isStop; }
 	void setIsReverse(bool isReverse) { this->isReverse = isReverse; }
 	bool IsReverse() { return this->isReverse; }
@@ -41,9 +44,10 @@ public:
 	bool IsAttack() { return this->isAttack; }
 	void setIsAnimObject(bool isAnimObject) { this->isAnimObject = isAnimObject; }
 	bool IsActionWhenStand() { return this->isActionWhenStand; }
-	
 	void setIsActionWhenStand(bool isActionWhenStand) { this->isActionWhenStand = isActionWhenStand; }
 	bool IsAnimObject() { return this->isAnimObject; }
+	//void setIsExplosion(bool isExplosion) { this->isExplosion = isExplosion; }
+	//bool IsExplosion() { return this->isExplosion; }
 	void Reset() { curFrame = -1; }
 
 	void AddFrame(Sprite *sprite, DWORD time = 0);

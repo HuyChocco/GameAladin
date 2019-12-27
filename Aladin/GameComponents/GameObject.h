@@ -81,6 +81,8 @@ public:
 	
 	int GetWidth() { return this->width; }
 	int GetHeight() { return this->height; }
+	void SetWidth(float width) {this->width=width; }
+	void SetHeight(float height) {this->height=height; }
 	string GetType() { return this->type; }
 	void SetType(string type) {  this->type=type; }
 	void GetSpeed(float &vx, float &vy) { vx = this->vx; vy = this->vy; }
