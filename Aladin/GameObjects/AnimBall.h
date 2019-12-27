@@ -12,10 +12,11 @@ protected:
 	vector<Animation *> animations;
 	bool Active;
 
-
+	bool isDamage = false;
 	vector<SpriteData> spritedatalist;
 	//Item itemtype;
 public:
+	bool GetIsDamage() { return isDamage; }
 	AnimBall();
 	AnimBall(int x,int y,int width,int height,string type);
 	~AnimBall();

@@ -23,6 +23,7 @@ void Game::Init()
 	this->stage = STAGE_1;
 	//Nạp các tài nguyên trong game
 	LoadResources();
+	Sound::getInstance()->loadSound(this->hWnd);
 	OutputDebugString(L"[INFO] InitGame done;\n");
 }
 HWND Game::CreateGameWindow(HINSTANCE hInstance, int ScreenWidth, int ScreenHeight)

@@ -134,6 +134,18 @@ void GameObject::CheckMapCollision(
 					delete e;
 				}
 			}
+			else if (solidTileDummy->GetType() == "enemy3")
+			{
+				if (e->t >= 0 && e->t < 1.0f&&e->nx != 0)
+				{
+					e->collisionID = 10;
+					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+				}
+				else
+				{
+					delete e;
+				}
+			}
 			else if (solidTileDummy->GetType() == "apple")
 			{
 				if (e->t >= 0 && e->t < 1.0f)
@@ -183,11 +195,23 @@ void GameObject::CheckMapCollision(
 				}
 			}
 			
-			else if (solidTileDummy->GetType() == "animball1"||solidTileDummy->GetType() == "animnail"||solidTileDummy->GetType() == "animball2"  )
+			else if (solidTileDummy->GetType() == "animball1"||solidTileDummy->GetType() == "animball2"  )
 			{
 				if (e->t >= 0 && e->t < 1.0f&&e->nx != 0)
 				{
 					e->collisionID = 8;
+					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
+				}
+				else
+				{
+					delete e;
+				}
+			}
+			else if (solidTileDummy->GetType() == "animnail" )
+			{
+				if (e->t >= 0 && e->t < 1.0f&&e->nx != 0)
+				{
+					e->collisionID = 11;
 					coEvents.push_back(e);//va chạm thì thêm vào danh sách LPCOLLISIONEVENT
 				}
 				else

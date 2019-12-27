@@ -88,6 +88,7 @@ RECT* Boss1::LoadRect(char * path)
 	//int top, bottom, left, right;
 	for (int i = 0; i < number_of_rect; i++)
 	{
+		stringstream stream_data;
 		data = "";
 		stream_data.clear();
 

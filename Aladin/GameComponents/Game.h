@@ -9,7 +9,7 @@
 #include "../GameObjects/AnimBall.h"
 
 #include "../GameObjects/Aladin.h"
-
+#include "Sound.h"
 #include <chrono>
 
 class Graphics;

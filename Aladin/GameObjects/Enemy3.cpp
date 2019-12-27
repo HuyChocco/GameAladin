@@ -1,5 +1,5 @@
 #include "Enemy3.h"
-vector<Animation *> Enemy3::animations = vector<Animation *>();
+
 Enemy3::Enemy3()
 {
 
@@ -22,38 +22,40 @@ Enemy3::Enemy3(int x, int y, int width, int height, string type)
 	collider.vy = this->vy;
 	collider.width = this->width;
 	collider.height = this->height;
-
+	SetEnumState(eEnemyState::EnemyIDLE);
+	bloodCount = bloodNum = 1;
 	this->LoadContent();
 
 }
 void Enemy3::LoadContent()
 {
 
-	RECT* listSprite = this->LoadRect((char*)"Resources\\Enemy\\Enemy3.txt");
-	// Enemy3_ANI_WALK
+	RECT* listSprite = this->LoadRect((char*)"Resources\\Enemy\\enemy3.txt");
+	//ENEMY3_ANI_IDLE
 	Animation * anim = new Animation(100);
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		Sprite * sprite = new Sprite(ENEMY3_TEXTURE_LOCATION, listSprite[i], ENEMY3_TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
-	// Enemy3_ANI_ATTACK
+	// ENEMY3_ANI_PREPARE
 	anim = new Animation(100);
-	for (int i = 9; i < 15; i++)
+	for (int i = 0; i < 12; i++)
 	{
 		Sprite * sprite = new Sprite(ENEMY3_TEXTURE_LOCATION, listSprite[i], ENEMY3_TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
-	// Enemy3_ANI_GET_HIT
+	// ENEMY3_ANI_PREPARE_ATTACK
 	anim = new Animation(100);
-	for (int i = 15; i < 24; i++)
+	for (int i = 12; i < 20; i++)
 	{
 		Sprite * sprite = new Sprite(ENEMY3_TEXTURE_LOCATION, listSprite[i], ENEMY3_TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
+	
 }
 Enemy3::~Enemy3()
 {
@@ -64,8 +66,26 @@ Enemy3::~Enemy3()
 
 void Enemy3::Update(DWORD dt)
 {
+	if (bloodCount == 0)
+	{
+		SetEnumState(eEnemyState::EnemyDIE);
+		if (enemyExplosion == NULL)
+		{
+			enemyExplosion = new EnemyExplosion();
+			enemyExplosion->SetPositionX(this->GetPositionX());
+			enemyExplosion->SetPositionY(this->GetPositionY() + this->GetHeight() / 2);
+			enemyExplosion->SetWidth(this->GetWidth());
+			enemyExplosion->SetHeight(this->GetHeight());
+		}
+		else
+			enemyExplosion->Update(dt);
+
+
+		return;
+	}
 	if (Viewport::GetInstance()->IsObjectInCamera(this) == true)
 	{
+
 		this->isActive = true;
 		std::vector<LPCOLLISIONEVENT> coEvents;
 		std::vector<LPCOLLISIONEVENT> coEventsResult;
@@ -107,9 +127,13 @@ void Enemy3::Update(DWORD dt)
 
 			if (coEventsResult[0]->collisionID == 1)
 			{
-				//if (ny == 1)
+				if (ny == 1)//enemy dang dung tren map
 				{
 					this->SetSpeedY(0);
+
+					MoveToObject(Aladin::GetInstance());
+
+
 				}
 			}
 		}
@@ -120,31 +144,173 @@ void Enemy3::Update(DWORD dt)
 	{
 		this->isActive = false;
 	}
-	if (this->isActive)
+
+
+}
+void Enemy3::MoveToObject(GameObject* otherObject)
+{
+	float otherPositionX = otherObject->GetPositionX();
+	float otherPositionY = otherObject->GetPositionY();
+
+	float enemyPositionX = this->GetPositionX();
+	float enemyPositionY = this->GetPositionY();
+
+	int currentState = this->GetEnumState();
+	//float deltaScale=this->getScale
+	if (currentState != eEnemyState::EnemyPREPARE && currentState != eEnemyState::EnemyDIE && currentState != eEnemyState::EnemyPREPARE_ATTACK)
+	{
+		if (otherPositionX > enemyPositionX&&abs(otherPositionX - enemyPositionX) < SCREEN_WIDTH)
+		{
+
+			if (abs(enemyPositionX - otherPositionX) < SCREEN_WIDTH / 3)
+			{
+				this->isLeft = false;
+				this->SetSpeedX(0);//stop
+				this->SetSpeedY(0);
+				this->SetEnumState(eEnemyState::EnemyPREPARE);//prepare
+			}
+			else if (abs(enemyPositionX - otherPositionX) < SCREEN_WIDTH / 4)
+			{
+				this->isLeft = false;
+				this->SetSpeedX(0);//stop
+				this->SetSpeedY(0);
+				this->SetEnumState(eEnemyState::EnemyPREPARE_ATTACK);
+			}
+		}
+		else if (otherPositionX < enemyPositionX&&abs(enemyPositionX - otherPositionX) < SCREEN_WIDTH)
+		{
+
+			if (abs(enemyPositionX - otherPositionX) < SCREEN_WIDTH / 3)
+			{
+				this->isLeft = true;
+				this->SetSpeedX(0);//stop
+				this->SetSpeedY(0);
+				this->SetEnumState(eEnemyState::EnemyPREPARE);//prepare
+			}
+			else if (abs(enemyPositionX - otherPositionX) < SCREEN_WIDTH / 4)
+			{
+				this->isLeft = true;
+				this->SetSpeedX(0);//stop
+				this->SetSpeedY(0);
+				this->SetEnumState(eEnemyState::EnemyPREPARE_ATTACK);
+			}
+		}
+
+	}
+	else
 	{
 
 		if (this->IsCollide(Aladin::GetInstance()))
 		{
 
+			if (Aladin::GetInstance()->GetStateNumber() == ALADIN_ANI_ATTACK || Aladin::GetInstance()->GetStateNumber() == ALADIN_ANI_ATTACK_WHEN_SIT_DOWN)
+				Bleeding();
+		}
+		
+		if (otherPositionX >= enemyPositionX)
+		{
+			isLeft = false;
+			if (abs(enemyPositionX - otherPositionX) >= SCREEN_WIDTH / 3)
+			{
+				this->SetSpeedX(0);//stop
+				this->SetSpeedY(0);
+				this->SetEnumState(eEnemyState::EnemyIDLE);
+			}
+		}
+		else if (otherPositionX < enemyPositionX)
+		{
+			isLeft = true;
+			if (abs(enemyPositionX - otherPositionX) >= SCREEN_WIDTH / 3)
+			{
+				this->SetSpeedX(0);//stop
+				this->SetSpeedY(0);
+				this->SetEnumState(eEnemyState::EnemyIDLE);
+			}
 		}
 
 	}
 
 }
+void Enemy3::Bleeding()
+{
+
+	this->SetSpeedX(0);
+	this->SetSpeedY(0);
+	if (Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_ATTACK]->IsDone() == true)
+	{
+		this->SetEnumState(eEnemyState::EnemyHURT1);
+		bloodCount--;
+		Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_ATTACK]->SetIsDone(false);
+	}
+	else if (Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_ATTACK_WHEN_SIT_DOWN]->IsDone() == true)
+	{
+		this->SetEnumState(eEnemyState::EnemyHURT1);
+		bloodCount--;
+		Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_ATTACK_WHEN_SIT_DOWN]->SetIsDone(false);
+	}
+}
 void Enemy3::Render()
 {
-	SpriteData spriteData;
+	if (isActive == true)
+	{
+		SpriteData spriteData;
 
-	spriteData.width = this->width;
-	spriteData.height = this->height;
-	spriteData.x = this->x;
-	spriteData.y = this->y - this->height - 4;
-	spriteData.scale = 1;
-	spriteData.angle = 0;
-	spriteData.isLeft = false;
-	spriteData.isFlipped = false;
-	this->GetAnimationsList()[0]->Render(spriteData);
+		spriteData.width = this->width;
+		spriteData.height = this->height;
+		spriteData.x = this->x;
+		spriteData.y = this->y - this->height - 4;
+		spriteData.scale = 1;
+		spriteData.angle = 0;
+		spriteData.isLeft = isLeft;
+		spriteData.isFlipped = isLeft;
 
+
+
+		switch (this->GetEnumState())
+		{
+		case eEnemyState::EnemyIDLE:
+		{
+			this->GetAnimationList()[0]->Render(spriteData);
+			this->GetAnimationList()[1]->SetIsStopEnemy(false);
+			this->GetAnimationList()[2]->SetIsStopEnemy(false);
+		}
+			
+		break;
+		case eEnemyState::EnemyPREPARE:
+		{
+			
+			
+			this->GetAnimationList()[1]->Render(spriteData);
+			this->GetAnimationList()[1]->SetIsStopEnemy(true);
+		}
+		break;
+		case eEnemyState::EnemyPREPARE_ATTACK:
+		{
+			
+			
+			this->GetAnimationList()[2]->Render(spriteData);
+			this->GetAnimationList()[2]->SetIsStopEnemy(true);
+		}
+			
+		break;
+		case eEnemyState::EnemyDIE:
+		{
+			if (enemyExplosion != NULL)
+				enemyExplosion->Render();
+			if (enemyExplosion->GetAnimationList()[0]->IsDone() == true)
+			{
+				this->isActive = false;
+				delete enemyExplosion;
+				enemyExplosion = NULL;
+			}
+			Sound::getInstance()->PlayNew(S_CLOUD_POOF);
+
+		}
+		break;
+		default:
+			break;
+		}
+	}
 
 }
 
@@ -168,6 +334,7 @@ RECT* Enemy3::LoadRect(char * path)
 	//int top, bottom, left, right;
 	for (int i = 0; i < number_of_rect; i++)
 	{
+		stringstream stream_data;
 		data = "";
 		stream_data.clear();
 
@@ -181,17 +348,12 @@ RECT* Enemy3::LoadRect(char * path)
 		stream_data >> r->bottom;
 
 
-
-		//r->right += r->left;
-		//r->bottom += r->top;
-
 		RECT rect;
 		rect.left = r->left;
 		rect.right = r->right;
 		rect.top = r->bottom;
 		rect.bottom = r->top;
 
-		//listRect.push_back(r);
 		arrayRect[i] = rect;
 	}
 	f.close();

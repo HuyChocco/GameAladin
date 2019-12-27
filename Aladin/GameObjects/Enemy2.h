@@ -2,6 +2,7 @@
 #include "../GameComponents/GameObject.h"
 #include "../GameComponents/Game.h"
 #include "EnemyExplosion.h"
+#include "../GameComponents/Sound.h"
 class GameObject;
 class Enemy2 :
 	public GameObject

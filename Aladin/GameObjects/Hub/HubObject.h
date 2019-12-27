@@ -1,6 +1,6 @@
 #pragma once
 #include "../../GameComponents/GameObject.h"
-
+#include "../Aladin.h"
 class HudObject : public GameObject
 {
 public:

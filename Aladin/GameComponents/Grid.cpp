@@ -173,7 +173,14 @@ void Grid::Update(DWORD dt)
 		}
 
 	}
-	
+	for (auto obj : listStaticObject)
+	{
+		if (viewport->IsObjectInCamera(obj))
+		{
+			obj->Update(dt);
+		}
+
+	}
 }
 
 //Hàm render của Grid

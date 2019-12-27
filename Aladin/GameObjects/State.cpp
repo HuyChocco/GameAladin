@@ -79,3 +79,8 @@ void State::Hurt()
 {
 
 }
+
+void State::Die()
+{
+
+}

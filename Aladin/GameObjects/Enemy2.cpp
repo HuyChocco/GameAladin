@@ -23,7 +23,7 @@ Enemy2::Enemy2(int x, int y, int width, int height, string type)
 	collider.width = this->width;
 	collider.height = this->height;
 	SetEnumState(eEnemyState::EnemyIDLE);
-	bloodCount = bloodNum = 10;
+	bloodCount = bloodNum = 4;
 	this->LoadContent();
 
 }
@@ -166,6 +166,15 @@ void Enemy2::Update(DWORD dt)
 
 				}
 			}
+			if (this->IsCollide(Aladin::GetInstance()))
+			{
+				if (this->GetEnumState() == eEnemyState::EnemyATTACK1&&this->GetAnimationList()[3]->IsDone() == true)
+				{
+					Aladin* player = Aladin::GetInstance();
+					player->SetIsHurting(true);
+					this->GetAnimationList()[3]->SetIsDone(false);
+				}
+			}
 		}
 		for (UINT i = 0; i < coEvents.size(); i++)
 			delete coEvents[i];
@@ -257,10 +266,22 @@ void Enemy2::MoveToObject(GameObject* otherObject)
 		if (otherPositionX >= enemyPositionX)
 		{
 			isLeft = false;
+			if (abs(enemyPositionX - otherPositionX) >= SCREEN_WIDTH / 3)
+			{
+				this->SetSpeedX(0);//stop
+				this->SetSpeedY(0);
+				this->SetEnumState(eEnemyState::EnemyIDLE);
+			}
 		}
 		else if (otherPositionX < enemyPositionX)
 		{
 			isLeft = true;
+			if (abs(enemyPositionX - otherPositionX) >= SCREEN_WIDTH / 3)
+			{
+				this->SetSpeedX(0);//stop
+				this->SetSpeedY(0);
+				this->SetEnumState(eEnemyState::EnemyIDLE);
+			}
 		}
 
 
@@ -272,14 +293,22 @@ void Enemy2::Bleeding()
 
 	this->SetSpeedX(0);
 	this->SetSpeedY(0);
-	if (this->GetAnimationList()[5]->GetCurFrame() == 0)
+	if(this->GetEnumState()== eEnemyState::EnemyATTACK1)
+		Sound::getInstance()->Play(S_SWORD_CHING);
+	if (Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_ATTACK]->IsDone() == true)
 	{
 		this->SetEnumState(eEnemyState::EnemyHURT1);
 		bloodCount--;
-
+		Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_ATTACK]->SetIsDone(false);
+		Sound::getInstance()->Play(S_AAAH);
 	}
-
-
+	else if (Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_ATTACK_WHEN_SIT_DOWN]->IsDone() == true)
+	{
+		this->SetEnumState(eEnemyState::EnemyHURT1);
+		bloodCount--;
+		Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_ATTACK_WHEN_SIT_DOWN]->SetIsDone(false);
+		Sound::getInstance()->Play(S_AAAH);
+	}
 }
 void Enemy2::Render()
 {
@@ -331,6 +360,8 @@ void Enemy2::Render()
 				delete enemyExplosion;
 				enemyExplosion = NULL;
 			}
+			Sound::getInstance()->PlayNew(S_CLOUD_POOF);
+
 		}
 		default:
 			break;
@@ -359,6 +390,7 @@ RECT* Enemy2::LoadRect(char * path)
 	//int top, bottom, left, right;
 	for (int i = 0; i < number_of_rect; i++)
 	{
+		stringstream stream_data;
 		data = "";
 		stream_data.clear();
 

@@ -72,6 +72,12 @@ void Animation::Render(SpriteData spriteData)
 				done = true;
 				curFrame = frames.size() - 1;
 			}
+			else if (IsStopEnemy() == true)
+			{
+
+				done = true;
+				curFrame = frames.size() - 1;
+			}
 			else if (IsAttack() == true)
 			{
 				
@@ -97,12 +103,7 @@ void Animation::Render(SpriteData spriteData)
 				Aladin* aladin = Aladin::GetInstance();
 				aladin->PlayWhenStand();
 			}
-			//if (IsExplosion() == true)
-			//{
-				//curFrame = 0;
-				//done = true;
-				//setIsExplosion(false);
-			//}
+			
 			else
 			{
 				curFrame = 0;

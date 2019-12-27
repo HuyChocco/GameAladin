@@ -17,6 +17,7 @@
 #include "../GameObjects/AnimNail.h"
 #include "../GameObjects/Pole.h"
 #include "../GameObjects/Enemy3.h"
+#include "../GameObjects/Bat.h"
 //#include "../GameComponents/Sound.h"
 Scene *SceneLV1::__instance = NULL;
 SceneLV1::SceneLV1() :Scene(0x9090b0, Scene::SceneName::Market)
@@ -61,6 +62,7 @@ void SceneLV1::LoadContent(char* filePath)
 	bulletHUD = BulletHUD::GetInstance();
 	Sprite *sprite;
 	Sprite *background_sprite_2;
+	Sprite *background_sprite_3;
 	RECT sourceRect;
 
 	sourceRect.left = 0;
@@ -102,6 +104,27 @@ void SceneLV1::LoadContent(char* filePath)
 	background_sprite_2->SetData(background_sprite_data_2);
 
 	_backgroundTextures.push_back(background_sprite_2);
+	//Tạo sprite background 3 cho game
+	RECT backgroundRect3;
+
+	backgroundRect3.left = 0;
+	backgroundRect3.right = 2270;
+	backgroundRect3.top = 0;
+	backgroundRect3.bottom = 1127;
+
+	SpriteData background_sprite_data_3;
+
+	background_sprite_data_3.width = 2270;
+	background_sprite_data_3.height = 1127;
+	background_sprite_data_3.x = 0;
+	background_sprite_data_3.y = 1127;
+	background_sprite_data_3.scale = 1;
+	background_sprite_data_3.angle = 0;
+	background_sprite_data_3.isLeft = true;
+	background_sprite_3 = new Sprite(BACKGROUND_3, backgroundRect2, D3DCOLOR_XRGB(163, 73, 164));
+	background_sprite_3->SetData(background_sprite_data_3);
+
+	_backgroundTextures.push_back(background_sprite_3);
 	
 	////
 	Tmx::Map* mMap = new Tmx::Map();
@@ -314,16 +337,27 @@ void SceneLV1::LoadContent(char* filePath)
 			}
 
 		}
+		else if (groupObject->GetName() == "bat")
+		{
+		for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
+		{
+			auto outObj = groupObjectList[iObject];
+			obj = new Bat(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy3");
+			_listEnemyObject.push_back(obj);
+		}
+
+		}
 		else if (groupObject->GetName() == "enemy3")
 		{
 			for (size_t iObject = 0; iObject < groupObject->GetNumObjects(); iObject++)
 			{
 				auto outObj = groupObjectList[iObject];
-				//obj = new Enemy3(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy3");
-				//_listEnemyObject.push_back(obj);
+				obj = new Enemy3(outObj->GetX(), outObj->GetY(), outObj->GetWidth(), outObj->GetHeight(), "enemy3");
+				_listEnemyObject.push_back(obj);
 			}
 
 		}
+		
 	}
 	aladin = Aladin::GetInstance();
 	viewport = Viewport::GetInstance();
@@ -344,6 +378,7 @@ void SceneLV1::Update(float dt)
 	aladin->Update(dt);
 	lifeHUD->Update(dt);
 	bulletHUD->Update(dt);
+	Sound::getInstance()->Play(S_PRINCEALI);
 }
 
 void SceneLV1::Draw()
@@ -354,6 +389,7 @@ void SceneLV1::Draw()
 	Graphics::GetInstance()->Draw(_backgroundTextures[1]);
 	lifeHUD->Render();
 	bulletHUD->Render();
+	Graphics::GetInstance()->Draw(_backgroundTextures[2]);
 }
 
 Scene* SceneLV1::GetInstance()

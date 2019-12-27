@@ -50,8 +50,8 @@ AnimBall::AnimBall(int x,int y,int width,int height,string type)
 	}
 	else if (this->type == "animball2")
 	{
-		Animation * anim = new Animation(100);
-		for (int i = 15; i >=0;i--)
+		Animation * anim = new Animation(200);
+		for (int i = 0; i < 15; i++)
 		{
 			Sprite * sprite = new Sprite(ANIMBALL_TEXTURE_LOCATION, listSprite[i], ANIMBALL_TEXTURE_TRANS_COLOR);
 			anim->AddFrame(sprite);
@@ -71,7 +71,18 @@ AnimBall::~AnimBall()
 
 void AnimBall::Update(DWORD dt)
 {
+	if (this->GetAnimationsList()[0]->GetCurFrame() == 14)
 
+	{
+		this->isDamage = true;
+		this->isActive = true;
+	}
+	else
+
+	{
+		this->isDamage = false;
+		this->isActive = false;
+	}
 }
 void AnimBall::Render()
 {
@@ -101,6 +112,7 @@ RECT * AnimBall::LoadRect(char * path)
 
 	for (int i = 0; i < number_of_rect; i++)
 	{
+		stringstream stream_data;
 		data = "";
 		stream_data.clear();
 

@@ -44,7 +44,15 @@ void Cherry::LoadResources()
 	Sprite * sprite = new Sprite(L"Resources\\GameItem\\items.png", listSprite[0], APPLE_TEXTURE_TRANS_COLOR);
 	animation->AddFrame(sprite);
 	animations.push_back(animation);
-	animations.push_back(Aladin::GetInstance()->GetAnimationsList()[ALADIN_ANI_CHERRY_EXPLOSION]);
+	animation = new Animation(100);
+	for (int i = 1; i < 7; i++)
+	{
+		sprite = new Sprite(L"Resources\\Aladin\\aladin.png", listSprite[i], APPLE_TEXTURE_TRANS_COLOR);
+		animation->AddFrame(sprite);
+	}
+	
+	animations.push_back(animation);
+	
 }
 
 void Cherry::Update(DWORD dt)
@@ -177,6 +185,7 @@ RECT* Cherry::LoadRect(char * path)
 	//int top, bottom, left, right;
 	for (int i = 0; i < number_of_rect; i++)
 	{
+		stringstream stream_data;
 		data = "";
 		stream_data.clear();
 

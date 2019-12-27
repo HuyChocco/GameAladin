@@ -23,6 +23,7 @@ Aladin::Aladin()
 	climbTheRopeState = new AladinState(this, ALADIN_ANI_CLIMB_THE_ROPE);
 	playWhenStandState = new AladinState(this, ALADIN_ANI_PLAY_WITH_CHERRY);
 	hurtState = new AladinState(this, ALADIN_ANI_HURT);
+	dieState = new AladinState(this, ALADIN_ANI_DIE);
 	state = idleState;//trạng thái ban đầu cho aladin
 
 	this->x = 60;
@@ -37,7 +38,11 @@ Aladin::Aladin()
 	collider.width = this->width;
 	collider.height = this->height;
 	this->isActive = true;
-	bloodNum = 120;
+	bloodNum = 10;
+	bulletAppleNum = 6;
+	score = 0;
+	eggNum = 0;
+	lifeNum = 6;
 	LoadResources();
 }
 
@@ -209,7 +214,7 @@ void Aladin::LoadResources()
 	}
 	animations.push_back(animi);
 	//// ALADIN_ANI_HURT
-	animi = new Animation(200);
+	animi = new Animation(100);
 	for (int i = 1; i < 3; i++)
 	{
 		RECT rect;
@@ -221,6 +226,7 @@ void Aladin::LoadResources()
 		animi->AddFrame(sprite);
 	}
 	animations.push_back(animi);
+	
 }
 
 void Aladin::SetState(State * state)
@@ -310,6 +316,11 @@ State * Aladin::GetHurtState()
 	this->SetStateNumber(ALADIN_ANI_HURT);
 	return hurtState;
 }
+State * Aladin::GetDieState()
+{
+	this->SetStateNumber(ALADIN_ANI_DIE);
+	return dieState;
+}
 void Aladin::Idle()
 {
 	state->Idle();
@@ -372,6 +383,10 @@ void Aladin::Hurt()
 {
 	state->Hurt();
 }
+void Aladin::Die()
+{
+	state->Die();
+}
 void Aladin::TurnLeft()
 {
 	isLeft = true;
@@ -387,6 +402,12 @@ void Aladin::Reset()
 	this->SetPositionX(50);
 	this->SetPositionY(200);
 	Viewport::GetInstance()->Reset();
+	this->isActive = true;
+	state = idleState;
+	bloodNum = 10;
+	bulletAppleNum = 6;
+	score = 0;
+	eggNum = 0;
 }
 
 void Aladin::Update(DWORD dt)
@@ -399,7 +420,7 @@ void Aladin::Update(DWORD dt)
 }
 void Aladin::Render()
 {
-	if(this->isActive==true)
+	//if(this->isActive==true)
 		state->Render();//gọi hàm cập nhật của aladin state
 	//for (auto o : this->cherryList)
 		//o->Render();

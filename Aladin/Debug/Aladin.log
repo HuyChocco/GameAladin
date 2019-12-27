@@ -1,6 +1,12 @@
-﻿  Aladin.cpp
-d:\game\aladin\aladin\aladin\gamecomponents\constants.h(192): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
-  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(182): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+﻿  Graphics.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(199): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(189): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
+  BulletHub.cpp
+d:\game\aladin\aladin\aladin\gamecomponents\constants.h(199): warning C4005: 'SCOREOBJECT1_TEXTURE_TRANS_COLOR': macro redefinition
+  d:\game\aladin\aladin\aladin\gamecomponents\constants.h(189): note: see previous definition of 'SCOREOBJECT1_TEXTURE_TRANS_COLOR'
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(82): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 d:\game\aladin\aladin\aladin\gamecomponents\gameobject.h(83): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\hub\bullethub.cpp(7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\game\aladin\aladin\aladin\gameobjects\hub\bullethub.cpp(99): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   Aladin.vcxproj -> D:\game\Aladin\Aladin\Debug\Aladin.exe

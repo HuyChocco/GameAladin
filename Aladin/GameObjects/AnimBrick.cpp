@@ -38,7 +38,7 @@ AnimBrick::AnimBrick(int x,int y,int width,int height,string type)
 	RECT* listSprite = LoadRect((char*)"Resources\\GameItem\\animbrick.txt");
 	if (this->type== "animbrick1")
 	{
-		Animation * anim = new Animation(300);
+		Animation * anim = new Animation(1000);
 		for (int i = 0; i < 5; i++)
 		{
 			Sprite * sprite = new Sprite(ANIMBRICK_TEXTURE_LOCATION, listSprite[i], ANIMBRICK_TEXTURE_TRANS_COLOR);
@@ -49,7 +49,7 @@ AnimBrick::AnimBrick(int x,int y,int width,int height,string type)
 	}
 	else if (this->type == "animbrick2")
 	{
-		Animation * anim = new Animation(300);
+		Animation * anim = new Animation(1000);
 		for (int i =4; i >= 0; i--)
 		{
 			Sprite * sprite = new Sprite(ANIMBRICK_TEXTURE_LOCATION, listSprite[i], ANIMBRICK_TEXTURE_TRANS_COLOR);
@@ -69,7 +69,10 @@ AnimBrick::~AnimBrick()
 
 void AnimBrick::Update(DWORD dt)
 {
-
+	if (this->GetAnimationsList()[0]->GetCurFrame() == 4)
+		this->isActive = true;
+	else
+		this->isActive = false;
 }
 void AnimBrick::Render()
 {
@@ -99,6 +102,7 @@ RECT * AnimBrick::LoadRect(char * path)
 	
 	for (int i = 0; i < number_of_rect; i++)
 	{
+		stringstream stream_data;
 		data = "";
 		stream_data.clear();
 

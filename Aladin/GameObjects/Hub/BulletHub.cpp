@@ -4,8 +4,24 @@ BulletHUD *BulletHUD::__instance = NULL;
 BulletHUD::BulletHUD()
 {
 	LoadResource();
+	SetText(Aladin::GetInstance()->bulletAppleNum);
+	
+}
+void BulletHUD::SetText(int num)
+{
+	this->numBullet = num;
+	stringstream ss;
+	ss << this->numBullet;
+	string str = ss.str();
+	this->numBulletString = str;
+	while (!str.empty())
+	{
+		resultString.push_back(str.substr(0, 1));
 
-	this->numBullet = 6;
+		str.erase(0, 1); // Update string 
+	}
+	
+	
 }
 BulletHUD *BulletHUD::GetInstance()
 {
@@ -66,15 +82,24 @@ void BulletHUD::LoadResource()
 
 void BulletHUD::Update(DWORD dt)
 {
-	if (numBullet >= 0 && numBullet <= 6)
-		this->numBullet = numBullet;
+	
+
 }
 
 void BulletHUD::Render()
 {
-	sprites[this->numBullet]->SetSize(8, 40);
-	Graphics::GetInstance()->DrawWithoutTransformation(sprites[0], SCREEN_WIDTH-60, SCREEN_HEIGHT - 30);//icon
-	Graphics::GetInstance()->DrawWithoutTransformation(sprites[this->numBullet + 1], SCREEN_WIDTH - 40, SCREEN_HEIGHT - 30);
+	Graphics * graphics = Graphics::GetInstance();
+	//sprites[this->numBullet]->SetSize(8, 40);
+	graphics->DrawWithoutTransformation(sprites[0], SCREEN_WIDTH-60, SCREEN_HEIGHT - 30);//icon
+	int i = 0;
+	for (auto o : resultString)
+	{
+		
+		int n = std::stoi(o);
+		graphics->DrawWithoutTransformation(sprites[n + 1], SCREEN_WIDTH - 40+i*10, SCREEN_HEIGHT - 30);
+		i++;
+	}
+	
 
 
 }
